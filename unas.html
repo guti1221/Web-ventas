@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura Nails — Estudio de Uñas · Maldonado</title>
+<meta name="description" content="Aura Nails, estudio de uñas en Maldonado. Semipermanente, kapping, esculpidas en acrílico y polygel, nail art, pedicura y spa de pies. Reservá por WhatsApp.">
+<style>
+  :root{
+    --crema:#faf6f2;
+    --blanco:#fffdfb;
+    --rosa:#c9697f;
+    --rosa-suave:#f3dde2;
+    --rosa-medio:#e8c3cc;
+    --tinta:#40282e;
+    --gris:#8a7378;
+    --oro:#c9a15a;
+    --borde:#eadfd8;
+    --sombra:0 10px 30px rgba(64,40,46,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--crema);
+    color:var(--tinta);
+    font-family:'Segoe UI',Arial,sans-serif;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{font-family:Georgia,'Times New Roman',serif;font-weight:600}
+
+  /* ---------- BARRA DE PROMO ---------- */
+  .promo-bar{
+    position:fixed;top:0;left:0;right:0;z-index:101;
+    display:block;text-align:center;text-decoration:none;
+    background:linear-gradient(100deg,var(--rosa),#d98a9c);
+    color:#fff;font-size:.8rem;font-weight:600;letter-spacing:.04em;
+    padding:.45rem 1rem;
+  }
+  .promo-bar b{text-decoration:underline}
+  .promo-bar:hover{background:#b5566c}
+  @media(max-width:520px){
+    .promo-bar{font-size:.72rem;letter-spacing:.02em;white-space:nowrap;overflow:hidden}
+    .pb-extra{display:none}
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:35px;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:.85rem 5vw;
+    background:rgba(250,246,242,.93);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--borde);
+  }
+  .logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;color:var(--tinta);font-family:Georgia,serif;font-size:1.2rem;letter-spacing:.05em}
+  .logo svg{width:26px;height:26px;color:var(--rosa)}
+  .logo b{color:var(--rosa);font-weight:600}
+  .nav-links{display:flex;gap:1.7rem;list-style:none;align-items:center}
+  .nav-links a{color:var(--tinta);text-decoration:none;font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;transition:color .2s}
+  .nav-links a:hover{color:var(--rosa)}
+  .nav-cta{
+    background:var(--rosa);color:#fff!important;
+    padding:.5rem 1.2rem;border-radius:999px;font-weight:600;
+  }
+  .nav-cta:hover{background:#b5566c}
+  @media(max-width:820px){.nav-links li:not(:last-child){display:none}}
+
+  /* ---------- HERO ---------- */
+  header{
+    min-height:100vh;position:relative;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:7rem 5vw 4rem;
+  }
+  .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;z-index:-1}
+  .b1{width:420px;height:420px;background:var(--rosa-suave);top:-80px;right:-100px}
+  .b2{width:360px;height:360px;background:#f7e8d9;bottom:-60px;left:-110px}
+  .b3{width:220px;height:220px;background:var(--rosa-medio);top:38%;left:12%;opacity:.35}
+  .kicker{
+    color:var(--rosa);text-transform:uppercase;letter-spacing:.35em;
+    font-size:.78rem;margin-bottom:1.3rem;font-weight:600;
+  }
+  header h1{font-size:clamp(2.5rem,6.5vw,4.6rem);line-height:1.1;max-width:16ch}
+  header h1 em{font-style:italic;color:var(--rosa)}
+  .hero-sub{color:var(--gris);max-width:46ch;margin:1.4rem auto 2.3rem;font-size:1.05rem}
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    padding:.95rem 2.1rem;border-radius:999px;text-decoration:none;
+    font-weight:600;font-size:.95rem;letter-spacing:.04em;
+    transition:transform .15s,background .2s,color .2s;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-rosa{background:var(--rosa);color:#fff;box-shadow:0 8px 20px rgba(201,105,127,.35)}
+  .btn-rosa:hover{background:#b5566c}
+  .btn-linea{border:1.5px solid var(--rosa-medio);color:var(--tinta);margin-left:.6rem}
+  .btn-linea:hover{border-color:var(--rosa);color:var(--rosa)}
+  .hero-botones{display:flex;flex-wrap:wrap;gap:.8rem .2rem;justify-content:center}
+  .hero-mini{display:flex;gap:2.2rem;margin-top:3rem;flex-wrap:wrap;justify-content:center}
+  .mini{font-size:.85rem;color:var(--gris);display:flex;align-items:center;gap:.45rem}
+  .mini svg{width:17px;height:17px;color:var(--rosa)}
+
+  /* ---------- SECCIONES ---------- */
+  section{padding:5rem 5vw;max-width:1150px;margin:0 auto}
+  .sec-kicker{color:var(--rosa);text-transform:uppercase;letter-spacing:.3em;font-size:.72rem;font-weight:600;margin-bottom:.6rem}
+  .sec-titulo{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.7rem}
+  .sec-intro{color:var(--gris);max-width:58ch;margin-bottom:2.6rem}
+
+  /* tarjetas destacadas */
+  .destacados{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-bottom:3.5rem}
+  .destacado{
+    background:var(--blanco);border:1px solid var(--borde);border-radius:18px;
+    padding:1.8rem 1.6rem;box-shadow:var(--sombra);
+    transition:transform .2s;
+  }
+  .destacado:hover{transform:translateY(-4px)}
+  .destacado .icono{
+    width:46px;height:46px;border-radius:14px;background:var(--rosa-suave);
+    display:flex;align-items:center;justify-content:center;margin-bottom:1rem;
+  }
+  .destacado .icono svg{width:24px;height:24px;color:var(--rosa)}
+  .destacado h3{font-size:1.1rem;margin-bottom:.35rem}
+  .destacado p{color:var(--gris);font-size:.9rem}
+
+  /* carta de precios */
+  .carta{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem}
+  .categoria{
+    background:var(--blanco);border:1px solid var(--borde);border-radius:18px;
+    padding:1.9rem 1.7rem;box-shadow:var(--sombra);
+  }
+  .categoria h3{
+    font-size:1.2rem;color:var(--rosa);margin-bottom:.3rem;
+    display:flex;align-items:center;gap:.55rem;
+  }
+  .categoria h3 svg{width:21px;height:21px}
+  .categoria .cat-nota{font-size:.82rem;color:var(--gris);margin-bottom:1.1rem}
+  .item{
+    display:flex;align-items:baseline;gap:.6rem;
+    padding:.55rem 0;border-bottom:1px dashed var(--borde);font-size:.93rem;
+  }
+  .item:last-child{border-bottom:none}
+  .item .nombre{white-space:nowrap}
+  .item .nombre small{display:block;white-space:normal;color:var(--gris);font-size:.78rem}
+  .item .puntos{flex:1;border-bottom:1.5px dotted var(--rosa-medio);transform:translateY(-4px)}
+  .item .valor{color:var(--rosa);font-weight:700;white-space:nowrap}
+  .item .valor small{color:var(--gris);font-weight:400;font-size:.72rem}
+
+  /* franja promo */
+  .franja{
+    background:linear-gradient(100deg,var(--rosa),#d98a9c);
+    color:#fff;text-align:center;padding:3rem 5vw;max-width:none;
+  }
+  .franja h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:.4rem}
+  .franja p{opacity:.92;max-width:52ch;margin:0 auto 1.4rem}
+  .franja .btn{background:#fff;color:var(--rosa)}
+
+  /* higiene */
+  .higiene{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem}
+  .hig{
+    background:var(--blanco);border:1px solid var(--borde);border-radius:18px;
+    padding:1.6rem;box-shadow:var(--sombra);text-align:center;
+  }
+  .hig svg{width:30px;height:30px;color:var(--rosa);margin-bottom:.7rem}
+  .hig h3{font-size:1rem;margin-bottom:.3rem}
+  .hig p{color:var(--gris);font-size:.87rem}
+
+  /* galería */
+  .galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+  .foto{
+    aspect-ratio:4/5;border-radius:18px;border:1px solid var(--borde);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;
+    color:var(--gris);font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;
+    text-align:center;padding:1rem;box-shadow:var(--sombra);
+  }
+  .foto svg{width:38px;height:38px;color:var(--rosa);opacity:.85}
+  .g1{background:linear-gradient(160deg,#f6e3e8,#fdf8f5)}
+  .g2{background:linear-gradient(200deg,#f8ece2,#fdf7f3)}
+  .g3{background:linear-gradient(140deg,#f3dde2,#fbf5f1)}
+  .g4{background:linear-gradient(220deg,#f7e8ea,#fcf7f4)}
+  .g5{background:linear-gradient(180deg,#f5e2da,#fdf8f6)}
+
+  /* testimonios */
+  .testimonios{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+  .testimonio{background:var(--blanco);border:1px solid var(--borde);border-radius:18px;padding:1.7rem;box-shadow:var(--sombra)}
+  .estrellas{color:var(--oro);letter-spacing:.2em;margin-bottom:.7rem}
+  .testimonio p{font-style:italic;font-size:.93rem;margin-bottom:.9rem;font-family:Georgia,serif}
+  .testimonio footer{color:var(--gris);font-size:.83rem}
+
+  /* info */
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+  .info-card{background:var(--blanco);border:1px solid var(--borde);border-radius:18px;padding:1.8rem;box-shadow:var(--sombra)}
+  .info-card h3{color:var(--rosa);font-size:1.05rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+  .info-card h3 svg{width:20px;height:20px}
+  .horario{display:flex;justify-content:space-between;padding:.35rem 0;border-bottom:1px dashed var(--borde);font-size:.92rem}
+  .horario:last-child{border-bottom:none}
+  .horario span:last-child{color:var(--rosa);font-weight:600}
+  .info-card p{color:var(--gris);font-size:.95rem}
+  .info-card a{color:var(--rosa);font-weight:600;text-decoration:none}
+
+  .mapa{
+    margin-top:1.2rem;border-radius:18px;overflow:hidden;
+    border:1px solid var(--borde);box-shadow:var(--sombra);
+  }
+  .mapa iframe{display:block;width:100%;height:340px;border:0}
+
+  .cta-final{text-align:center}
+  .cta-final .sec-intro{margin-left:auto;margin-right:auto}
+
+  .pie{
+    border-top:1px solid var(--borde);text-align:center;
+    padding:2.2rem 5vw;color:var(--gris);font-size:.82rem;
+  }
+  .pie .marca{color:var(--rosa);font-family:Georgia,serif;font-size:1.05rem;margin-bottom:.3rem}
+
+  .wsp{
+    position:fixed;bottom:1.4rem;right:1.4rem;z-index:100;
+    width:58px;height:58px;border-radius:50%;
+    background:#25d366;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 18px rgba(0,0,0,.25);transition:transform .15s;
+  }
+  .wsp:hover{transform:scale(1.08)}
+  .wsp svg{width:32px;height:32px;fill:#fff}
+
+  .rev{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .rev.vis{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<a class="promo-bar" href="https://wa.me/59899532976?text=Hola!%20Vi%20la%20promo%20del%2015%25%20en%20semipermanente%20y%20quiero%20reservar" target="_blank" rel="noopener">
+  ✨ Solo esta semana: <b>15% OFF en semipermanente</b><span class="pb-extra"> — tocá y reservá</span>
+</a>
+
+<nav>
+  <a class="logo" href="#inicio">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 2.5 4.5 5.5 4.5 8.5a4.5 4.5 0 0 1-9 0C7.5 8.5 9 5.5 12 3Z"/><path d="M12 16v5M9.5 21h5"/></svg>
+    AURA <b>NAILS</b>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#ubicacion">Ubicación</a></li>
+    <li><a class="nav-cta" href="https://wa.me/59899532976?text=Hola!%20Quiero%20reservar%20un%20turno%20en%20Aura%20Nails" target="_blank" rel="noopener">Reservar</a></li>
+  </ul>
+</nav>
+
+<header id="inicio">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <p class="kicker">Estudio de uñas · Maldonado</p>
+  <h1>Tus manos hablan. <em>Que digan algo lindo.</em></h1>
+  <p class="hero-sub">Semipermanente, esculpidas, nail art y spa de pies. Materiales esterilizados, atención personalizada y turnos puntuales.</p>
+  <div class="hero-botones">
+    <a class="btn btn-rosa" href="https://wa.me/59899532976?text=Hola!%20Quiero%20reservar%20un%20turno%20en%20Aura%20Nails" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+    <a class="btn btn-linea" href="#precios">Ver precios</a>
+  </div>
+  <div class="hero-mini">
+    <span class="mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg>Kit esterilizado por clienta</span>
+    <span class="mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Turnos puntuales</span>
+    <span class="mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.6-9.5-9C.9 8.5 3 5 6.5 5c2 0 3.6 1.2 4.5 2.5h2C13.9 6.2 15.5 5 17.5 5 21 5 23.1 8.5 21.5 12 19 16.4 12 21 12 21Z"/></svg>Productos premium</span>
+  </div>
+</header>
+
+<section id="servicios" class="rev">
+  <p class="sec-kicker">Lo que hacemos</p>
+  <h2 class="sec-titulo">Un servicio para cada estilo</h2>
+  <p class="sec-intro">Desde una manicura express hasta esculpidas con diseño encapsulado. Te asesoramos según tu uña natural, tu rutina y lo que te guste.</p>
+  <div class="destacados">
+    <div class="destacado">
+      <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 2.5 4.5 5.5 4.5 8.5a4.5 4.5 0 0 1-9 0C7.5 8.5 9 5.5 12 3Z"/></svg></div>
+      <h3>Semipermanente</h3>
+      <p>Color impecable por 3 semanas, secado en lámpara, sin marcas al día siguiente.</p>
+    </div>
+    <div class="destacado">
+      <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 20c0-6 2-11 6-16 4 5 6 10 6 16"/><path d="M6 20h12"/></svg></div>
+      <h3>Esculpidas</h3>
+      <p>Acrílico, polygel o soft gel. Largo y forma a elección: almendra, coffin, cuadrada.</p>
+    </div>
+    <div class="destacado">
+      <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 19c-4 0-8-2-8-7 0-4 3-8 8-8s8 4 8 8c0 5-4 7-8 7Z"/><path d="M9 10h.01M15 10h.01M9.5 14a3.5 3.5 0 0 0 5 0"/></svg></div>
+      <h3>Nail art</h3>
+      <p>Francesitas, efecto espejo, baby boomer, encapsulados, diseños a mano alzada.</p>
+    </div>
+    <div class="destacado">
+      <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 17c1-4 2-9 5-12 1.5 1 2.5 2.5 3 4M4 17c0 2 1.5 4 4 4s4.5-2 5-4M4 17h9"/><path d="M16 8c2 1 4 3.5 4 7 0 4-2.5 6-4.5 6"/></svg></div>
+      <h3>Spa de pies</h3>
+      <p>Pedicura completa, tratamiento de talones, exfoliación y semipermanente en pies.</p>
+    </div>
+  </div>
+</section>
+
+<section id="precios" class="rev" style="padding-top:0">
+  <p class="sec-kicker">Carta de servicios</p>
+  <h2 class="sec-titulo">Precios claros, sin sorpresas</h2>
+  <p class="sec-intro">Todos los servicios incluyen limado, cutículas y aceite hidratante de terminación.</p>
+  <div class="carta">
+
+    <div class="categoria">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 2.5 4.5 5.5 4.5 8.5a4.5 4.5 0 0 1-9 0C7.5 8.5 9 5.5 12 3Z"/><path d="M12 16v5M9.5 21h5"/></svg>Manos</h3>
+      <p class="cat-nota">Sobre uña natural</p>
+      <div class="item"><span class="nombre">Manicura clásica<small>Limado, cutículas y esmalte común</small></span><span class="puntos"></span><span class="valor">$U 590</span></div>
+      <div class="item"><span class="nombre">Semipermanente<small>Esmaltado en gel, dura hasta 3 semanas</small></span><span class="puntos"></span><span class="valor">$U 850</span></div>
+      <div class="item"><span class="nombre">Kapping gel<small>Capa de refuerzo sobre uña natural</small></span><span class="puntos"></span><span class="valor">$U 1.100</span></div>
+      <div class="item"><span class="nombre">Retiro de material<small>Sin turno si venís a renovar</small></span><span class="puntos"></span><span class="valor">$U 350</span></div>
+    </div>
+
+    <div class="categoria">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 20c0-6 2-11 6-16 4 5 6 10 6 16"/><path d="M6 20h12"/></svg>Esculpidas y extensiones</h3>
+      <p class="cat-nota">Forma a elección: almendra, coffin, cuadrada, stiletto</p>
+      <div class="item"><span class="nombre">Acrílico<small>Set completo con tips o molde</small></span><span class="puntos"></span><span class="valor"><small>desde</small> $U 1.500</span></div>
+      <div class="item"><span class="nombre">Polygel<small>Más flexible y liviano que el acrílico</small></span><span class="puntos"></span><span class="valor"><small>desde</small> $U 1.400</span></div>
+      <div class="item"><span class="nombre">Soft gel<small>Extensión rápida con tips de gel</small></span><span class="puntos"></span><span class="valor"><small>desde</small> $U 1.200</span></div>
+      <div class="item"><span class="nombre">Mantenimiento<small>Relleno cada 3–4 semanas</small></span><span class="puntos"></span><span class="valor"><small>desde</small> $U 1.000</span></div>
+      <div class="item"><span class="nombre">Reparación de uña<small>Por unidad</small></span><span class="puntos"></span><span class="valor">$U 200</span></div>
+    </div>
+
+    <div class="categoria">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 19c-4 0-8-2-8-7 0-4 3-8 8-8s8 4 8 8c0 5-4 7-8 7Z"/><path d="M9 10h.01M15 10h.01M9.5 14a3.5 3.5 0 0 0 5 0"/></svg>Nail art y efectos</h3>
+      <p class="cat-nota">Se suma al servicio elegido</p>
+      <div class="item"><span class="nombre">Francesitas</span><span class="puntos"></span><span class="valor">+ $U 150</span></div>
+      <div class="item"><span class="nombre">Baby boomer<small>Degradé natural rosa y blanco</small></span><span class="puntos"></span><span class="valor">+ $U 250</span></div>
+      <div class="item"><span class="nombre">Efecto espejo / cromo</span><span class="puntos"></span><span class="valor">+ $U 250</span></div>
+      <div class="item"><span class="nombre">Encapsulados y 3D<small>Brillos, flores secas, relieves</small></span><span class="puntos"></span><span class="valor"><small>desde</small> + $U 300</span></div>
+      <div class="item"><span class="nombre">Diseño a mano alzada<small>Por uña o set completo</small></span><span class="puntos"></span><span class="valor"><small>desde</small> + $U 200</span></div>
+    </div>
+
+    <div class="categoria">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 17c1-4 2-9 5-12 1.5 1 2.5 2.5 3 4M4 17c0 2 1.5 4 4 4s4.5-2 5-4M4 17h9"/><path d="M16 8c2 1 4 3.5 4 7 0 4-2.5 6-4.5 6"/></svg>Pies</h3>
+      <p class="cat-nota">Con camilla y ambiente relajado</p>
+      <div class="item"><span class="nombre">Pedicura clásica<small>Limado, cutículas y esmalte común</small></span><span class="puntos"></span><span class="valor">$U 900</span></div>
+      <div class="item"><span class="nombre">Pedicura spa<small>+ exfoliación, talones y masaje</small></span><span class="puntos"></span><span class="valor">$U 1.300</span></div>
+      <div class="item"><span class="nombre">Semipermanente en pies</span><span class="puntos"></span><span class="valor">$U 850</span></div>
+      <div class="item"><span class="nombre">Combo manos + pies<small>Semipermanente en ambos</small></span><span class="puntos"></span><span class="valor">$U 1.500 <small>ahorrás $U 200</small></span></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="franja rev">
+  <h2>✨ 10% de descuento en tu primera visita</h2>
+  <p>Mencioná que viste la web al reservar y llevate el descuento en cualquier servicio.</p>
+  <a class="btn" href="https://wa.me/59899532976?text=Hola!%20Vi%20la%20web%20y%20quiero%20reservar%20mi%20primera%20visita" target="_blank" rel="noopener">Quiero mi descuento</a>
+</div>
+
+<section class="rev">
+  <p class="sec-kicker">Tu tranquilidad</p>
+  <h2 class="sec-titulo">Higiene ante todo</h2>
+  <div class="higiene">
+    <div class="hig">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+      <h3>Esterilización</h3>
+      <p>Instrumental esterilizado en autoclave después de cada clienta.</p>
+    </div>
+    <div class="hig">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h10v4a5 5 0 0 1-10 0V3Z"/><path d="M9 21h6M12 12v9"/></svg>
+      <h3>Kit descartable</h3>
+      <p>Limas y palitos de un solo uso, abiertos frente a vos.</p>
+    </div>
+    <div class="hig">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.6-9.5-9C.9 8.5 3 5 6.5 5c2 0 3.6 1.2 4.5 2.5h2C13.9 6.2 15.5 5 17.5 5 21 5 23.1 8.5 21.5 12 19 16.4 12 21 12 21Z"/></svg>
+      <h3>Cuidado de la uña natural</h3>
+      <p>Técnicas que no dañan tu uña: sin torno agresivo ni retiros forzados.</p>
+    </div>
+    <div class="hig">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>
+      <h3>Atención personalizada</h3>
+      <p>Una clienta por vez. Tu turno es tuyo, sin apuros.</p>
+    </div>
+  </div>
+</section>
+
+<section id="galeria" class="rev">
+  <p class="sec-kicker">Galería</p>
+  <h2 class="sec-titulo">Trabajos recientes</h2>
+  <p class="sec-intro">Acá van las fotos reales de tus diseños — este es un sitio de demostración.</p>
+  <div class="galeria">
+    <div class="foto g1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c3 2.5 4.5 5.5 4.5 8.5a4.5 4.5 0 0 1-9 0C7.5 8.5 9 5.5 12 3Z"/></svg>Baby boomer</div>
+    <div class="foto g2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 20c0-6 2-11 6-16 4 5 6 10 6 16M6 20h12"/></svg>Almendra nude</div>
+    <div class="foto g3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2.4 4.8L20 7.6l-4 3.9.9 5.5L12 14.4 7.1 17l.9-5.5-4-3.9 5.6-.8L12 2Z"/></svg>Efecto espejo</div>
+    <div class="foto g4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 19c-4 0-8-2-8-7 0-4 3-8 8-8s8 4 8 8c0 5-4 7-8 7Z"/></svg>Francesitas</div>
+    <div class="foto g5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 17c1-4 2-9 5-12 1.5 1 2.5 2.5 3 4M4 17c0 2 1.5 4 4 4s4.5-2 5-4M4 17h9"/></svg>Pedicura spa</div>
+  </div>
+</section>
+
+<section class="rev">
+  <p class="sec-kicker">Clientas</p>
+  <h2 class="sec-titulo">Lo que dicen de nosotras</h2>
+  <div class="testimonios">
+    <div class="testimonio">
+      <div class="estrellas">★★★★★</div>
+      <p>"Las esculpidas me duran perfectas el mes entero. Y el lugar es divino, super limpio."</p>
+      <footer>— Valentina P., Maldonado</footer>
+    </div>
+    <div class="testimonio">
+      <div class="estrellas">★★★★★</div>
+      <p>"El baby boomer me quedó igual al de la foto que llevé. Cero diferencia."</p>
+      <footer>— Camila G., Punta del Este</footer>
+    </div>
+    <div class="testimonio">
+      <div class="estrellas">★★★★★</div>
+      <p>"La pedicura spa es un mimo. Salís caminando en las nubes."</p>
+      <footer>— Rosario M., San Carlos</footer>
+    </div>
+  </div>
+</section>
+
+<section id="ubicacion" class="rev">
+  <p class="sec-kicker">Visitanos</p>
+  <h2 class="sec-titulo">Horarios y ubicación</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Horarios</h3>
+      <div class="horario"><span>Lunes a viernes</span><span>9:00 – 19:00</span></div>
+      <div class="horario"><span>Sábados</span><span>9:00 – 14:00</span></div>
+      <div class="horario"><span>Domingos</span><span>Cerrado</span></div>
+    </div>
+    <div class="info-card">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Dónde estamos</h3>
+      <p>Sarandí esq. Florida, Centro<br>Maldonado, Uruguay<br><br><a href="https://maps.google.com/?q=Sarandi+y+Florida,+Maldonado,+Uruguay" target="_blank" rel="noopener">Ver en Google Maps →</a></p>
+    </div>
+    <div class="info-card">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z"/></svg>Reservas</h3>
+      <p>Atendemos con turno previo. Escribinos por WhatsApp, contanos qué querés hacerte y coordinamos.<br><br><a href="https://wa.me/59899532976" target="_blank" rel="noopener">099 532 976 →</a></p>
+    </div>
+  </div>
+  <div class="mapa">
+    <iframe src="https://www.google.com/maps?q=Sarandi+y+Florida,+Maldonado,+Uruguay&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa: Aura Nails en el centro de Maldonado"></iframe>
+  </div>
+</section>
+
+<section class="cta-final rev">
+  <p class="sec-kicker">¿Nos vemos?</p>
+  <h2 class="sec-titulo">Tu turno te está esperando</h2>
+  <p class="sec-intro">Reservá en menos de un minuto por WhatsApp. Contanos el servicio que querés y te confirmamos el horario.</p>
+  <a class="btn btn-rosa" href="https://wa.me/59899532976?text=Hola!%20Quiero%20reservar%20un%20turno%20en%20Aura%20Nails" target="_blank" rel="noopener">Reservar mi turno</a>
+</section>
+
+<div class="pie">
+  <p class="marca">AURA NAILS</p>
+  <p>Maldonado, Uruguay · Sitio de demostración</p>
+</div>
+
+<a class="wsp" href="https://wa.me/59899532976?text=Hola!%20Quiero%20reservar%20un%20turno%20en%20Aura%20Nails" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.6.8 5 2.3 7L4 29l7.2-2.2c1.5.8 3.1 1.2 4.8 1.2 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 22c-1.5 0-3-.4-4.3-1.1l-.5-.3-4.3 1.3 1.3-4.1-.3-.5C6.6 18.8 6 17 6 15 6 9.5 10.5 5 16 5s10 4.5 10 10-4.5 10-10 10zm5.5-7.5c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: .1 });
+  document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Leña — Pizzería a la piedra · Punta del Este</title>
+<meta name="description" content="Pizzería La Leña en Punta del Este. Pizzas a la piedra en horno a leña, empanadas caseras y postres. Pedidos por WhatsApp con delivery y retiro.">
+<style>
+  :root{
+    --carbon:#191412;
+    --panel:#241c18;
+    --rojo:#c2372c;
+    --rojo-claro:#e05a4e;
+    --crema:#f6ead8;
+    --beige:#c7b299;
+    --borde:rgba(194,55,44,.28);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--carbon);color:var(--crema);font-family:Georgia,'Times New Roman',serif;line-height:1.6;overflow-x:hidden}
+  .sans{font-family:'Segoe UI',Arial,sans-serif}
+  a{color:inherit;text-decoration:none}
+
+  /* Nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;gap:1rem;
+      padding:.8rem clamp(1rem,4vw,2.5rem);background:rgba(25,20,18,.92);backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--borde)}
+  .logo{font-size:1.25rem;font-weight:700;letter-spacing:.04em}
+  .logo span{color:var(--rojo-claro)}
+  .navlinks{margin-left:auto;display:flex;gap:1.3rem;font-size:.95rem}
+  .navlinks a{color:var(--beige);transition:color .2s}
+  .navlinks a:hover{color:var(--crema)}
+  .btn-wa{background:#25d366;color:#fff;padding:.5rem 1rem;border-radius:999px;font-weight:700;font-size:.9rem;font-family:'Segoe UI',Arial,sans-serif}
+  @media(max-width:640px){.navlinks{display:none}}
+
+  /* Hero */
+  header{position:relative;min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+         text-align:center;padding:6rem 1.2rem 3rem;
+         background:radial-gradient(900px 500px at 50% -100px,#3a2018 0%,var(--carbon) 60%)}
+  .llama{font-size:3rem;margin-bottom:.6rem}
+  h1{font-size:clamp(2.4rem,7vw,4.2rem);line-height:1.05;letter-spacing:.02em}
+  h1 em{color:var(--rojo-claro);font-style:normal}
+  .sub{max-width:560px;color:var(--beige);margin-top:1.1rem;font-size:1.08rem}
+  .ctas{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:1.8rem}
+  .btn{padding:.85rem 1.5rem;border-radius:999px;font-weight:700;font-family:'Segoe UI',Arial,sans-serif;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-rojo{background:var(--rojo);color:#fff;box-shadow:0 8px 26px rgba(194,55,44,.4)}
+  .btn-borde{border:1px solid var(--borde);color:var(--crema)}
+  .dato{margin-top:2rem;color:var(--beige);font-size:.92rem}
+  .dato b{color:var(--crema)}
+
+  section{max-width:1080px;margin:0 auto;padding:clamp(2.5rem,6vw,4.5rem) clamp(1rem,4vw,2rem)}
+  .kicker{font-family:'Segoe UI',Arial,sans-serif;text-transform:uppercase;letter-spacing:.25em;font-size:.75rem;color:var(--rojo-claro);text-align:center}
+  h2{font-size:clamp(1.7rem,4.5vw,2.4rem);text-align:center;margin-top:.4rem}
+  .lead{color:var(--beige);text-align:center;max-width:620px;margin:.7rem auto 2.2rem}
+
+  /* Menú */
+  .menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1rem}
+  .item{background:var(--panel);border:1px solid var(--borde);border-radius:14px;padding:1.2rem 1.3rem;transition:transform .2s,border-color .2s}
+  .item:hover{transform:translateY(-4px);border-color:var(--rojo)}
+  .item-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+  .item h3{font-size:1.15rem}
+  .precio{color:var(--rojo-claro);font-weight:700;white-space:nowrap;font-family:'Segoe UI',Arial,sans-serif}
+  .item p{color:var(--beige);font-size:.92rem;margin-top:.35rem}
+  .estrella{display:inline-block;background:rgba(194,55,44,.15);border:1px solid var(--borde);color:var(--rojo-claro);
+            font-size:.7rem;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.08em;
+            padding:.15rem .55rem;border-radius:999px;margin-top:.5rem;text-transform:uppercase}
+
+  /* Horno */
+  .horno{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;text-align:center}
+  .paso{background:var(--panel);border:1px solid var(--borde);border-radius:14px;padding:1.5rem 1.2rem}
+  .paso .ico{font-size:2rem}
+  .paso h3{margin:.5rem 0 .3rem;font-size:1.05rem}
+  .paso p{color:var(--beige);font-size:.9rem}
+
+  /* Info */
+  .info{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+  .infocard{background:var(--panel);border:1px solid var(--borde);border-radius:14px;padding:1.4rem;text-align:center}
+  .infocard .ico{font-size:1.7rem}
+  .infocard h3{font-size:1rem;margin:.5rem 0 .3rem}
+  .infocard p{color:var(--beige);font-size:.92rem}
+
+  /* CTA final */
+  .final{background:linear-gradient(135deg,rgba(194,55,44,.18),rgba(224,90,78,.08));border:1px solid var(--borde);
+         border-radius:20px;text-align:center;padding:clamp(2rem,5vw,3rem)}
+  footer{text-align:center;color:var(--beige);font-size:.85rem;padding:2rem 1rem;border-top:1px solid var(--borde);margin-top:2rem}
+
+  /* WhatsApp flotante */
+  .fw{position:fixed;bottom:20px;right:20px;z-index:99;width:56px;height:56px;border-radius:50%;
+      background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;
+      box-shadow:0 10px 26px rgba(37,211,102,.45)}
+  .fw svg{width:28px;height:28px}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">🔥 La <span>Leña</span></div>
+  <div class="navlinks">
+    <a href="#menu">Menú</a><a href="#horno">Nuestro horno</a><a href="#info">Horarios</a>
+  </div>
+  <a class="btn-wa" href="https://wa.me/59899000000?text=%C2%A1Hola!%20Quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Pedir ahora</a>
+</nav>
+
+<header>
+  <div class="llama">🍕</div>
+  <h1>Pizza a la piedra,<br><em>fuego de verdad.</em></h1>
+  <p class="sub">Masa madre de 48 horas, horno a leña y los ingredientes de siempre. En el corazón de Punta del Este.</p>
+  <div class="ctas">
+    <a class="btn btn-rojo" href="https://wa.me/59899000000?text=%C2%A1Hola!%20Quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+    <a class="btn btn-borde" href="#menu">Ver el menú</a>
+  </div>
+  <p class="dato">📍 Calle 20 esq. 25 · <b>Delivery sin costo</b> en Península</p>
+</header>
+
+<section id="menu">
+  <p class="kicker">Menú</p>
+  <h2>Las de la casa</h2>
+  <p class="lead">Todas salen del horno a leña, tamaño grande (8 porciones). También por porción en el local.</p>
+  <div class="menu">
+    <div class="item"><div class="item-top"><h3>Muzzarella</h3><span class="precio">$390</span></div><p>Salsa de tomate casera, muzzarella y aceitunas. La clásica que nunca falla.</p></div>
+    <div class="item"><div class="item-top"><h3>Napolitana</h3><span class="precio">$450</span></div><p>Tomate en rodajas, ajo, muzzarella y albahaca fresca de la huerta.</p></div>
+    <div class="item"><div class="item-top"><h3>La Leña</h3><span class="precio">$520</span></div><p>Bondiola braseada, cebolla caramelizada y muzzarella ahumada.</p><span class="estrella">★ La más pedida</span></div>
+    <div class="item"><div class="item-top"><h3>Fugazzeta</h3><span class="precio">$470</span></div><p>Rellena de muzzarella, cebolla dorada y orégano. Estilo bien rioplatense.</p></div>
+    <div class="item"><div class="item-top"><h3>Rúcula y jamón crudo</h3><span class="precio">$540</span></div><p>Base blanca, rúcula fresca, crudo estacionado y escamas de parmesano.</p></div>
+    <div class="item"><div class="item-top"><h3>Empanadas de carne</h3><span class="precio">$85 c/u</span></div><p>Cortada a cuchillo, horneadas en el mismo horno a leña. Docena $900.</p></div>
+  </div>
+</section>
+
+<section id="horno">
+  <p class="kicker">Nuestro secreto</p>
+  <h2>El horno manda</h2>
+  <p class="lead">No hay apuro que le gane al fuego. Así trabajamos todos los días desde 2015.</p>
+  <div class="horno">
+    <div class="paso"><div class="ico">🌾</div><h3>Masa madre 48 hs</h3><p>Fermentación lenta para una masa liviana, crocante y fácil de digerir.</p></div>
+    <div class="paso"><div class="ico">🔥</div><h3>Leña de monte</h3><p>El horno llega a 420°. La pizza está lista en 90 segundos, con ese sabor ahumado único.</p></div>
+    <div class="paso"><div class="ico">🍅</div><h3>Ingredientes de acá</h3><p>Tomates y verdes de productores locales de Maldonado. Todo fresco, todo el año.</p></div>
+  </div>
+</section>
+
+<section id="info">
+  <p class="kicker">La visita</p>
+  <h2>Horarios y pedidos</h2>
+  <div class="info">
+    <div class="infocard"><div class="ico">🕗</div><h3>Horarios</h3><p>Martes a domingo<br>19:30 a 00:00</p></div>
+    <div class="infocard"><div class="ico">🛵</div><h3>Delivery</h3><p>Sin costo en Península.<br>Resto de Punta del Este $80.</p></div>
+    <div class="infocard"><div class="ico">📍</div><h3>Dónde</h3><p>Calle 20 esq. 25<br>Punta del Este</p></div>
+    <div class="infocard"><div class="ico">💳</div><h3>Pagos</h3><p>Efectivo, transferencia<br>y todas las tarjetas</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="final">
+    <h2>¿Pedimos?</h2>
+    <p class="lead" style="margin-bottom:1.4rem">Escribinos por WhatsApp con tu pedido y te confirmamos el tiempo al toque.</p>
+    <a class="btn btn-rojo" href="https://wa.me/59899000000?text=%C2%A1Hola!%20Quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Hacer mi pedido</a>
+  </div>
+</section>
+
+<footer>© 2026 Pizzería La Leña · Punta del Este — Web de muestra por Estudio Web</footer>
+
+<a class="fw" href="https://wa.me/59899000000?text=%C2%A1Hola!%20Quiero%20hacer%20un%20pedido." target="_blank" rel="noopener" aria-label="Pedir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23z"/></svg>
+</a>
+</body>
+</html>

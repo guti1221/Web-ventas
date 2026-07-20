@@ -1,0 +1,6 @@
+# Configuración de Netlify para la web de ventas.
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
