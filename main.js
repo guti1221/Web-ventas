@@ -90,12 +90,14 @@
   function initScrollChrome() {
     var bar = document.querySelector(".progressBar");
     var top = document.querySelector(".backTop");
+    var nav = document.querySelector(".nav");
     function onScroll() {
       var h = document.documentElement;
       var max = h.scrollHeight - h.clientHeight;
       var p = max > 0 ? (h.scrollTop / max) * 100 : 0;
       if (bar) bar.style.width = p + "%";
       if (top) top.classList.toggle("backTopVisible", h.scrollTop > 600);
+      if (nav) nav.classList.toggle("navScrolled", h.scrollTop > 20);
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
