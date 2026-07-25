@@ -1525,3 +1525,362 @@ a.stat:hover { transform: translateY(-3px); }
       radial-gradient(80vw 38vh at 50% 103%, rgba(224, 184, 98, 0.1), transparent 62%);
   }
 }
+
+/* ============================================================
+   FOTO DE FONDO EN EL HERO + MOVIMIENTO DE ENTRADA
+   (laptop con la web abierta, oscurecida para leer el texto,
+   con zoom lento de entrada tipo "Ken Burns")
+   ============================================================ */
+.hero { overflow: hidden; }
+.heroPhoto {
+  position: absolute;
+  top: -140px;
+  left: 50%;
+  width: 100vw;
+  height: calc(100% + 260px);
+  z-index: 0;
+  pointer-events: none;
+  background:
+    url("https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1920&q=80")
+    center 42% / cover no-repeat;
+  transform: translateX(-50%) scale(1.04);
+  opacity: 0;
+  animation: heroPhotoIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards,
+             heroKenBurns 28s ease-in-out 1.2s infinite alternate;
+}
+/* velo oscuro por encima de la foto para que el texto siempre se lea */
+.heroPhoto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 72% 62% at 50% 40%, transparent, rgba(11, 11, 13, 0.72) 86%),
+    linear-gradient(180deg, rgba(11, 11, 13, 0.55) 0%, rgba(11, 11, 13, 0.7) 42%,
+      rgba(11, 11, 13, 0.94) 86%, #0b0b0d 100%);
+}
+@keyframes heroPhotoIn { to { opacity: 1; } }
+@keyframes heroKenBurns {
+  from { transform: translateX(-50%) scale(1.04); }
+  to   { transform: translateX(-50%) scale(1.13); }
+}
+
+/* Brillo animado del texto dorado del título (movimiento sutil al entrar) */
+.grad {
+  background: linear-gradient(120deg, #f0cf94, #ffe9c2 35%, #d4a857 60%, #f0cf94);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradShimmer 7s linear infinite;
+}
+@keyframes gradShimmer { to { background-position: 220% 0; } }
+
+/* ============================================================
+   PRECIOS EN DESCUENTO (oferta de lanzamiento)
+   ============================================================ */
+.eyebrowOferta {
+  display: inline-block;
+  color: #0a0a0f;
+  background: linear-gradient(120deg, #ffd15c, #ff9f43);
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 22px rgba(255, 159, 67, 0.35);
+  animation: ofertaGlow 2.4s ease-in-out infinite;
+}
+@keyframes ofertaGlow {
+  50% { box-shadow: 0 0 34px rgba(255, 159, 67, 0.6); }
+}
+.planPrecioRow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  margin-bottom: -0.4rem;
+}
+.planAntes {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255, 107, 107, 0.8);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.planOff {
+  display: inline-block;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #ff6b6b, #ff9f43);
+  color: #1a0b00;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  box-shadow: 0 0 16px rgba(255, 107, 107, 0.4);
+  animation: offPulse 1.8s ease-in-out infinite;
+}
+@keyframes offPulse { 50% { transform: scale(1.08); } }
+.planAhorro {
+  color: var(--accent-2);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: -0.5rem;
+}
+
+/* ============================================================
+   FONDO ANIMADO DE CÓDIGO / BINARIO (lluvia tipo "Matrix" dorada)
+   ============================================================ */
+#codeRain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+/* ============================================================
+   DISPOSITIVOS: laptop + tablet + celular con la web adentro
+   ============================================================ */
+.deviceCluster {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 2.8rem;
+  max-width: 100%;
+  filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.55));
+}
+.deviceScreen {
+  position: relative;
+  overflow: hidden;
+  background: #0b0b0d;
+}
+/* --- LAPTOP --- */
+.deviceLaptop { width: clamp(300px, 44vw, 540px); z-index: 3; animation: floatB 7s ease-in-out infinite; }
+.deviceLaptop .deviceScreen {
+  aspect-ratio: 16 / 10;
+  border: 10px solid #17171d;
+  border-radius: 14px 14px 3px 3px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 46px rgba(212, 168, 87, 0.14);
+}
+.deviceBase {
+  height: 15px;
+  margin: 0 -7%;
+  border-radius: 0 0 16px 16px;
+  background: linear-gradient(180deg, #23232c, #0d0d11);
+  box-shadow: 0 18px 26px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+.deviceBase::before {
+  content: "";
+  position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 15%; height: 6px;
+  border-radius: 0 0 9px 9px;
+  background: #08080b;
+}
+/* --- TABLET --- */
+.deviceTablet {
+  width: clamp(140px, 19vw, 208px);
+  margin-right: -3.5%;
+  margin-bottom: 2.5%;
+  z-index: 1;
+  animation: floatA 6s ease-in-out infinite;
+}
+.deviceTablet .deviceScreen {
+  aspect-ratio: 3 / 4;
+  border: 9px solid #17171d;
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+/* --- CELULAR --- */
+.devicePhone {
+  position: relative;
+  width: clamp(92px, 12vw, 140px);
+  margin-left: -4.5%;
+  z-index: 4;
+  animation: floatC 5.5s ease-in-out infinite;
+}
+.devicePhone .deviceScreen {
+  aspect-ratio: 9 / 19;
+  border: 6px solid #17171d;
+  border-radius: 22px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 34px rgba(212, 168, 87, 0.14);
+}
+.deviceNotch {
+  position: absolute; top: 5px; left: 50%;
+  transform: translateX(-50%);
+  width: 34%; height: 12px;
+  background: #17171d;
+  border-radius: 0 0 10px 10px;
+  z-index: 5;
+}
+@keyframes floatA { 0%,100% { transform: rotate(-4deg) translateY(0); } 50% { transform: rotate(-4deg) translateY(-9px); } }
+@keyframes floatB { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@keyframes floatC { 0%,100% { transform: rotate(4deg) translateY(0); } 50% { transform: rotate(4deg) translateY(-8px); } }
+
+/* --- Mini página dentro de cada pantalla (réplica de la web real) --- */
+.miniPage {
+  position: absolute; inset: 0;
+  background: radial-gradient(120% 80% at 18% 0%, rgba(212, 168, 87, 0.16), transparent 58%), #0b0b0d;
+  display: flex; flex-direction: column;
+  text-align: left; overflow: hidden;
+}
+.miniBar {
+  display: flex; align-items: center; gap: 4px;
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.miniBar span { width: 6px; height: 6px; border-radius: 50%; background: #3a3a44; flex: none; }
+.miniBar span:nth-child(1) { background: #ff5f57; }
+.miniBar span:nth-child(2) { background: #febc2e; }
+.miniBar span:nth-child(3) { background: #28c840; }
+.miniBar small {
+  margin-left: auto; font-size: 8px; color: var(--muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1px 8px; border-radius: 20px;
+}
+.miniBody { flex: 1; padding: 7% 8%; display: flex; flex-direction: column; gap: 5%; }
+.miniKick { display: inline-flex; align-items: center; gap: 4px; font-size: 8px; color: var(--accent-2); font-weight: 600; }
+.miniDot { width: 5px; height: 5px; border-radius: 50%; background: #28c840; box-shadow: 0 0 6px #28c840; flex: none; }
+.miniBody h4 { font-size: clamp(11px, 2.5vw, 21px); line-height: 1.08; font-weight: 800; color: #fff; }
+.miniBody h4 b { color: transparent; background: var(--grad); -webkit-background-clip: text; background-clip: text; }
+.miniSub { font-size: clamp(7px, 1.35vw, 11px); color: var(--muted); line-height: 1.35; }
+.miniBtns { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 2px; }
+.miniBtnGold { font-size: clamp(7px, 1.3vw, 10px); font-weight: 700; color: #0a0a0f; background: var(--grad); padding: 4px 9px; border-radius: 20px; white-space: nowrap; }
+.miniBtnGhost { font-size: clamp(7px, 1.3vw, 10px); font-weight: 600; color: #fff; border: 1px solid rgba(255, 255, 255, 0.25); padding: 4px 9px; border-radius: 20px; white-space: nowrap; }
+.miniStats { display: flex; gap: 9px; margin-top: auto; padding-top: 6px; }
+.miniStats div { line-height: 1.1; }
+.miniStats b { display: block; font-size: clamp(10px, 2vw, 17px); font-weight: 800; color: transparent; background: var(--grad); -webkit-background-clip: text; background-clip: text; }
+.miniStats i { font-style: normal; font-size: 7px; color: var(--muted); }
+.miniPagePhone .miniBody { gap: 6%; }
+
+@media (max-width: 620px) {
+  .deviceTablet { display: none; }
+  .deviceLaptop { width: min(78vw, 420px); }
+  .devicePhone { width: 22vw; margin-left: -6%; }
+}
+
+/* Respeta a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .heroPhoto {
+    animation: heroPhotoIn 0.01s forwards !important;
+    transform: translateX(-50%) scale(1.04);
+  }
+  .grad, .eyebrowOferta, .planOff,
+  .deviceLaptop, .deviceTablet, .devicePhone { animation: none !important; }
+  .deviceTablet { transform: rotate(-4deg); }
+  .devicePhone { transform: rotate(4deg); }
+  #codeRain { display: none; }
+}
+
+/* ============================================================
+   BOTÓN DE IDIOMA + TYPEWRITER + CONTADOR + CUPOS
+   ============================================================ */
+.langBtn {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.langBtn:hover { border-color: var(--accent); color: var(--accent-2); }
+
+/* Cursor del efecto máquina de escribir */
+/* La frase va en su propia línea con alto fijo: así el título no salta
+   aunque la palabra cambie de largo o quede vacía entre frase y frase. */
+.typeWrap {
+  display: inline-block;
+  min-height: 1.15em;
+  white-space: nowrap;
+}
+.typewriter { white-space: nowrap; }
+.twCursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  margin-left: 0.05em;
+  background: var(--accent-2);
+  vertical-align: -0.12em;
+  border-radius: 2px;
+  animation: twBlink 1s steps(1) infinite;
+}
+@keyframes twBlink { 50% { opacity: 0; } }
+
+/* Rótulo debajo de los dispositivos + transición al rotar */
+.deviceScreen { transition: opacity 0.32s ease; }
+.deviceRotaLabel { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 1.4rem; }
+
+/* Caja de oferta: contador + barra de cupos */
+.offerBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  max-width: 760px;
+  margin: 0 auto 2.6rem;
+  background: linear-gradient(160deg, rgba(212, 168, 87, 0.13), var(--panel) 72%);
+  border: 1px solid rgba(212, 168, 87, 0.35);
+  border-radius: 18px;
+  padding: 1.4rem 1.6rem;
+  box-shadow: 0 0 44px rgba(212, 168, 87, 0.1);
+}
+.offerLabel {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-2);
+  margin-bottom: 0.7rem;
+}
+.cdBoxes { display: flex; gap: 0.5rem; }
+.cdBoxes > div {
+  flex: 1;
+  min-width: 50px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.5rem 0.2rem;
+  text-align: center;
+}
+.cdBoxes b {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.cdBoxes i {
+  font-style: normal;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.offerCupos { display: flex; flex-direction: column; justify-content: center; }
+.cuposBar {
+  height: 12px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.cuposFill {
+  height: 100%;
+  width: 66%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #ff6b6b, #ff9f43);
+  box-shadow: 0 0 14px rgba(255, 107, 107, 0.5);
+  transition: width 0.8s ease;
+}
+.cuposText { margin-top: 0.65rem; font-size: 0.9rem; font-weight: 700; color: var(--text); }
+@media (max-width: 600px) { .offerBox { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .twCursor, .cuposFill { animation: none; transition: none; } }

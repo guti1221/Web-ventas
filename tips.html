@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tips — Estudio Web | Consejos para tu negocio online</title>
+  <meta name="description" content="Consejos prácticos para que tu negocio local venda más por internet: cuándo necesitás una web, cómo conseguir clientes por WhatsApp y errores comunes que espantan clientes." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Tips — Estudio Web" />
+  <meta property="og:description" content="Consejos prácticos para que tu negocio local venda más por internet." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Estilos propios de la página de tips (reusan las variables del sitio) */
+    .tipsHero { text-align: center; padding: clamp(6rem, 12vw, 8rem) 1rem 2rem; max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+    .tipsList { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.2rem; }
+    .tipCard { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 1.8rem; }
+    .tipCard:hover { border-color: rgba(212, 168, 87, 0.4); }
+    .tipMeta { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem; }
+    .tipTag { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #0a0a0f; background: var(--grad); padding: 0.25rem 0.7rem; border-radius: 999px; }
+    .tipMin { font-size: 0.78rem; color: var(--muted); }
+    .tipCard h2 { font-size: clamp(1.25rem, 3.4vw, 1.7rem); font-weight: 800; margin-bottom: 0.7rem; line-height: 1.2; }
+    .tipCard p { color: var(--muted); line-height: 1.7; margin-bottom: 0.7rem; }
+    .tipCard ul { color: var(--muted); line-height: 1.7; margin: 0 0 0.7rem 1.1rem; }
+    .tipCard strong { color: var(--text); }
+    .tipCta { text-align: center; margin: 3rem auto 0; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <canvas id="codeRain" aria-hidden="true"></canvas>
+    <div class="progressBar"></div>
+
+    <div class="urgencia" data-en="🔥 Limited spots: I only take 3 new projects per month">🔥 Cupos limitados: tomo solo 3 proyectos nuevos por mes</div>
+
+    <header class="nav">
+      <a href="index.html" class="brand"><span class="brandDot"></span><span data-field="marca">Estudio Web</span></a>
+      <nav class="navLinks">
+        <a href="index.html" data-en="Websites">Tiendas</a>
+        <a href="tips.html" class="navLinkActive" data-en="Tips">Tips</a>
+        <a href="ebooks.html" data-en="Ebooks">Ebooks</a>
+        <a href="apps.html" data-en="Apps">Apps</a>
+        <a href="index.html#contacto" data-en="Contact">Contacto</a>
+      </nav>
+      <div class="navActions">
+        <button class="langBtn" id="langBtn" type="button" aria-label="Cambiar idioma / Switch language">EN</button>
+        <a data-ig class="iconBtn" aria-label="Instagram" title="Seguime en Instagram">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a data-wa="¡Hola! Vi tus tips y quiero más info." class="navCta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23z"></path></svg>WhatsApp</a>
+      </div>
+    </header>
+
+    <section class="tipsHero">
+      <div class="reveal"><p class="eyebrow" data-en="Free tips">Tips gratis</p></div>
+      <div class="reveal" data-delay="80"><h1 class="heroTitle" data-en="Ideas to sell more <span class='grad'>online</span>">Ideas para vender más <span class="grad">por internet</span></h1></div>
+      <div class="reveal" data-delay="160"><p class="heroSub" data-en="Practical advice for local businesses. No jargon, straight to the point.">Consejos prácticos para negocios locales. Sin vueltas, directo al grano.</p></div>
+    </section>
+
+    <section class="section">
+      <div class="tipsList">
+
+        <article class="reveal tipCard">
+          <div class="tipMeta"><span class="tipTag" data-en="Website">Web</span><span class="tipMin" data-en="3 min read">3 min de lectura</span></div>
+          <h2 data-en="3 signs your business needs a website (now)">3 señales de que tu negocio necesita una web (ya)</h2>
+          <p data-en="If you feel any of these, you're losing clients to competitors who are already online:">Si te pasa alguna de estas, estás perdiendo clientes con la competencia que ya está online:</p>
+          <ul>
+            <li data-en="You repeat the same info by WhatsApp 20 times a day (hours, prices, address)."><strong>Repetís lo mismo por WhatsApp</strong> 20 veces al día (horarios, precios, dirección).</li>
+            <li data-en="People search for you on Google and find nothing, or only a half-empty Instagram."><strong>Te buscan en Google</strong> y no aparece nada, o solo un Instagram a medias.</li>
+            <li data-en="You depend 100% on social media: if the account goes down, your business disappears."><strong>Dependés 100% de las redes:</strong> si te cierran la cuenta, tu negocio desaparece.</li>
+          </ul>
+          <p data-en="A simple website solves all three: it works 24/7, shows up on Google and it's yours forever.">Una web simple resuelve las tres: trabaja las 24 horas, aparece en Google y es tuya para siempre.</p>
+        </article>
+
+        <article class="reveal tipCard" data-delay="80">
+          <div class="tipMeta"><span class="tipTag" data-en="WhatsApp">WhatsApp</span><span class="tipMin" data-en="2 min read">2 min de lectura</span></div>
+          <h2 data-en="How to get more clients from WhatsApp">Cómo conseguir más clientes desde WhatsApp</h2>
+          <p data-en="WhatsApp is the #1 sales channel in Uruguay. Three things that multiply your replies:">WhatsApp es el canal de ventas número 1 en Uruguay. Tres cosas que multiplican tus respuestas:</p>
+          <ul>
+            <li data-en="A button on your website that opens the chat with the message already written."><strong>Un botón en tu web</strong> que abra el chat con el mensaje ya escrito.</li>
+            <li data-en="Reply within minutes: speed is what closes the sale."><strong>Respondé en minutos:</strong> la velocidad es lo que cierra la venta.</li>
+            <li data-en="Use a quick quote form so people arrive with everything ready."><strong>Usá un cotizador rápido</strong> para que lleguen con todo listo.</li>
+          </ul>
+          <p data-en="All my websites come with smart WhatsApp buttons that do exactly this.">Todas mis webs vienen con botones de WhatsApp inteligentes que hacen justo esto.</p>
+        </article>
+
+        <article class="reveal tipCard" data-delay="160">
+          <div class="tipMeta"><span class="tipTag" data-en="Mistakes">Errores</span><span class="tipMin" data-en="3 min read">3 min de lectura</span></div>
+          <h2 data-en="5 mistakes that scare clients away from your website">5 errores que espantan clientes de tu web</h2>
+          <ul>
+            <li data-en="It loads slowly: if it takes more than 3 seconds, half the people leave."><strong>Carga lenta:</strong> si tarda más de 3 segundos, la mitad se va.</li>
+            <li data-en="It doesn't look good on the phone: 8 of 10 people visit from a mobile."><strong>No se ve bien en el celular:</strong> 8 de cada 10 entran desde el teléfono.</li>
+            <li data-en="No clear button: people don't know how to contact you."><strong>Sin un botón claro:</strong> la gente no sabe cómo contactarte.</li>
+            <li data-en="Outdated info: old prices or hours destroy trust."><strong>Info desactualizada:</strong> precios u horarios viejos matan la confianza.</li>
+            <li data-en="Generic template: it looks like everyone else's and no one remembers it."><strong>Plantilla genérica:</strong> se ve como la de todos y nadie la recuerda.</li>
+          </ul>
+          <p data-en="I fix all of this with a fast, custom design made for your business.">Todo esto lo resuelvo con un diseño rápido, a medida y pensado para tu negocio.</p>
+        </article>
+
+      </div>
+
+      <div class="tipCta">
+        <a data-wa="¡Hola! Leí los tips y quiero una web para mi negocio." class="btnPrimary" data-en="I want my website">Quiero mi web</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footerSocial">
+        <a data-ig class="socialLink" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          <span data-field="ig">@usuario</span>
+        </a>
+        <a data-wa="¡Hola! Quiero más info." class="socialLink">WhatsApp</a>
+        <a data-email class="socialLink">Email</a>
+      </div>
+      <span>© <span data-year></span> <span data-field="nombre"></span> · <span data-field="marca"></span></span>
+    </footer>
+
+    <a data-wa="¡Hola! Quiero info sobre una web para mi negocio." class="floatWhatsApp" aria-label="Escribime por WhatsApp">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2z"></path></svg>
+      <span class="floatWhatsAppLabel">Escribime</span>
+    </a>
+    <button class="backTop" aria-label="Volver arriba">↑</button>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="main.js"></script>
+  <script src="cbot-config.js"></script>
+  <script src="cbot-widget.js"></script>
+</body>
+</html>

@@ -250,9 +250,159 @@
     });
   }
 
+  // ---- 10) Fondo animado de código/binario (lluvia dorada tipo "Matrix") ----
+  function initCodeRain() {
+    var c = document.getElementById("codeRain");
+    if (!c) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { c.style.display = "none"; return; }
+    var ctx = c.getContext("2d");
+    var glyphs = "01 01 </> {} [] () ; = + * $ # 01 function const let 10 01 => 0 1".replace(/ /g, "");
+    var font = 15, cols, drops;
+    function resize() {
+      c.width = window.innerWidth;
+      c.height = document.documentElement.clientHeight;
+      cols = Math.floor(c.width / font);
+      drops = [];
+      for (var i = 0; i < cols; i++) drops[i] = Math.random() * -60;
+    }
+    resize();
+    window.addEventListener("resize", resize, { passive: true });
+    function draw() {
+      ctx.fillStyle = "rgba(11,11,13,0.10)";
+      ctx.fillRect(0, 0, c.width, c.height);
+      ctx.font = font + "px monospace";
+      for (var i = 0; i < drops.length; i++) {
+        var ch = glyphs.charAt(Math.floor(Math.random() * glyphs.length));
+        var y = drops[i] * font;
+        ctx.fillStyle = "rgba(212,168,87," + (0.14 + Math.random() * 0.26) + ")";
+        ctx.fillText(ch, i * font, y);
+        if (y > c.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i] += 0.55;
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+  // ---- 11) Dispositivos: rotar demos reales (barbería, uñas, etc.) ----
+  function initDeviceRotator() {
+    var frames = document.querySelectorAll(".deviceFrame");
+    if (!frames.length) return;
+    var demos = ["barberia.html", "unas.html", "pizzeria.html", "entrenador.html"];
+    var i = 0;
+    setInterval(function () {
+      i = (i + 1) % demos.length;
+      frames.forEach(function (f) {
+        var screen = f.parentElement;
+        screen.style.opacity = "0";
+        setTimeout(function () { f.src = demos[i]; screen.style.opacity = ""; }, 320);
+      });
+    }, 4200);
+  }
+
+  // ---- 12) Efecto máquina de escribir en el título del hero ----
+  function initTypewriter() {
+    var el = document.querySelector("[data-type]");
+    if (!el) return;
+    function words() {
+      return (el.getAttribute("data-type-active") || el.getAttribute("data-type")).split("|");
+    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.textContent = words()[0];
+      return;
+    }
+    var w = 0, c = 0, del = false;
+    function tick() {
+      var arr = words();
+      if (w >= arr.length) w = 0;
+      var word = arr[w];
+      c += del ? -1 : 1;
+      if (c < 0) c = 0;
+      if (c > word.length) c = word.length;
+      el.textContent = word.slice(0, c);
+      var wait = del ? 45 : 90;
+      if (!del && c === word.length) { del = true; wait = 1500; }
+      else if (del && c === 0) { del = false; w = (w + 1) % arr.length; wait = 260; }
+      setTimeout(tick, wait);
+    }
+    tick();
+  }
+
+  // ---- 13) Cuenta regresiva de la oferta (termina a fin de mes) ----
+  function initCountdown() {
+    if (!document.querySelector("[data-cd]")) return;
+    function pad(n) { return (n < 10 ? "0" : "") + n; }
+    function target() {
+      var n = new Date();
+      return new Date(n.getFullYear(), n.getMonth() + 1, 0, 23, 59, 59);
+    }
+    var end = target();
+    function set(k, v) {
+      var e = document.querySelector("[data-cd=" + k + "]");
+      if (e) e.textContent = pad(v);
+    }
+    function up() {
+      var diff = end - new Date();
+      if (diff <= 0) { end = target(); diff = end - new Date(); } // se renueva solo
+      set("d", Math.floor(diff / 86400000));
+      set("h", Math.floor(diff / 3600000) % 24);
+      set("m", Math.floor(diff / 60000) % 60);
+      set("s", Math.floor(diff / 1000) % 60);
+    }
+    up();
+    setInterval(up, 1000);
+  }
+
+  // ---- 14) Barra de cupos del mes ----
+  function initCupos() {
+    var fill = document.querySelector(".cuposFill");
+    var txt = document.querySelector(".cuposText");
+    if (!fill) return;
+    // EDITABLE: cuántos cupos tenés en total y cuántos ya tomaste este mes
+    var TOTAL = 3, TOMADOS = 2;
+    var libres = Math.max(0, TOTAL - TOMADOS);
+    fill.style.width = (TOMADOS / TOTAL) * 100 + "%";
+    var en = document.documentElement.getAttribute("lang") === "en";
+    if (txt) txt.textContent = en
+      ? libres + " of " + TOTAL + " spots left"
+      : "Quedan " + libres + " de " + TOTAL + " cupos";
+  }
+
+  // ---- 15) Cambio de idioma ES / EN ----
+  function initLang() {
+    var btn = document.getElementById("langBtn");
+    if (!btn) return;
+    var lang = "es";
+    try { lang = localStorage.getItem("lang") || "es"; } catch (e) {}
+    function apply(l) {
+      document.querySelectorAll("[data-en]").forEach(function (el) {
+        if (!el.hasAttribute("data-es")) el.setAttribute("data-es", el.innerHTML);
+        el.innerHTML = l === "en" ? el.getAttribute("data-en") : el.getAttribute("data-es");
+      });
+      document.querySelectorAll("[data-suffix-en]").forEach(function (el) {
+        if (!el.hasAttribute("data-suffix-es")) el.setAttribute("data-suffix-es", el.getAttribute("data-suffix"));
+        el.setAttribute("data-suffix", l === "en" ? el.getAttribute("data-suffix-en") : el.getAttribute("data-suffix-es"));
+        if (el.textContent && el.textContent !== "0") el.textContent = el.getAttribute("data-count") + el.getAttribute("data-suffix");
+      });
+      var tw = document.querySelector("[data-type]");
+      if (tw && tw.getAttribute("data-type-en")) {
+        tw.setAttribute("data-type-active", l === "en" ? tw.getAttribute("data-type-en") : tw.getAttribute("data-type"));
+      }
+      document.documentElement.setAttribute("lang", l);
+      btn.textContent = l === "en" ? "ES" : "EN";
+      lang = l;
+      try { localStorage.setItem("lang", l); } catch (e) {}
+      initCupos(); // refresca el texto de cupos en el idioma actual
+    }
+    btn.addEventListener("click", function () { apply(lang === "en" ? "es" : "en"); });
+    apply(lang);
+  }
+
   // ---- Init ----
   function init() {
     applyConfig();
+    initLang();
+    initCodeRain();
     initReveal();
     initCounters();
     initScrollChrome();
@@ -262,6 +412,10 @@
     initSmartWhatsApp();
     initCompare();
     initCalculadora();
+    initDeviceRotator();
+    initTypewriter();
+    initCountdown();
+    initCupos();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);

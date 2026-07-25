@@ -21,21 +21,24 @@
 </head>
 <body>
   <div class="page">
+    <canvas id="codeRain" aria-hidden="true"></canvas>
     <div class="progressBar"></div>
 
     <!-- URGENCIA -->
-    <div class="urgencia">🔥 Cupos limitados: tomo solo 3 proyectos nuevos por mes</div>
+    <div class="urgencia" data-en="🔥 Limited spots: I only take 3 new projects per month">🔥 Cupos limitados: tomo solo 3 proyectos nuevos por mes</div>
 
     <!-- NAV -->
     <header class="nav">
       <a href="index.html" class="brand"><span class="brandDot"></span><span data-field="marca">Estudio Web</span></a>
       <nav class="navLinks">
-        <a href="index.html" class="navLinkActive">Tiendas</a>
-        <a href="ebooks.html">Ebooks</a>
-        <a href="apps.html">Apps</a>
-        <a href="#contacto">Contacto</a>
+        <a href="index.html" class="navLinkActive" data-en="Websites">Tiendas</a>
+        <a href="tips.html" data-en="Tips">Tips</a>
+        <a href="ebooks.html" data-en="Ebooks">Ebooks</a>
+        <a href="apps.html" data-en="Apps">Apps</a>
+        <a href="#contacto" data-en="Contact">Contacto</a>
       </nav>
       <div class="navActions">
+        <button class="langBtn" id="langBtn" type="button" aria-label="Cambiar idioma / Switch language">EN</button>
         <a data-ig class="iconBtn" aria-label="Instagram" title="Seguime en Instagram">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
         </a>
@@ -45,35 +48,63 @@
 
     <!-- HERO -->
     <section class="hero" id="top">
+      <div class="heroPhoto" aria-hidden="true"></div>
       <div class="heroGlow"></div>
       <div class="heroGrid"></div>
-      <div class="reveal"><span class="availBadge"><span class="availDot"></span> Disponible para nuevos proyectos</span></div>
-      <div class="reveal" data-delay="80"><h1 class="heroTitle">Webs que hacen que tu negocio se vea <span class="grad">de otro nivel</span>.</h1></div>
-      <div class="reveal" data-delay="160"><p class="heroSub">Diseño páginas premium para negocios locales: rápidas, hechas a tu medida y pensadas para que te escriban más clientes. Mirá mis muestras reales abajo.</p></div>
+      <div class="reveal"><span class="availBadge"><span class="availDot"></span> <span data-en="Available for new projects">Disponible para nuevos proyectos</span></span></div>
+      <div class="reveal" data-delay="80"><h1 class="heroTitle"><span data-en="Websites that make your business look">Webs que hacen que tu negocio se vea</span><br><span class="typeWrap"><span class="grad typewriter" data-type="de otro nivel|de agencia top|que vende solo|irresistibles" data-type-en="next level|top-agency|that sell|irresistible"></span><span class="twCursor" aria-hidden="true"></span></span></h1></div>
+      <div class="reveal" data-delay="160"><p class="heroSub" data-en="Premium websites for local businesses: fast, custom-made and built to get you more clients. Check my real samples below.">Diseño páginas premium para negocios locales: rápidas, hechas a tu medida y pensadas para que te escriban más clientes. Mirá mis muestras reales abajo.</p></div>
       <div class="reveal" data-delay="240">
         <div class="heroCtas">
-          <a data-wa="¡Hola! Quiero una web para mi negocio." class="btnPrimary">Quiero mi web</a>
-          <a href="#tiendas" class="btnGhost">Ver muestras en vivo</a>
+          <a data-wa="¡Hola! Quiero una web para mi negocio." class="btnPrimary" data-en="I want my website">Quiero mi web</a>
+          <a href="#tiendas" class="btnGhost" data-en="See live samples">Ver muestras en vivo</a>
         </div>
       </div>
       <div class="reveal" data-delay="320">
-        <div class="heroTrust"><span class="estrellas">★★★★★</span><span>Negocios de Maldonado y Punta del Este ya confían</span></div>
+        <div class="heroTrust"><span class="estrellas">★★★★★</span><span data-en="Businesses in Maldonado and Punta del Este already trust me">Negocios de Maldonado y Punta del Este ya confían</span></div>
       </div>
     </section>
 
     <!-- MÉTRICAS -->
     <section class="metricasBand">
       <div class="metricas">
-        <div class="reveal metrica"><strong data-count="12" data-suffix="+">0</strong><span>Proyectos entregados</span></div>
-        <div class="reveal metrica" data-delay="90"><strong data-count="100" data-suffix="%">0</strong><span>Clientes conformes</span></div>
-        <div class="reveal metrica" data-delay="180"><strong data-count="7" data-suffix=" días">0</strong><span>Entrega promedio</span></div>
-        <div class="reveal metrica" data-delay="270"><strong data-count="3" data-suffix="x">0</strong><span>Más consultas por WhatsApp</span></div>
+        <div class="reveal metrica"><strong data-count="12" data-suffix="+">0</strong><span data-en="Projects delivered">Proyectos entregados</span></div>
+        <div class="reveal metrica" data-delay="90"><strong data-count="100" data-suffix="%">0</strong><span data-en="Happy clients">Clientes conformes</span></div>
+        <div class="reveal metrica" data-delay="180"><strong data-count="7" data-suffix=" días" data-suffix-en=" days">0</strong><span data-en="Average delivery">Entrega promedio</span></div>
+        <div class="reveal metrica" data-delay="270"><strong data-count="3" data-suffix="x">0</strong><span data-en="More WhatsApp leads">Más consultas por WhatsApp</span></div>
       </div>
+    </section>
+
+    <!-- DISPOSITIVOS: tu web en laptop, tablet y celular -->
+    <section class="section" id="dispositivos">
+      <div class="reveal"><div class="sectionHead"><p class="eyebrow" data-en="Looks flawless">Se ve impecable</p><h2 class="sectionTitle"><span data-en="Your website perfect on">Tu web perfecta en</span> <span class="grad" data-en="every device">todos los dispositivos</span></h2><p class="sectionSub" data-en="These are real demos I built — see how they look on a computer, tablet and phone.">Son demos reales que hice — mirá cómo se ven en la computadora, la tablet y el celular.</p></div></div>
+
+      <div class="reveal deviceCluster" data-delay="80">
+
+        <!-- TABLET -->
+        <div class="deviceTablet">
+          <div class="deviceScreen"><iframe class="cardFrame deviceFrame" src="barberia.html" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" title="Demo en tablet"></iframe></div>
+        </div>
+
+        <!-- LAPTOP -->
+        <div class="deviceLaptop">
+          <div class="deviceScreen"><iframe class="cardFrame deviceFrame" src="barberia.html" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" title="Demo en laptop"></iframe></div>
+          <div class="deviceBase"></div>
+        </div>
+
+        <!-- CELULAR -->
+        <div class="devicePhone">
+          <div class="deviceNotch"></div>
+          <div class="deviceScreen"><iframe class="cardFrame deviceFrame" src="barberia.html" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" title="Demo en celular"></iframe></div>
+        </div>
+
+      </div>
+      <p class="reveal deviceRotaLabel" data-delay="140" data-en="Rotating between real demos: barbershop, nails, pizzeria and personal trainer.">Rotando entre demos reales: barbería, uñas, pizzería y entrenador.</p>
     </section>
 
     <!-- SERVICIOS -->
     <section class="section">
-      <div class="reveal"><div class="sectionHead"><p class="eyebrow">Qué hago</p><h2 class="sectionTitle">Todo lo que tu negocio necesita online</h2></div></div>
+      <div class="reveal"><div class="sectionHead"><p class="eyebrow" data-en="What I do">Qué hago</p><h2 class="sectionTitle" data-en="Everything your business needs online">Todo lo que tu negocio necesita online</h2></div></div>
       <div class="serviciosGrid">
         <div class="reveal servicio"><div class="servicioIcono">🌐</div><h3>Web para tu negocio</h3><p>Página profesional con tus servicios, precios, galería y botón de WhatsApp. Lista en pocos días.</p></div>
         <div class="reveal servicio" data-delay="80"><div class="servicioIcono">💬</div><h3>Reservas por WhatsApp</h3><p>Que tus clientes reserven con un toque. Sin apps complicadas ni comisiones.</p></div>
@@ -84,7 +115,7 @@
 
     <!-- TIENDAS -->
     <section class="section" id="tiendas">
-      <div class="reveal"><div class="sectionHead"><p class="eyebrow">Portafolio</p><h2 class="sectionTitle">Tiendas y webs de muestra</h2><p class="sectionSub">Ejemplos reales que podés abrir en vivo. Así se vería tu negocio.</p></div></div>
+      <div class="reveal"><div class="sectionHead"><p class="eyebrow" data-en="Portfolio">Portafolio</p><h2 class="sectionTitle" data-en="Sample stores and websites">Tiendas y webs de muestra</h2><p class="sectionSub" data-en="Real examples you can open live. This is how your business could look.">Ejemplos reales que podés abrir en vivo. Así se vería tu negocio.</p></div></div>
       <div class="grid">
         <div class="reveal">
           <article class="card">
@@ -151,7 +182,7 @@
 
     <!-- ANTES / DESPUÉS -->
     <section class="section" id="antes-despues">
-      <div class="reveal"><div class="sectionHead"><p class="eyebrow">La diferencia</p><h2 class="sectionTitle">Antes y después</h2><p class="sectionSub">Arrastrá la línea y mirá lo que cambia una web hecha en serio.</p></div></div>
+      <div class="reveal"><div class="sectionHead"><p class="eyebrow" data-en="The difference">La diferencia</p><h2 class="sectionTitle" data-en="Before and after">Antes y después</h2><p class="sectionSub" data-en="Drag the line and see what a properly made website changes.">Arrastrá la línea y mirá lo que cambia una web hecha en serio.</p></div></div>
       <div class="reveal">
         <div class="compare" data-compare>
           <!-- ANTES: web amateur -->
@@ -188,7 +219,7 @@
 
     <!-- PROCESO -->
     <section class="section">
-      <div class="reveal"><div class="sectionHead"><p class="eyebrow">Cómo trabajamos</p><h2 class="sectionTitle">Simple, rápido y sin riesgo</h2><p class="sectionSub">Del "hola" a tu web publicada en 4 pasos.</p></div></div>
+      <div class="reveal"><div class="sectionHead"><p class="eyebrow" data-en="How we work">Cómo trabajamos</p><h2 class="sectionTitle" data-en="Simple, fast and risk-free">Simple, rápido y sin riesgo</h2><p class="sectionSub" data-en="From “hi” to your published website in 4 steps.">Del "hola" a tu web publicada en 4 pasos.</p></div></div>
       <div class="procesoGrid">
         <div class="reveal procesoPaso"><span class="procesoNum">01</span><h3>Charlamos tu negocio</h3><p>Una llamada corta por WhatsApp para entender qué vendés, a quién y qué querés lograr.</p></div>
         <div class="reveal procesoPaso" data-delay="90"><span class="procesoNum">02</span><h3>Diseño tu web</h3><p>Armo tu página con tu identidad, tus servicios y tus precios. Te la muestro antes de que pagues nada.</p></div>
@@ -199,7 +230,7 @@
 
     <!-- TESTIMONIOS -->
     <section class="section">
-      <div class="reveal"><div class="sectionHead"><p class="eyebrow">Testimonios</p><h2 class="sectionTitle">Lo que dicen de mi trabajo</h2></div></div>
+      <div class="reveal"><div class="sectionHead"><p class="eyebrow" data-en="Testimonials">Testimonios</p><h2 class="sectionTitle" data-en="What people say about my work">Lo que dicen de mi trabajo</h2></div></div>
       <div class="grid">
         <div class="reveal testimonio"><span class="estrellas">★★★★★</span><p class="testimonioTexto">“Desde que tengo la web me escriben muchos más por WhatsApp. Quedó tal cual la imaginaba y la hizo en pocos días.”</p><div class="testimonioAutor"><span class="testimonioAvatar">MO</span><div><strong>Martín Olivera</strong><span>Barbería · Maldonado</span></div></div></div>
         <div class="reveal testimonio" data-delay="90"><span class="estrellas">★★★★★</span><p class="testimonioTexto">“Se nota la diferencia con otras páginas. Mis clientas la elogian y ahora reservan sin llamar. Súper recomendable.”</p><div class="testimonioAutor"><span class="testimonioAvatar">CP</span><div><strong>Carolina Píriz</strong><span>Estudio de uñas · Punta del Este</span></div></div></div>
@@ -209,72 +240,96 @@
 
     <!-- PLANES -->
     <section class="section" id="planes">
-      <div class="reveal"><div class="sectionHead"><p class="eyebrow">Planes</p><h2 class="sectionTitle">Elegí cómo empezar</h2><p class="sectionSub">Precios claros, sin letra chica. Pagás cuando aprobás el diseño.</p></div></div>
+      <div class="reveal"><div class="sectionHead"><p class="eyebrow eyebrowOferta" data-en="🔥 Launch offer">🔥 Oferta de lanzamiento</p><h2 class="sectionTitle" data-en="Choose how to start">Elegí cómo empezar</h2><p class="sectionSub" data-en="Launch prices with a discount <b>for a limited time</b>. You pay once you approve the design.">Precios de lanzamiento con descuento <b>por tiempo limitado</b>. Pagás cuando aprobás el diseño.</p></div></div>
+
+      <div class="reveal offerBox" data-delay="40">
+        <div class="offerCountdown">
+          <span class="offerLabel" data-en="⏳ The offer ends in">⏳ La oferta termina en</span>
+          <div class="cdBoxes">
+            <div><b data-cd="d">00</b><i data-en="days">días</i></div>
+            <div><b data-cd="h">00</b><i>hs</i></div>
+            <div><b data-cd="m">00</b><i>min</i></div>
+            <div><b data-cd="s">00</b><i data-en="sec">seg</i></div>
+          </div>
+        </div>
+        <div class="offerCupos">
+          <span class="offerLabel" data-en="Spots left this month">Cupos de este mes</span>
+          <div class="cuposBar"><div class="cuposFill"></div></div>
+          <span class="cuposText"></span>
+        </div>
+      </div>
       <div class="planes">
         <div class="reveal plan">
           <h3 class="planNombre">Esencial</h3>
-          <div class="planPrecio">USD 150</div>
-          <p class="planResumen">Una web simple y linda para empezar a mostrarte online.</p>
+          <div class="planPrecioRow"><span class="planAntes">USD 180</span><span class="planOff">−44% OFF</span></div>
+          <div class="planPrecio">USD 100 <span data-en="one-time">único pago</span></div>
+          <p class="planAhorro" data-en="💸 You save USD 80 — launch price">💸 Ahorrás USD 80 — precio de lanzamiento</p>
+          <p class="planResumen" data-en="A simple, beautiful site to start showing up online.">Una web simple y linda para empezar a mostrarte online.</p>
           <ul class="planLista">
-            <li><span class="check">✓</span>Página de 1 sección (landing)</li>
-            <li><span class="check">✓</span>Botón de WhatsApp</li>
-            <li><span class="check">✓</span>Diseño a tu medida</li>
-            <li><span class="check">✓</span>Optimizada para celular</li>
-            <li><span class="check">✓</span>Entrega en ~5 días</li>
+            <li><span class="check">✓</span><span data-en="1-section page (landing)">Página de 1 sección (landing)</span></li>
+            <li><span class="check">✓</span><span data-en="WhatsApp button">Botón de WhatsApp</span></li>
+            <li><span class="check">✓</span><span data-en="Contact form + Google Maps">Formulario de contacto + Google Maps</span></li>
+            <li><span class="check">✓</span><span data-en="Custom design">Diseño a tu medida</span></li>
+            <li><span class="check">✓</span><span data-en="Mobile optimized">Optimizada para celular</span></li>
+            <li><span class="check">✓</span><span data-en="Delivery in ~5 days">Entrega en ~5 días</span></li>
           </ul>
-          <a data-wa="¡Hola! Me interesa el plan Esencial." class="btnGhost">Quiero el Esencial</a>
+          <a data-wa="¡Hola! Me interesa el plan Esencial (oferta USD 100)." class="btnGhost" data-en="Get Essential">Quiero el Esencial</a>
         </div>
         <div class="reveal plan planDestacado" data-delay="90">
-          <span class="planTag">Más elegido</span>
+          <span class="planTag" data-en="Most chosen">Más elegido</span>
           <h3 class="planNombre">Profesional</h3>
-          <div class="planPrecio">USD 300</div>
-          <p class="planResumen">La opción más elegida. Todo lo que tu negocio necesita para vender.</p>
+          <div class="planPrecioRow"><span class="planAntes">USD 300</span><span class="planOff">−33% OFF</span></div>
+          <div class="planPrecio">USD 200 <span data-en="one-time">único pago</span></div>
+          <p class="planAhorro" data-en="💸 You save USD 100 — launch price">💸 Ahorrás USD 100 — precio de lanzamiento</p>
+          <p class="planResumen" data-en="The most chosen option. Everything your business needs to sell.">La opción más elegida. Todo lo que tu negocio necesita para vender.</p>
           <ul class="planLista">
-            <li><span class="check">✓</span>Web completa (varias secciones)</li>
-            <li><span class="check">✓</span>Servicios, precios y galería</li>
-            <li><span class="check">✓</span>Reservas por WhatsApp</li>
-            <li><span class="check">✓</span>Google Maps y redes</li>
-            <li><span class="check">✓</span>Optimización para Google (SEO)</li>
-            <li><span class="check">✓</span>1 mes de cambios gratis</li>
+            <li><span class="check">✓</span><span data-en="Full site (several sections)">Web completa (varias secciones)</span></li>
+            <li><span class="check">✓</span><span data-en="Services, prices and gallery">Servicios, precios y galería</span></li>
+            <li><span class="check">✓</span><span data-en="WhatsApp bookings">Reservas por WhatsApp</span></li>
+            <li><span class="check">✓</span><span data-en="Google Maps and social links">Google Maps y redes</span></li>
+            <li><span class="check">✓</span><span data-en="Google optimization (SEO)">Optimización para Google (SEO)</span></li>
+            <li><span class="check">✓</span><span data-en="1 month of free changes">1 mes de cambios gratis</span></li>
           </ul>
-          <a data-wa="¡Hola! Me interesa el plan Profesional." class="btnPrimary">Quiero el Profesional</a>
+          <a data-wa="¡Hola! Me interesa el plan Profesional (oferta USD 200)." class="btnPrimary" data-en="Get Professional">Quiero el Profesional</a>
         </div>
         <div class="reveal plan" data-delay="180">
           <h3 class="planNombre">Premium</h3>
-          <div class="planPrecio">USD 600</div>
-          <p class="planResumen">Marca completa: web + contenido + presencia que impone.</p>
+          <div class="planPrecioRow"><span class="planAntes">USD 600</span><span class="planOff">−25% OFF</span></div>
+          <div class="planPrecio">USD 450 <span data-en="one-time">único pago</span></div>
+          <p class="planAhorro" data-en="💸 You save USD 150 — launch price">💸 Ahorrás USD 150 — precio de lanzamiento</p>
+          <p class="planResumen" data-en="Full brand: website + content + a presence that stands out.">Marca completa: web + contenido + presencia que impone.</p>
           <ul class="planLista">
-            <li><span class="check">✓</span>Todo lo del Profesional</li>
-            <li><span class="check">✓</span>Catálogo o tienda online</li>
-            <li><span class="check">✓</span>Reels y contenido para redes</li>
-            <li><span class="check">✓</span>Dominio propio (.com)</li>
-            <li><span class="check">✓</span>Soporte prioritario 3 meses</li>
+            <li><span class="check">✓</span><span data-en="Everything in Professional">Todo lo del Profesional</span></li>
+            <li><span class="check">✓</span><span data-en="Online catalog or store">Catálogo o tienda online</span></li>
+            <li><span class="check">✓</span><span data-en="Reels and social content">Reels y contenido para redes</span></li>
+            <li><span class="check">✓</span><span data-en="Own domain (.com)">Dominio propio (.com)</span></li>
+            <li><span class="check">✓</span><span data-en="Priority support 3 months">Soporte prioritario 3 meses</span></li>
           </ul>
-          <a data-wa="¡Hola! Me interesa el plan Premium." class="btnGhost">Quiero el Premium</a>
+          <a data-wa="¡Hola! Me interesa el plan Premium (oferta USD 450)." class="btnGhost" data-en="Get Premium">Quiero el Premium</a>
         </div>
       </div>
     </section>
 
     <!-- CALCULADORA DE PRESUPUESTO -->
     <section class="section" id="calculadora">
-      <div class="reveal"><div class="sectionHead"><p class="eyebrow">Cotizá en 30 segundos</p><h2 class="sectionTitle">Armá tu presupuesto</h2><p class="sectionSub">Marcá lo que necesita tu negocio y mirá el precio al instante.</p></div></div>
+      <div class="reveal"><div class="sectionHead"><p class="eyebrow" data-en="Quote in 30 seconds">Cotizá en 30 segundos</p><h2 class="sectionTitle" data-en="Build your quote">Armá tu presupuesto</h2><p class="sectionSub" data-en="Check what your business needs and see the price instantly.">Marcá lo que necesita tu negocio y mirá el precio al instante.</p></div></div>
       <div class="reveal">
-        <div class="calc" data-calc data-base="150">
+        <div class="calc" data-calc data-base="100">
           <div class="calcCol">
-            <div class="calcBase"><div><strong>Web base</strong><small>1 sección con tu info + botón de WhatsApp</small></div><span class="calcIncluido">USD 150</span></div>
-            <label class="calcOpt"><input type="checkbox" data-precio="60" data-nombre="Secciones extra (servicios, galería, precios)" /><div><strong>Secciones extra</strong><small>Servicios, galería de fotos y lista de precios</small></div><span>+60</span></label>
-            <label class="calcOpt"><input type="checkbox" data-precio="40" data-nombre="Reservas por WhatsApp" /><div><strong>Reservas por WhatsApp</strong><small>Que tus clientes agenden con un toque</small></div><span>+40</span></label>
-            <label class="calcOpt"><input type="checkbox" data-precio="150" data-nombre="Catálogo / tienda online" /><div><strong>Catálogo o tienda</strong><small>Tus productos con fotos y precios</small></div><span>+150</span></label>
-            <label class="calcOpt"><input type="checkbox" data-precio="50" data-nombre="Optimización para Google (SEO)" /><div><strong>Aparecer en Google</strong><small>Optimización para que te encuentren (SEO)</small></div><span>+50</span></label>
-            <label class="calcOpt"><input type="checkbox" data-precio="30" data-nombre="Dominio propio (.com)" /><div><strong>Dominio propio</strong><small>Tu dirección .com (ej: tunegocio.com)</small></div><span>+30</span></label>
-            <label class="calcOpt"><input type="checkbox" data-precio="80" data-nombre="Chatbot con inteligencia artificial" /><div><strong>Chatbot con IA</strong><small>Responde a tus clientes las 24 horas</small></div><span>+80</span></label>
-            <label class="calcOpt"><input type="checkbox" data-precio="70" data-nombre="Contenido para redes (pack inicial)" /><div><strong>Contenido para redes</strong><small>Pack inicial de publicaciones para Instagram</small></div><span>+70</span></label>
+            <div class="calcBase"><div><strong data-en="Base website">Web base</strong><small data-en="1 section with your info + WhatsApp button">1 sección con tu info + botón de WhatsApp</small></div><span class="calcIncluido">USD 100</span></div>
+            <label class="calcOpt"><input type="checkbox" data-precio="60" data-nombre="Secciones extra (servicios, galería, precios)" /><div><strong data-en="Extra sections">Secciones extra</strong><small data-en="Services, photo gallery and price list">Servicios, galería de fotos y lista de precios</small></div><span>+60</span></label>
+            <label class="calcOpt"><input type="checkbox" data-precio="40" data-nombre="Reservas por WhatsApp" /><div><strong data-en="WhatsApp bookings">Reservas por WhatsApp</strong><small data-en="Let your clients book with one tap">Que tus clientes agenden con un toque</small></div><span>+40</span></label>
+            <label class="calcOpt"><input type="checkbox" data-precio="150" data-nombre="Catálogo / tienda online" /><div><strong data-en="Catalog or store">Catálogo o tienda</strong><small data-en="Your products with photos and prices">Tus productos con fotos y precios</small></div><span>+150</span></label>
+            <label class="calcOpt"><input type="checkbox" data-precio="50" data-nombre="Optimización para Google (SEO)" /><div><strong data-en="Show up on Google">Aparecer en Google</strong><small data-en="Optimization so people find you (SEO)">Optimización para que te encuentren (SEO)</small></div><span>+50</span></label>
+            <label class="calcOpt"><input type="checkbox" data-precio="30" data-nombre="Dominio propio (.com)" /><div><strong data-en="Own domain">Dominio propio</strong><small data-en="Your .com address (e.g. yourbusiness.com)">Tu dirección .com (ej: tunegocio.com)</small></div><span>+30</span></label>
+            <label class="calcOpt"><input type="checkbox" data-precio="80" data-nombre="Chatbot con inteligencia artificial" /><div><strong data-en="AI chatbot">Chatbot con IA</strong><small data-en="Answers your clients 24/7">Responde a tus clientes las 24 horas</small></div><span>+80</span></label>
+            <label class="calcOpt"><input type="checkbox" data-precio="70" data-nombre="Contenido para redes (pack inicial)" /><div><strong data-en="Social media content">Contenido para redes</strong><small data-en="Starter pack of posts for Instagram">Pack inicial de publicaciones para Instagram</small></div><span>+70</span></label>
           </div>
           <div class="calcTotalBox">
-            <span class="calcTotalLabel">Total estimado</span>
-            <strong class="calcTotal" data-calc-total>USD 150</strong>
-            <a data-calc-cta class="btnPrimary">Pedir esto por WhatsApp</a>
-            <p class="calcNota">El mensaje va con tu selección ya armada. Precio final al charlar tu caso — sin compromiso.</p>
+            <span class="calcTotalLabel" data-en="Estimated total">Total estimado</span>
+            <strong class="calcTotal" data-calc-total>USD 100</strong>
+            <a data-calc-cta class="btnPrimary" data-en="Request this on WhatsApp">Pedir esto por WhatsApp</a>
+            <p class="calcNota" data-en="The message goes with your selection ready. Final price once we talk your case — no commitment.">El mensaje va con tu selección ya armada. Precio final al charlar tu caso — sin compromiso.</p>
           </div>
         </div>
       </div>
@@ -285,15 +340,15 @@
       <div class="reveal garantia">
         <span class="garantiaIcono">🛡️</span>
         <div>
-          <h2 class="garantiaTitulo">Si no te gusta el diseño, no pagás</h2>
-          <p class="garantiaTexto">Trabajo con confianza total: te muestro tu web antes de que pongas un peso. Si no te convence, no seguimos y no me debés nada. Así de simple.</p>
+          <h2 class="garantiaTitulo" data-en="If you don't like the design, you don't pay">Si no te gusta el diseño, no pagás</h2>
+          <p class="garantiaTexto" data-en="I work with full confidence: I show you your website before you pay a cent. If you're not convinced, we stop and you owe me nothing. Simple as that.">Trabajo con confianza total: te muestro tu web antes de que pongas un peso. Si no te convence, no seguimos y no me debés nada. Así de simple.</p>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
     <section class="section">
-      <div class="reveal"><div class="sectionHead"><p class="eyebrow">Dudas</p><h2 class="sectionTitle">Preguntas frecuentes</h2></div></div>
+      <div class="reveal"><div class="sectionHead"><p class="eyebrow" data-en="Questions">Dudas</p><h2 class="sectionTitle" data-en="Frequently asked questions">Preguntas frecuentes</h2></div></div>
       <div class="reveal">
         <div class="faqList">
           <div class="faqItem faqItemOpen"><button class="faqQ"><span>¿Cuánto tarda en estar lista?</span><span class="faqIcon">−</span></button><div class="faqA" style="max-height:300px"><p>La mayoría de las webs quedan listas entre 5 y 7 días desde que arrancamos. Si es urgente, avisame y vemos.</p></div></div>
@@ -332,8 +387,8 @@
     <!-- CONTACTO -->
     <section class="contacto" id="contacto">
       <div class="reveal contactoInner">
-        <h2 class="sectionTitle">¿Armamos el tuyo?</h2>
-        <p class="sectionSub">Contame de tu negocio y te preparo una propuesta hoy mismo. Sin compromiso.</p>
+        <h2 class="sectionTitle" data-en="Shall we build yours?">¿Armamos el tuyo?</h2>
+        <p class="sectionSub" data-en="Tell me about your business and I'll prepare a proposal today. No commitment.">Contame de tu negocio y te preparo una propuesta hoy mismo. Sin compromiso.</p>
         <div class="heroCtas">
           <a data-wa="¡Hola! Quiero hablar sobre mi web." class="btnPrimary">Escribime por WhatsApp</a>
           <a data-email class="btnGhost"><span data-field="email">email</span></a>

@@ -8,9 +8,9 @@ window.CHATBOT_CONFIG = {
   title: "Asistente de Estudio Web",
   subtitle: "Te respondo al instante",
   welcomeMessage:
-    "¡Hola! 👋 Soy el asistente de Estudio Web. Te puedo contar sobre los planes, precios y tiempos para tu web. ¿Qué querés saber?",
+    "¡Hola! 👋 Soy el asistente de Estudio Web. Estamos con una 🔥 oferta de lanzamiento: planes desde USD 100 (antes 180). Te cuento sobre planes, precios y tiempos. ¿Qué querés saber?",
   placeholder: "Escribí tu mensaje...",
-  suggestions: ["¿Cuánto sale una web?", "¿Cuánto tardás?", "¿Qué incluye?"],
+  suggestions: ["¿Cuánto sale una web?", "¿Qué incluye la oferta?", "¿Cuánto tardás?"],
 
   colors: {
     primary: "#7c5cff",
