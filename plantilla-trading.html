@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Plantilla de Trading — IFVG & Michael Saylor</title>
+<meta name="description" content="Plantilla de trading con dos estrategias: IFVG (Inversion Fair Value Gap) para intradía y Michael Saylor (acumulación de Bitcoin a largo plazo). Reglas, checklist y bitácora." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='16' font-weight='bold' fill='white' text-anchor='middle'%3E%24%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" />
+<style>
+:root{
+  --bg:#ffffff;--bg-alt:#f6f8fb;--panel:#ffffff;--ink:#0f1b2d;--muted:#5a6576;--line:#e5e9f0;
+  --accent:#2563eb;--accent-dark:#1d4ed8;--accent-soft:#eef3ff;
+  --long:#0f9d6b;--long-soft:#e5f6ef;--short:#e0433f;--short-soft:#fdecec;--gold:#f5a623;--gold-soft:#fff6e6;
+  --radius:14px;--shadow:0 1px 2px rgba(16,27,45,.04),0 12px 30px -18px rgba(16,27,45,.22);
+  --sans:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --display:"Montserrat","Segoe UI",system-ui,Arial,sans-serif;
+}
+:root[data-theme="dark"]{
+  --bg:#0e1420;--bg-alt:#131c2c;--panel:#172032;--ink:#e8edf5;--muted:#9aa7bc;--line:#26324a;
+  --accent:#4f83ff;--accent-dark:#3b6fe6;--accent-soft:#1a2846;
+  --long:#2ec39a;--long-soft:#123027;--short:#ff6b67;--short-soft:#331b1c;--gold:#ffbb3d;--gold-soft:#332711;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -18px rgba(0,0,0,.7);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1420;--bg-alt:#131c2c;--panel:#172032;--ink:#e8edf5;--muted:#9aa7bc;--line:#26324a;
+    --accent:#4f83ff;--accent-dark:#3b6fe6;--accent-soft:#1a2846;
+    --long:#2ec39a;--long-soft:#123027;--short:#ff6b67;--short-soft:#331b1c;--gold:#ffbb3d;--gold-soft:#332711;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -18px rgba(0,0,0,.7);
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.display{font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+/* Top bar */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:.9rem;height:62px}
+.brand{display:flex;align-items:center;gap:.55rem;font-family:var(--display);font-weight:800;font-size:1.05rem}
+.brand .dot{width:11px;height:11px;border-radius:50%;background:var(--accent)}
+.navlinks{display:flex;gap:1.2rem;margin-left:auto;font-size:.9rem;font-weight:600;color:var(--muted)}
+.navlinks a:hover{color:var(--ink)}
+.iconbtn{background:none;border:1px solid var(--line);border-radius:9px;width:38px;height:38px;cursor:pointer;color:var(--ink);font-size:.85rem;font-weight:700;display:grid;place-items:center}
+.iconbtn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Hero */
+.hero{padding:clamp(2.4rem,6vw,4rem) 0 clamp(1.6rem,4vw,2.4rem);text-align:center}
+.hero h1{font-size:clamp(2rem,5vw,3rem);margin:.6rem auto 0;max-width:16ch}
+.hero p{color:var(--muted);max-width:62ch;margin:1rem auto 0;font-size:1.06rem}
+.hero .badges{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-top:1.6rem}
+.pill{display:inline-flex;align-items:center;gap:.45rem;font-size:.85rem;font-weight:700;padding:.5rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--panel)}
+.pill.long{color:var(--long);border-color:color-mix(in srgb,var(--long) 40%,var(--line));background:var(--long-soft)}
+.pill.gold{color:var(--gold);border-color:color-mix(in srgb,var(--gold) 45%,var(--line));background:var(--gold-soft)}
+
+.section{padding:clamp(2.2rem,5vw,3.6rem) 0}
+.section--alt{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.secHead{max-width:720px;margin:0 auto clamp(1.6rem,3vw,2.4rem)}
+.secHead h2{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-.02em;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.secHead p{color:var(--muted);margin-top:.7rem}
+.tag{font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:.32rem .6rem;border-radius:7px}
+.tag.intraday{color:var(--short);background:var(--short-soft)}
+.tag.hodl{color:var(--gold);background:var(--gold-soft)}
+
+/* Cards / grid */
+.grid{display:grid;gap:1.1rem}
+.grid.two{grid-template-columns:repeat(2,1fr)}
+.grid.three{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.3rem 1.35rem;box-shadow:var(--shadow)}
+.card h3{font-family:var(--display);font-weight:800;font-size:1.05rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.card h3 .ic{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;font-size:.85rem;background:var(--accent-soft);color:var(--accent);flex:none}
+.card p,.card li{color:var(--muted);font-size:.95rem}
+.card ul{list-style:none;margin-top:.3rem}
+.card ul li{position:relative;padding-left:1.35rem;margin:.4rem 0}
+.card ul li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:2px;background:var(--accent)}
+.card.long ul li::before{background:var(--long)}
+.card.short ul li::before{background:var(--short)}
+
+/* Rule blocks */
+.rules{display:grid;gap:1.1rem;grid-template-columns:repeat(2,1fr)}
+.rule{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:1.1rem 1.2rem}
+.rule.entry{border-left-color:var(--long)}
+.rule.exit{border-left-color:var(--short)}
+.rule.risk{border-left-color:var(--gold)}
+.rule h4{font-family:var(--display);font-weight:800;font-size:.95rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem}
+.rule ol{margin-left:1.1rem}
+.rule ol li{margin:.35rem 0;font-size:.94rem;color:var(--ink)}
+.rule ul{list-style:none;margin-top:.2rem}
+.rule ul li{position:relative;padding-left:1.3rem;margin:.35rem 0;font-size:.94rem}
+.rule ul li::before{content:"✓";position:absolute;left:0;color:var(--long);font-weight:800}
+
+.note{margin-top:1.1rem;background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));border-radius:11px;padding:.9rem 1.1rem;font-size:.92rem;color:var(--ink)}
+.note b{color:var(--accent)}
+.note.warn{background:var(--short-soft);border-color:color-mix(in srgb,var(--short) 35%,var(--line))}
+.note.warn b{color:var(--short)}
+
+/* Checklist */
+.checklist{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.3rem}
+.checklist label{display:flex;align-items:flex-start;gap:.65rem;padding:.5rem 0;border-bottom:1px dashed var(--line);cursor:pointer;font-size:.95rem}
+.checklist label:last-child{border-bottom:0}
+.checklist input{margin-top:.28rem;width:17px;height:17px;accent-color:var(--accent);flex:none}
+.checklist input:checked + span{color:var(--muted);text-decoration:line-through}
+
+/* Table */
+.tableWrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:720px}
+th,td{padding:.7rem .8rem;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+thead th{background:var(--bg-alt);font-family:var(--display);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);position:sticky;top:0}
+tbody tr:hover{background:var(--bg-alt)}
+td.long{color:var(--long);font-weight:700}
+td.short{color:var(--short);font-weight:700}
+
+/* Params quick grid */
+.params{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem;margin-top:1rem}
+.param{background:var(--bg-alt);border:1px solid var(--line);border-radius:11px;padding:.9rem 1rem}
+.param span{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700}
+.param b{display:block;font-family:var(--display);font-weight:800;font-size:1.15rem;margin-top:.25rem}
+
+footer{padding:2.4rem 0;text-align:center;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line)}
+.disclaimer{max-width:70ch;margin:1rem auto 0;font-size:.82rem;line-height:1.5;opacity:.9}
+
+@media (max-width:760px){
+  .grid.two,.grid.three,.rules{grid-template-columns:1fr}
+  .navlinks{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="dot"></span>Plantilla de Trading</a>
+    <nav class="navlinks">
+      <a href="#ifvg">IFVG</a>
+      <a href="#saylor">Michael Saylor</a>
+      <a href="#bitacora">Bitácora</a>
+    </nav>
+    <button class="iconbtn" id="themeBtn" title="Cambiar tema" aria-label="Cambiar tema">☾</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero wrap">
+    <span class="eyebrow">Plan de trading · 2 estrategias</span>
+    <h1 class="display">Dos formas de operar, un solo plan</h1>
+    <p>Una plantilla clara para separar tu operativa: <b>IFVG</b> para movimientos intradía con estructura, y <b>Michael Saylor</b> para acumulación de Bitcoin a largo plazo. Reglas fijas, checklist antes de entrar y bitácora para revisar.</p>
+    <div class="badges">
+      <span class="pill short">⚡ IFVG · Intradía / scalping</span>
+      <span class="pill gold">🟠 Michael Saylor · HODL Bitcoin</span>
+      <span class="pill long">✓ Reglas + checklist + bitácora</span>
+    </div>
+  </section>
+
+  <!-- ============ ESTRATEGIA 1 · IFVG ============ -->
+  <section class="section" id="ifvg">
+    <div class="wrap">
+      <div class="secHead">
+        <h2 class="display">Estrategia 1 — IFVG <span class="tag intraday">Intradía</span></h2>
+        <p><b>IFVG = Inversion Fair Value Gap.</b> Es un concepto de Smart Money (ICT): cuando un <i>Fair Value Gap</i> (desequilibrio de precio de 3 velas) es atravesado y cerrado por el precio, ese gap se "invierte" y pasa a funcionar como zona de soporte/resistencia. Operamos el retest de esa zona invertida a favor de la nueva dirección.</p>
+      </div>
+
+      <div class="grid three" style="margin-bottom:1.4rem">
+        <div class="card">
+          <h3><span class="ic">1</span>¿Qué es un FVG?</h3>
+          <p>Un hueco entre 3 velas donde la vela 1 y la vela 3 no se solapan. Marca un desequilibrio: el precio se movió tan rápido que dejó órdenes sin llenar.</p>
+        </div>
+        <div class="card">
+          <h3><span class="ic">2</span>¿Cuándo se invierte?</h3>
+          <p>Cuando el precio rompe y <b>cierra</b> del otro lado del FVG. Un FVG alcista roto se vuelve resistencia; uno bajista roto se vuelve soporte.</p>
+        </div>
+        <div class="card">
+          <h3><span class="ic">3</span>La operación</h3>
+          <p>Esperamos que el precio <b>vuelva a tocar</b> (retest) el FVG ya invertido y entramos a favor de la ruptura, con stop ajustado.</p>
+        </div>
+      </div>
+
+      <div class="params">
+        <div class="param"><span>Activos</span><b>Índices / FX / BTC</b></div>
+        <div class="param"><span>Temporalidad</span><b>1m · 5m · 15m</b></div>
+        <div class="param"><span>Sesión ideal</span><b>Apertura NY / Londres</b></div>
+        <div class="param"><span>Riesgo/op.</span><b>0,5 % – 1 %</b></div>
+        <div class="param"><span>R:R mínimo</span><b>1 : 2</b></div>
+      </div>
+
+      <h3 class="display" style="font-size:1.2rem;margin:2rem 0 1rem">Reglas de la estrategia</h3>
+      <div class="rules">
+        <div class="rule entry">
+          <h4>✅ Entrada (LONG)</h4>
+          <ol>
+            <li>Tendencia/estructura alcista en temporalidad mayor (bias del día).</li>
+            <li>Identificar un FVG bajista que el precio <b>rompe y cierra</b> hacia arriba.</li>
+            <li>Esperar el retest de ese FVG ya invertido (ahora soporte).</li>
+            <li>Confirmación: vela de rechazo / cambio de estructura menor (MSS).</li>
+            <li>Entrar en el borde de la zona invertida.</li>
+          </ol>
+        </div>
+        <div class="rule entry" style="border-left-color:var(--short)">
+          <h4>✅ Entrada (SHORT)</h4>
+          <ol>
+            <li>Estructura bajista en temporalidad mayor.</li>
+            <li>FVG alcista que el precio <b>rompe y cierra</b> hacia abajo.</li>
+            <li>Esperar el retest del FVG invertido (ahora resistencia).</li>
+            <li>Confirmación de rechazo / MSS bajista.</li>
+            <li>Entrar en el borde de la zona invertida.</li>
+          </ol>
+        </div>
+        <div class="rule exit">
+          <h4>🎯 Salida & Stop</h4>
+          <ul>
+            <li><b>Stop loss:</b> detrás del extremo del FVG invertido (por donde se invalida la zona).</li>
+            <li><b>TP1:</b> liquidez / máximo o mínimo previo más cercano (asegurar 1R).</li>
+            <li><b>TP2:</b> siguiente FVG o zona de liquidez mayor.</li>
+            <li>Mover stop a break-even al alcanzar 1R.</li>
+          </ul>
+        </div>
+        <div class="rule risk">
+          <h4>🛡️ Gestión de riesgo</h4>
+          <ul>
+            <li>Máx. 1 % de la cuenta por operación.</li>
+            <li>Máx. 2 pérdidas seguidas → parar por el día.</li>
+            <li>Sólo operar en la ventana horaria definida.</li>
+            <li>No entrar sin retest confirmado (nada de anticipar).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note warn"><b>Invalidación:</b> si el precio vuelve a cerrar dentro del FVG original, la inversión falló → no operar / salir. El IFVG sólo es válido mientras la zona invertida aguante.</div>
+
+      <h3 class="display" style="font-size:1.2rem;margin:2rem 0 1rem">Checklist antes de entrar</h3>
+      <div class="checklist">
+        <label><input type="checkbox"><span>Tengo definido el bias del día (alcista / bajista).</span></label>
+        <label><input type="checkbox"><span>El FVG fue roto y <b>cerrado</b>, no sólo mechado.</span></label>
+        <label><input type="checkbox"><span>Estoy esperando el retest, no persiguiendo el precio.</span></label>
+        <label><input type="checkbox"><span>Hay confirmación (rechazo / cambio de estructura).</span></label>
+        <label><input type="checkbox"><span>Mi stop y mis TP están definidos ANTES de entrar.</span></label>
+        <label><input type="checkbox"><span>El riesgo es ≤ 1 % y el R:R es ≥ 1:2.</span></label>
+        <label><input type="checkbox"><span>Estoy dentro de la ventana horaria permitida.</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ESTRATEGIA 2 · MICHAEL SAYLOR ============ -->
+  <section class="section section--alt" id="saylor">
+    <div class="wrap">
+      <div class="secHead">
+        <h2 class="display">Estrategia 2 — Michael Saylor <span class="tag hodl">Largo plazo</span></h2>
+        <p><b>Filosofía de Michael Saylor:</b> Bitcoin como reserva de valor a largo plazo. No es trading intradía: es <b>acumular y sostener</b>. Comprar de forma constante (DCA), no vender ante la volatilidad y pensar en años, no en días. "Bitcoin es dinero que gana energía con el tiempo."</p>
+      </div>
+
+      <div class="grid three" style="margin-bottom:1.4rem">
+        <div class="card long">
+          <h3><span class="ic" style="background:var(--gold-soft);color:var(--gold)">₿</span>Acumular siempre</h3>
+          <p>Comprar un monto fijo en intervalos regulares (semanal / mensual) sin importar el precio. La constancia vence al timing.</p>
+        </div>
+        <div class="card long">
+          <h3><span class="ic" style="background:var(--gold-soft);color:var(--gold)">⏳</span>Horizonte largo</h3>
+          <p>Ventana de 4+ años (ciclos de halving). Ignorar el ruido diario; la tesis es de años, no de velas.</p>
+        </div>
+        <div class="card long">
+          <h3><span class="ic" style="background:var(--gold-soft);color:var(--gold)">🔒</span>Nunca vender</h3>
+          <p>El plan es HODL. Salir sólo por un cambio real de tesis o una necesidad personal planificada, jamás por pánico.</p>
+        </div>
+      </div>
+
+      <div class="params">
+        <div class="param"><span>Activo</span><b>Bitcoin (BTC)</b></div>
+        <div class="param"><span>Método</span><b>DCA fijo</b></div>
+        <div class="param"><span>Frecuencia</span><b>Semanal / mensual</b></div>
+        <div class="param"><span>Horizonte</span><b>4+ años</b></div>
+        <div class="param"><span>Custodia</span><b>Wallet propia (cold)</b></div>
+      </div>
+
+      <h3 class="display" style="font-size:1.2rem;margin:2rem 0 1rem">Reglas de la estrategia</h3>
+      <div class="rules">
+        <div class="rule entry" style="border-left-color:var(--gold)">
+          <h4>💰 Compra (DCA)</h4>
+          <ol>
+            <li>Definir un monto fijo que no afecte tu vida (ej. X$/semana).</li>
+            <li>Comprar SIEMPRE en la misma fecha, sin mirar el precio.</li>
+            <li>Compra extra opcional en caídas fuertes (&gt;30 % desde máximos), sólo con capital reservado para eso.</li>
+            <li>Automatizar la compra para quitar la emoción.</li>
+          </ol>
+        </div>
+        <div class="rule risk">
+          <h4>🛡️ Gestión de riesgo</h4>
+          <ul>
+            <li>Sólo capital que puedas dejar quieto años.</li>
+            <li>Nunca apalancamiento sobre tu posición de largo plazo.</li>
+            <li>Autocustodia: "not your keys, not your coins".</li>
+            <li>El BTC no debe ser más del % de tu patrimonio que te deje dormir tranquilo.</li>
+          </ul>
+        </div>
+        <div class="rule exit">
+          <h4>🚪 Salida (excepción)</h4>
+          <ul>
+            <li>No hay salida por precio: el plan es sostener.</li>
+            <li>Rebalanceo sólo si tu asignación se descontrola respecto a tu plan financiero.</li>
+            <li>Venta parcial planificada sólo para una meta concreta (no por FOMO ni pánico).</li>
+          </ul>
+        </div>
+        <div class="rule entry" style="border-left-color:var(--long)">
+          <h4>🧠 Mentalidad</h4>
+          <ul>
+            <li>La volatilidad es el precio de la rentabilidad, no un enemigo.</li>
+            <li>Una caída del 50 % es parte del juego histórico.</li>
+            <li>Menos mirar el gráfico = mejores decisiones.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note"><b>Idea clave:</b> esta estrategia NO se mezcla con la IFVG. El BTC de acumulación de largo plazo vive en otra cuenta/wallet y no se toca para operar intradía. Separar mentalmente (y físicamente) los dos "bolsillos".</div>
+
+      <h3 class="display" style="font-size:1.2rem;margin:2rem 0 1rem">Checklist mensual</h3>
+      <div class="checklist">
+        <label><input type="checkbox"><span>Ejecuté mi compra DCA de este período.</span></label>
+        <label><input type="checkbox"><span>El monto sigue siendo capital que puedo dejar quieto.</span></label>
+        <label><input type="checkbox"><span>Mis BTC están en autocustodia (no en el exchange).</span></label>
+        <label><input type="checkbox"><span>No tomé decisiones por pánico ni por FOMO.</span></label>
+        <label><input type="checkbox"><span>Mi asignación total en BTC sigue dentro de mi plan.</span></label>
+        <label><input type="checkbox"><span>Revisé la tesis, no el precio diario.</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BITÁCORA ============ -->
+  <section class="section" id="bitacora">
+    <div class="wrap">
+      <div class="secHead">
+        <h2 class="display">Bitácora de operaciones</h2>
+        <p>Registrá cada operación (sobre todo las IFVG) para revisar qué funciona. Editá esta tabla en el archivo o llevá tu propia versión. Lo que no se mide, no mejora.</p>
+      </div>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th><th>Estrategia</th><th>Activo</th><th>Dirección</th>
+              <th>Entrada</th><th>Stop</th><th>TP</th><th>Riesgo</th><th>R obtenido</th><th>Resultado</th><th>Nota</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026-08-23</td><td>IFVG</td><td>NAS100</td><td class="long">Long</td>
+              <td>—</td><td>—</td><td>—</td><td>1 %</td><td>+2R</td><td class="long">Ganada</td><td>Retest limpio, MSS claro</td>
+            </tr>
+            <tr>
+              <td>2026-08-23</td><td>IFVG</td><td>EUR/USD</td><td class="short">Short</td>
+              <td>—</td><td>—</td><td>—</td><td>1 %</td><td>-1R</td><td class="short">Perdida</td><td>Entré sin confirmación</td>
+            </tr>
+            <tr>
+              <td>2026-08-01</td><td>Saylor</td><td>BTC</td><td class="long">Compra</td>
+              <td>—</td><td>N/A</td><td>N/A</td><td>DCA</td><td>—</td><td>—</td><td>DCA mensual ejecutado</td>
+            </tr>
+            <tr>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid three" style="margin-top:1.4rem">
+        <div class="param" style="background:var(--panel)"><span>Win rate objetivo</span><b>≥ 50 %</b></div>
+        <div class="param" style="background:var(--panel)"><span>Expectativa</span><b>&gt; 0 con R:R 1:2</b></div>
+        <div class="param" style="background:var(--panel)"><span>Revisión</span><b>Semanal</b></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Plantilla de Trading</b> — IFVG &amp; Michael Saylor · Guardá este archivo y adaptá las reglas a tu operativa.</p>
+    <p class="disclaimer">Este documento es una plantilla educativa y de organización personal. No constituye asesoramiento financiero ni recomendación de inversión. El trading y la inversión en criptoactivos conllevan riesgo de pérdida total del capital. Operá siempre bajo tu propia responsabilidad.</p>
+  </div>
+</footer>
+
+<script>
+// Tema claro/oscuro con memoria
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  function apply(t){ if(t){root.setAttribute('data-theme',t);} btn.textContent = current()==='dark' ? '☀' : '☾'; }
+  function current(){
+    var t=root.getAttribute('data-theme');
+    if(t) return t;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark':'light';
+  }
+  try{ var saved=localStorage.getItem('plantilla-theme'); if(saved) apply(saved); else apply(); }catch(e){ apply(); }
+  btn.addEventListener('click',function(){
+    var next = current()==='dark' ? 'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{ localStorage.setItem('plantilla-theme',next); }catch(e){}
+    apply(next);
+  });
+})();
+</script>
+</body>
+</html>
