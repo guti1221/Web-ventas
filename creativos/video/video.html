@@ -1,0 +1,155 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#093f52}
+body{font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif}
+.stage{position:absolute;inset:0;background:radial-gradient(120% 55% at 50% 0%,#16b985 0%,#0f9d6b 34%,#0b6a58 66%,#093f52 100%)}
+.sun{position:absolute;top:-260px;left:50%;margin-left:-450px;width:900px;height:900px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,222,150,.55),rgba(255,222,150,0) 60%)}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:90px 80px;will-change:opacity}
+.k{color:#fff;background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.45);font-weight:800;letter-spacing:5px;text-transform:uppercase;font-size:28px;padding:16px 34px;border-radius:100px}
+h1{color:#fff;font-weight:800;font-size:110px;line-height:1.0;text-align:center;letter-spacing:-.02em;text-shadow:0 6px 30px rgba(0,0,0,.28)}
+.hl{color:#fff5d6}
+.sub{color:#eafff4;font-size:44px;font-weight:700;text-align:center;line-height:1.3;max-width:840px}
+.row{display:flex;gap:40px;align-items:flex-end;justify-content:center}
+.chips{display:flex;gap:26px;justify-content:center;margin-top:20px}
+.chip{width:200px;height:280px;border-radius:18px;box-shadow:0 18px 40px rgba(0,0,0,.4);position:relative;overflow:hidden;transform-origin:center bottom}
+.chip .eb{position:absolute;top:18px;left:16px;font-size:17px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.9);font-weight:800}
+.chip span{position:absolute;left:16px;right:14px;bottom:16px;color:#fff;font-weight:800;font-size:30px;line-height:1.04}
+.glow{position:absolute;right:-40%;top:-30%;width:120%;height:120%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.2),transparent 60%)}
+.b-main{background:linear-gradient(150deg,#0b7a52,#16b985 70%,#f5b83d 145%)}
+.b-lic{background:linear-gradient(155deg,#e8571f,#ffb347)}
+.b-rec{background:linear-gradient(155deg,#0b6a8a,#25c0cf)}
+.b-ent{background:linear-gradient(150deg,#0c2f4a,#0f9d6b 125%)}
+.checks{display:flex;flex-direction:column;gap:34px;margin-top:20px}
+.crow{display:flex;align-items:center;gap:28px;color:#fff;font-size:46px;font-weight:800}
+.crow .ic{flex:none;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.16);border:3px solid rgba(255,255,255,.5);display:grid;place-items:center;font-size:44px}
+.cta{background:#fff;color:#0b7a52;font-weight:800;font-size:52px;padding:38px 76px;border-radius:100px;display:inline-flex;align-items:center;gap:22px;box-shadow:0 22px 44px rgba(0,0,0,.32)}
+.arrowc{width:66px;height:66px;border-radius:50%;background:#0f9d6b;color:#fff;display:grid;place-items:center;font-size:40px}
+.small{color:#ffd98a;font-weight:800;font-size:34px;letter-spacing:1px;text-transform:uppercase;margin-top:36px}
+.title{margin-bottom:40px}
+</style></head><body>
+<div class="stage">
+  <div class="sun" id="sun"></div>
+
+  <!-- S1 HOOK -->
+  <div class="scene" id="s1">
+    <div class="k" id="s1k" style="margin-bottom:40px">Método · 12 semanas</div>
+    <h1><span id="s1a">¿Querés llegar</span><br><span class="hl" id="s1b">al verano en forma</span><br><span id="s1c">sin volverte loco?</span></h1>
+  </div>
+
+  <!-- S2 SOLUTION -->
+  <div class="scene" id="s2">
+    <div class="k title" id="s2k">La solución</div>
+    <div class="row">
+      <div id="s2sm" style="width:230px">
+        <svg viewBox="0 0 160 220"><defs>
+          <linearGradient id="sm1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff5e8a"/><stop offset="1" stop-color="#e0433f"/></linearGradient>
+          <linearGradient id="gl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity=".3"/></linearGradient></defs>
+          <path d="M36 66 L124 66 L112 202 Q111 210 103 210 L57 210 Q49 210 48 202 Z" fill="url(#sm1)"/>
+          <path d="M36 66 L124 66 L112 202 Q111 210 103 210 L57 210 Q49 210 48 202 Z" fill="url(#gl)"/>
+          <path d="M36 66 L124 66 L112 202 Q111 210 103 210 L57 210 Q49 210 48 202 Z" fill="none" stroke="#fff" stroke-width="3" stroke-opacity=".7"/>
+          <ellipse cx="80" cy="66" rx="44" ry="11" fill="#ff789d"/><ellipse cx="80" cy="66" rx="44" ry="11" fill="none" stroke="#fff" stroke-width="3" stroke-opacity=".7"/>
+          <rect x="94" y="20" width="11" height="66" rx="5" fill="#f5a623" transform="rotate(14 100 53)"/>
+          <path d="M62 52 q10 -16 22 0 q-6 16 -11 20 q-5 -4 -11 -20 Z" fill="#e0433f" stroke="#b3302c" stroke-width="1.5"/>
+          <path d="M62 52 q11 -6 22 0 l-3 -8 q-8 -4 -16 0 Z" fill="#2ec39a"/><path d="M52 58 q-12 -6 -18 -2 q6 10 18 6 Z" fill="#2ec39a"/></svg>
+      </div>
+      <div id="s2db" style="width:300px;margin-bottom:30px">
+        <svg viewBox="0 0 220 120"><defs><linearGradient id="mtl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a5a6e"/><stop offset=".5" stop-color="#2b3a4a"/><stop offset="1" stop-color="#1b2733"/></linearGradient></defs>
+          <rect x="70" y="52" width="80" height="16" rx="8" fill="url(#mtl)"/>
+          <rect x="58" y="40" width="16" height="40" rx="6" fill="url(#mtl)"/><rect x="146" y="40" width="16" height="40" rx="6" fill="url(#mtl)"/>
+          <rect x="38" y="28" width="22" height="64" rx="9" fill="url(#mtl)"/><rect x="160" y="28" width="22" height="64" rx="9" fill="url(#mtl)"/>
+          <rect x="30" y="34" width="12" height="52" rx="6" fill="#0f9d6b"/><rect x="178" y="34" width="12" height="52" rx="6" fill="#0f9d6b"/></svg>
+      </div>
+    </div>
+    <div class="sub" id="s2sub" style="margin-top:40px">Comé rico y entrená con guía.<br>Sin dietas imposibles.</div>
+  </div>
+
+  <!-- S3 WHATS INSIDE -->
+  <div class="scene" id="s3">
+    <h1 class="title" id="s3t" style="font-size:76px">Todo en <span class="hl">un pack</span></h1>
+    <div class="chips">
+      <div class="chip b-main" id="c1"><div class="glow"></div><div class="eb">Guía</div><span>12 Semanas</span></div>
+      <div class="chip b-lic" id="c2"><div class="glow"></div><div class="eb">Bonus</div><span>Licuados</span></div>
+      <div class="chip b-rec" id="c3"><div class="glow"></div><div class="eb">Bonus</div><span>Recetas</span></div>
+      <div class="chip b-ent" id="c4"><div class="glow"></div><div class="eb">Bonus</div><span>Entreno</span></div>
+    </div>
+    <div class="small" id="s3s">Ebook + 3 bonus de regalo</div>
+  </div>
+
+  <!-- S4 CTA -->
+  <div class="scene" id="s4">
+    <h1 class="title" id="s4t">Empezá hoy<br><span class="hl">tu mejor verano</span></h1>
+    <div class="cta" id="s4b">Lo quiero <span class="arrowc">↑</span></div>
+    <div class="small" id="s4s">👇 Link abajo para empezar</div>
+  </div>
+</div>
+
+<script>
+function clamp(x,a,b){return Math.max(a,Math.min(b,x));}
+function easeOut(x){return 1-Math.pow(1-clamp(x,0,1),3);}
+function easeBack(x){x=clamp(x,0,1);const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2);}
+// appear: opacity + slide up
+function app(el,local,start,dur,dy){
+  const p=easeOut((local-start)/dur);
+  el.style.opacity=clamp(p,0,1);
+  el.style.transform='translateY('+((1-p)*(dy||40))+'px)';
+}
+function pop(el,local,start,dur){
+  const p=easeBack((local-start)/dur);
+  el.style.opacity=clamp((local-start)/dur*2,0,1);
+  el.style.transform='scale('+(0.5+0.5*clamp(p,0,1.1))+')';
+}
+// scene crossfade opacity
+function sceneOp(t,a,b){ // fade in over .3 after a, fade out .3 before b
+  if(t<a-0.3||t>b+0.3)return 0;
+  return clamp((t-(a-0.3))/0.3,0,1)*clamp(((b+0.3)-t)/0.3,0,1);
+}
+const S=[[0,3.0],[3.0,6.2],[6.2,9.3],[9.3,12]];
+window.renderFrame=function(t){
+  // sun subtle pulse
+  var sc=1+0.05*Math.sin(t*1.2);
+  document.getElementById('sun').style.transform='translateX(0) scale('+sc+')';
+
+  var s1=document.getElementById('s1'),s2=document.getElementById('s2'),s3=document.getElementById('s3'),s4=document.getElementById('s4');
+  s1.style.opacity=sceneOp(t,S[0][0],S[0][1]);
+  s2.style.opacity=sceneOp(t,S[1][0],S[1][1]);
+  s3.style.opacity=sceneOp(t,S[2][0],S[2][1]);
+  s4.style.opacity=sceneOp(t,S[3][0],S[3][1]);
+
+  // S1
+  var l1=t-S[0][0];
+  app(document.getElementById('s1k'),l1,0.0,0.5,-30);
+  app(document.getElementById('s1a'),l1,0.25,0.5,50);
+  app(document.getElementById('s1b'),l1,0.5,0.5,50);
+  app(document.getElementById('s1c'),l1,0.75,0.5,50);
+
+  // S2
+  var l2=t-S[1][0];
+  app(document.getElementById('s2k'),l2,0.0,0.5,-30);
+  var sm=document.getElementById('s2sm'); var p=easeOut(l2-0.2); sm.style.opacity=clamp(p,0,1); sm.style.transform='translateX('+((1-clamp(p,0,1))*-160)+'px)';
+  var db=document.getElementById('s2db'); var p2=easeOut(l2-0.4); db.style.opacity=clamp(p2,0,1); db.style.transform='translateX('+((1-clamp(p2,0,1))*160)+'px)';
+  app(document.getElementById('s2sub'),l2,0.8,0.5,40);
+
+  // S3
+  var l3=t-S[2][0];
+  app(document.getElementById('s3t'),l3,0.0,0.5,-30);
+  pop(document.getElementById('c1'),l3,0.25,0.45);
+  pop(document.getElementById('c2'),l3,0.45,0.45);
+  pop(document.getElementById('c3'),l3,0.65,0.45);
+  pop(document.getElementById('c4'),l3,0.85,0.45);
+  app(document.getElementById('s3s'),l3,1.2,0.5,30);
+
+  // S4
+  var l4=t-S[3][0];
+  app(document.getElementById('s4t'),l4,0.0,0.5,40);
+  var b=document.getElementById('s4b'); var pb=easeBack((l4-0.5)/0.5); b.style.opacity=clamp((l4-0.5)*2,0,1);
+  var pulse=1+0.05*Math.sin(Math.max(0,l4-1)*6); b.style.transform='scale('+(clamp(pb,0,1.05)*pulse)+')';
+  app(document.getElementById('s4s'),l4,1.1,0.5,30);
+};
+window.renderFrame(0);
+// autoplay for recording
+var _start=null;
+function _loop(ts){ if(_start===null)_start=ts; var t=(ts-_start)/1000; if(t>12)t=12; window.renderFrame(t); if(t<12) requestAnimationFrame(_loop); }
+if(!window.__noAuto){ requestAnimationFrame(_loop); }
+</script>
+</body></html>
