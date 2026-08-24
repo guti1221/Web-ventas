@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Entrená para el Verano — Guía de Entrenamiento 12 Semanas</title>
+<style>
+@page{ size:A4; margin:18mm 16mm 20mm 16mm;
+  @bottom-center{ content:counter(page); font-family:Georgia,serif; font-size:9pt; color:#5a6a7d; }
+}
+@page:first{ margin:0; @bottom-center{content:none} }
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:"Segoe UI",Helvetica,Arial,sans-serif;color:#182535;line-height:1.55;font-size:10.6pt}
+h1,h2,h3,h4{font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;line-height:1.16;color:#123047}
+p{margin:.45em 0}
+strong{color:#0d2740}
+em{color:#1f7a4d;font-style:normal;font-weight:600}
+ul,ol{margin:.4em 0 .6em 1.3em}li{margin:.25em 0}
+
+/* Cover */
+.cover{position:relative;height:297mm;width:100%;
+  background:linear-gradient(150deg,#0c2f4a 0%,#124d6b 40%,#0f9d6b 108%);
+  color:#fff;padding:34mm 22mm;display:flex;flex-direction:column;page-break-after:always;overflow:hidden}
+.cover::after{content:"";position:absolute;right:-80mm;bottom:-60mm;width:190mm;height:190mm;border-radius:50%;
+  background:radial-gradient(circle,rgba(29,197,138,.28),transparent 62%)}
+.cover .eyebrow{position:relative;z-index:2;font-size:12pt;letter-spacing:.3em;text-transform:uppercase;font-weight:700;opacity:.92}
+.cover h1{position:relative;z-index:2;color:#fff;font-size:47pt;font-weight:800;margin:12mm 0 5mm;letter-spacing:-.01em;text-shadow:0 4px 24px rgba(0,0,0,.22)}
+.cover h1 span{display:block;color:#7ff0c0}
+.cover .sub{position:relative;z-index:2;font-size:15pt;font-weight:600;max-width:135mm;opacity:.97}
+.cover .pill{position:relative;z-index:2;display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);padding:2.5mm 5mm;border-radius:40px;font-size:10.5pt;font-weight:700;margin:2mm 2mm 0 0}
+.cover .foot{position:relative;z-index:2;margin-top:auto}
+.cover .foot .tag{font-size:13pt;font-weight:600;border-top:2px solid rgba(255,255,255,.5);padding-top:6mm;max-width:120mm}
+
+/* Dividers */
+.divider{page-break-before:always;page-break-after:always;height:245mm;display:flex;flex-direction:column;justify-content:center;
+  background:linear-gradient(135deg,#124d6b,#0f9d6b);color:#fff;padding:0 24mm;border-radius:10px;margin-top:6mm}
+.divider .num{font-size:14pt;letter-spacing:.3em;text-transform:uppercase;opacity:.85;font-weight:700}
+.divider h2{color:#fff;font-size:32pt;margin:5mm 0;font-weight:800}
+.divider p{font-size:13pt;opacity:.95;max-width:125mm}
+
+.section{page-break-before:always}
+h2.chap{font-size:22pt;color:#0f7a52;font-weight:800;margin-bottom:2mm}
+.chap-kicker{font-size:10pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#1dc58a;margin-bottom:1mm}
+.rule{height:3px;width:44mm;background:linear-gradient(90deg,#0f9d6b,#124d6b);border:0;margin:2mm 0 5mm;border-radius:3px}
+.lead{font-size:12pt;color:#3a4c5e;margin-bottom:4mm}
+h3{font-size:14.5pt;color:#123047;margin:6mm 0 2mm;border-left:4px solid #0f9d6b;padding-left:4mm}
+h4{font-size:12pt;color:#0f7a52;margin:5mm 0 1mm}
+
+.box{border-radius:9px;padding:4.5mm 5.5mm;margin:4.5mm 0;page-break-inside:avoid}
+.box .bt{font-weight:800;display:block;margin-bottom:1.2mm}
+.box.tip{background:#e7f6ef;border:1px solid #b6e5d1}.box.tip .bt{color:#0f7a52}
+.box.warn{background:#fdeee9;border:1px solid #f6c6b4}.box.warn .bt{color:#d1502b}
+.box.key{background:#fff6e0;border:1px solid #f4d58a}.box.key .bt{color:#c8901a}
+.box.quote{background:#eaf1fb;border-left:5px solid #1e60c0;font-style:italic;color:#23406b}
+
+.grid2{display:flex;gap:5mm;flex-wrap:wrap}
+.grid2 .col{flex:1 1 44%;min-width:74mm}
+.card{border:1px solid #d9e2ec;border-radius:9px;padding:4mm 5mm;margin:3mm 0;page-break-inside:avoid;background:#fbfdff}
+.card h4{margin-top:0}
+
+table{width:100%;border-collapse:collapse;margin:4mm 0;font-size:9.8pt;page-break-inside:avoid}
+th,td{border:1px solid #d3dde8;padding:2.4mm 3mm;text-align:left;vertical-align:top}
+th{background:#0f7a52;color:#fff;font-weight:700;font-size:9pt;text-transform:uppercase;letter-spacing:.03em}
+tbody tr:nth-child(even){background:#f2f8f5}
+td.c,th.c{text-align:center}
+
+.small{font-size:9pt;color:#5a6a7d}
+.center{text-align:center}
+
+/* TOC */
+.toc ol{list-style:none;margin-left:0}
+.toc li{display:flex;justify-content:space-between;border-bottom:1px dotted #ccd6e1;padding:2.3mm 0;font-size:11pt}
+.toc .part{color:#1dc58a;font-weight:800;text-transform:uppercase;font-size:9.5pt;letter-spacing:.12em;margin:5mm 0 1mm;border:0}
+
+/* Exercise card */
+.ex{border:1px solid #d9e2ec;border-radius:11px;padding:5mm 5.5mm;margin:5mm 0;page-break-inside:avoid;background:#fbfdff}
+.ex .top{display:flex;gap:5mm;align-items:flex-start}
+.ex .fig{flex:0 0 62mm;background:#eef5f1;border:1px solid #d3e6dc;border-radius:9px;padding:2mm}
+.ex .body{flex:1}
+.ex h4{margin:0 0 1mm;font-size:13.5pt;color:#0d5a3c}
+.ex .musc{font-size:8.8pt;text-transform:uppercase;letter-spacing:.05em;color:#1dc58a;font-weight:800;margin-bottom:2mm}
+.ex ol{margin:1mm 0 0 4.5mm}
+.ex ol li{font-size:9.9pt;margin:.9mm 0}
+.ex .mist{margin-top:2.5mm;font-size:9.3pt;color:#b0472a;background:#fdeee9;border-radius:7px;padding:2mm 3mm}
+.ex .mist b{color:#8f3115}
+svg{display:block;width:100%;height:auto}
+.exnum{display:inline-block;background:#0f9d6b;color:#fff;border-radius:6px;font-size:9pt;font-weight:800;padding:.5mm 2.2mm;margin-right:2mm;vertical-align:middle}
+
+/* Routine week */
+.phase{background:linear-gradient(135deg,#124d6b,#0f9d6b);color:#fff;border-radius:9px;padding:6mm 7mm;margin:6mm 0 4mm}
+.phase h3{color:#fff;border:0;padding:0;margin:0 0 1mm;font-size:16pt}
+.phase p{margin:0;opacity:.95;font-size:10.5pt}
+.daytag{display:inline-block;background:#e7f6ef;color:#0f7a52;border:1px solid #b6e5d1;font-weight:800;font-size:9pt;padding:1mm 3mm;border-radius:20px;margin:3mm 0 1mm}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="eyebrow">Bonus 3 · Guía completa</div>
+  <h1>Entrená para<span>el Verano</span></h1>
+  <p class="sub">Aprendé de cero cómo se pierde grasa y se genera músculo, y seguí una rutina de 12 semanas paso a paso. En casa o en el gimnasio, con cada ejercicio explicado e ilustrado.</p>
+  <div style="position:relative;z-index:2;margin-top:8mm">
+    <span class="pill">🏋️ Casa y gimnasio</span>
+    <span class="pill">📖 Explicado de cero</span>
+    <span class="pill">🖼️ Con ilustraciones</span>
+    <span class="pill">📅 Plan 12 semanas</span>
+  </div>
+  <div class="foot"><p class="tag">Aunque nunca hayas pisado un gimnasio: acá entendés el porqué de todo y salís sabiendo entrenar. <em style="color:#7ff0c0">Tu cambio, con criterio.</em></p></div>
+</div>
+
+<!-- LEGAL -->
+<div class="section">
+  <h2 class="chap">Antes de la primera serie: leé esto</h2>
+  <hr class="rule">
+  <p>Esta guía te enseña a entrenar de forma segura y progresiva. Es material educativo y <strong>no reemplaza la valoración de un médico ni de un profesor de educación física.</strong></p>
+  <div class="box warn">
+    <span class="bt">Chequeo y seguridad primero</span>
+    Hacete un chequeo médico antes de empezar, sobre todo si tenés problemas cardíacos, de presión, articulares, una lesión previa, sobrepeso importante, si estás embarazada o hace mucho que no te movés. Si sentís dolor agudo, mareo, falta de aire o molestia en el pecho, <strong>pará inmediatamente</strong> y consultá. Dolor no es lo mismo que esfuerzo.
+  </div>
+  <p>Empezá siempre por la versión más fácil y subí de a poco. La técnica va antes que el peso o la cantidad. Más no es mejor: <strong>mejor es mejor.</strong></p>
+  <p class="small">© 2026 — Uso personal. Prohibida la reventa o redistribución. Ilustraciones originales incluidas en esta guía.</p>
+</div>
+
+<!-- TOC -->
+<div class="section toc">
+  <h2 class="chap">Índice</h2>
+  <hr class="rule">
+  <ol>
+    <li class="part">Parte 1 · Entender el entrenamiento</li>
+    <li><b>1. Cómo se pierde grasa de verdad</b><span></span></li>
+    <li><b>2. Cómo se genera músculo</b><span></span></li>
+    <li><b>3. Por qué entrenar fuerza si querés adelgazar</b><span></span></li>
+    <li><b>4. El diccionario del gimnasio</b><span>Serie, repetición, descanso, RIR, tempo…</span></li>
+    <li class="part">Parte 2 · Cómo entrenar bien</li>
+    <li><b>5. Técnica, respiración y calentamiento</b><span></span></li>
+    <li><b>6. Cómo elegir el peso y progresar</b><span></span></li>
+    <li class="part">Parte 3 · Biblioteca de ejercicios</li>
+    <li><b>7. Ejercicios en casa (sin equipo)</b><span>Con ilustraciones</span></li>
+    <li><b>8. Ejercicios en el gimnasio</b><span>Con ilustraciones</span></li>
+    <li class="part">Parte 4 · La rutina de 12 semanas</li>
+    <li><b>9. Fase 1 (sem 1–4): Adaptación</b><span></span></li>
+    <li><b>10. Fase 2 (sem 5–8): Construcción</b><span></span></li>
+    <li><b>11. Fase 3 (sem 9–12): Intensificación</b><span></span></li>
+    <li class="part">Parte 5 · Que no te falte nada</li>
+    <li><b>12. Estiramiento, descanso y dudas frecuentes</b><span></span></li>
+  </ol>
+</div>
+
+<!-- PARTE 1 -->
+<div class="divider">
+  <div class="num">Parte 1</div>
+  <h2>Entender el entrenamiento</h2>
+  <p>Antes de mover un solo músculo, entendé el porqué. Cuando sabés cómo funciona tu cuerpo, dejás de perder tiempo con mitos y entrenás con cabeza.</p>
+</div>
+
+<!-- CAP 1 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 1</div>
+  <h2 class="chap">Cómo se pierde grasa de verdad</h2>
+  <hr class="rule">
+  <p class="lead">Olvidate de los mitos. No existe el ejercicio que "quema la panza", ni la faja mágica, ni el té que derrite grasa. La grasa se pierde por una sola vía, y es más simple (que no fácil) de lo que te vendieron.</p>
+
+  <h3>El balance de energía</h3>
+  <p>Tu cuerpo funciona con energía, que se mide en calorías. Entran (por la comida) y salen (por todo lo que hacés: respirar, moverte, entrenar). La regla es esta:</p>
+  <table>
+    <thead><tr><th>Situación</th><th>Qué pasa</th></tr></thead>
+    <tbody>
+      <tr><td>Comés <strong>más</strong> de lo que gastás</td><td>Guardás el excedente → subís de peso</td></tr>
+      <tr><td>Comés <strong>igual</strong> de lo que gastás</td><td>Te mantenés</td></tr>
+      <tr><td>Comés <strong>menos</strong> de lo que gastás (déficit)</td><td>Tu cuerpo usa la grasa guardada como energía → bajás</td></tr>
+    </tbody>
+  </table>
+  <div class="box key">
+    <span class="bt">La única verdad</span>
+    Se pierde grasa cuando hay un <strong>déficit calórico</strong> sostenido: gastar un poco más de lo que comés, durante semanas. El entrenamiento y la comida son las dos herramientas para lograrlo. Ni un solo ejercicio "quema grasa localizada": el cuerpo la toma de todos lados a la vez, según tu genética.</div>
+
+  <h3>Dónde se gasta la energía (te va a sorprender)</h3>
+  <ul>
+    <li><strong>Metabolismo basal (~60–70%):</strong> lo que gastás con solo estar vivo. Cuanto más músculo tenés, más alto es.</li>
+    <li><strong>Actividad diaria / NEAT (~15–30%):</strong> caminar, escaleras, tareas, moverte. ¡Enorme y subestimado!</li>
+    <li><strong>Ejercicio (~5–15%):</strong> tu entrenamiento. Importa, pero menos de lo que creés.</li>
+    <li><strong>Digestión (~10%):</strong> gastás energía procesando comida, sobre todo la proteína.</li>
+  </ul>
+  <p>Por eso el plan combina las dos cosas: <em>entrenar</em> (sube el basal y el gasto) y <em>moverte todo el día</em> (sube el NEAT). La comida, la controlás con el ebook principal.</p>
+
+  <h3>¿Y el cardio?</h3>
+  <p>El cardio (caminar rápido, trotar, bici, elíptico) suma gasto de energía y cuida tu corazón. Es un buen aliado, pero no es obligatorio para bajar grasa: podés lograrlo sólo con déficit + fuerza. En esta rutina lo usamos como complemento, no como protagonista.</p>
+  <div class="box warn">
+    <span class="bt">El mito más caro</span>
+    Hacer mil abdominales NO te saca la panza. Marca el músculo de abajo, sí, pero la grasa que lo tapa sólo se va con déficit. Podés tener el mejor abdomen del mundo escondido bajo una capa de grasa: primero se baja la capa.</div>
+</div>
+
+<!-- CAP 2 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 2</div>
+  <h2 class="chap">Cómo se genera músculo</h2>
+  <hr class="rule">
+  <p class="lead">El músculo no crece mientras entrenás: crece mientras descansás. El entrenamiento es el estímulo; la comida y el sueño son la construcción. Necesitás las tres cosas.</p>
+
+  <h3>Los 3 ingredientes del músculo</h3>
+  <div class="grid2">
+    <div class="col card"><h4>1. Estímulo (tensión)</h4><p>Al entrenar con esfuerzo, generás micro-roturas en las fibras musculares. Es una señal: "necesito ser más fuerte para la próxima".</p></div>
+    <div class="col card"><h4>2. Proteína (material)</h4><p>Tu cuerpo repara esas fibras usando la proteína que comés. Sin suficiente proteína, no hay con qué reconstruir. Apuntá a incluirla en cada comida.</p></div>
+    <div class="col card"><h4>3. Descanso (obra)</h4><p>Durante el sueño y los días de descanso, el cuerpo repara y hace la fibra un poco más fuerte y grande que antes. Por eso dormir es entrenar.</p></div>
+    <div class="col card"><h4>El resultado</h4><p>Repetido en el tiempo, ese ciclo (estímulo → nutrir → descansar) te hace más fuerte, más tonificado y con mejor forma.</p></div>
+  </div>
+
+  <h3>La clave de todo: sobrecarga progresiva</h3>
+  <p>Este es <strong>el concepto más importante de la guía</strong>. Para que el músculo siga cambiando, tenés que exigirle un poquito más con el tiempo. Si siempre hacés lo mismo, el cuerpo se acostumbra y deja de mejorar.</p>
+  <div class="box key">
+    <span class="bt">Sobrecarga progresiva</span>
+    Hacer, semana a semana, un poco <strong>más</strong> que antes: una repetición más, un poco más de peso, una serie más, mejor técnica o menos descanso. No todo junto ni de golpe: de a poquito, constante. Esa es la receta del progreso.</div>
+
+  <h3>¿Voy a quedar "todo grande"?</h3>
+  <p>No por accidente. Ganar mucha masa muscular lleva años de entrenamiento muy específico y mucha comida. Lo que vas a lograr en 12 semanas es <strong>tonificar, verte más firme y funcionar mejor</strong>, no volverte fisicoculturista. Entrenar fuerza es de las mejores cosas que podés hacer por tu cuerpo, a cualquier edad y género.</p>
+</div>
+
+<!-- CAP 3 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 3</div>
+  <h2 class="chap">Por qué entrenar fuerza si querés adelgazar</h2>
+  <hr class="rule">
+  <p class="lead">Mucha gente que quiere bajar solo hace cardio. Error. La fuerza es tu mejor aliada para bajar grasa y, sobre todo, para verte bien al bajar.</p>
+  <h3>3 razones de peso</h3>
+  <ol>
+    <li><strong>Protegés el músculo.</strong> Cuando bajás de peso, se puede ir grasa <em>y</em> músculo. Entrenar fuerza le dice al cuerpo "el músculo lo necesito, quemá la grasa". Resultado: bajás y quedás firme, no flácido.</li>
+    <li><strong>Subís tu metabolismo.</strong> Más músculo = gastás más energía en reposo, hasta durmiendo. Te hace más fácil mantener el peso a futuro.</li>
+    <li><strong>Cambiás la forma, no solo el número.</strong> Dos personas del mismo peso se ven muy distintas según su músculo. La fuerza es la que te da la silueta que buscás para el verano.</li>
+  </ol>
+  <div class="box tip">
+    <span class="bt">La combinación ganadora</span>
+    Déficit calórico (comida) + entrenamiento de fuerza (2–4 veces/semana) + movimiento diario (caminar) + algo de cardio. Eso es todo. Lo demás es ruido.</div>
+</div>
+
+<!-- CAP 4 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 4</div>
+  <h2 class="chap">El diccionario del gimnasio</h2>
+  <hr class="rule">
+  <p class="lead">Si nunca entrenaste, estas palabras te van a aparecer todo el tiempo. Acá las tenés claras de una vez.</p>
+  <table>
+    <thead><tr><th>Término</th><th>Qué significa</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Repetición (rep)</strong></td><td>Una ejecución completa del ejercicio (bajar y subir en una sentadilla = 1 rep).</td></tr>
+      <tr><td><strong>Serie (set)</strong></td><td>Un grupo de repeticiones seguidas. Ej: "3 series de 12 reps" = hacés 12, descansás, y repetís 3 veces.</td></tr>
+      <tr><td><strong>Descanso</strong></td><td>La pausa entre series. Para fuerza/tono: 60–90 seg. Para ejercicios grandes y pesados: hasta 2 min.</td></tr>
+      <tr><td><strong>RIR</strong><br>(reps en reserva)</td><td>Cuántas reps te quedaban "en el tanque" al terminar la serie. RIR 2 = podrías haber hecho 2 más. Buen punto para principiantes: no llegues al fallo total.</td></tr>
+      <tr><td><strong>Al fallo</strong></td><td>Cuando ya no podés hacer ni una rep más con buena técnica. Los principiantes NO deben entrenar siempre al fallo.</td></tr>
+      <tr><td><strong>Tempo</strong></td><td>La velocidad del movimiento. Bajar lento (2–3 seg) y controlar suma mucho estímulo.</td></tr>
+      <tr><td><strong>Ejercicio compuesto</strong></td><td>Usa varios músculos y articulaciones (sentadilla, remo). Los más eficientes.</td></tr>
+      <tr><td><strong>Ejercicio de aislamiento</strong></td><td>Trabaja un músculo puntual (curl de bíceps). Para detalle.</td></tr>
+      <tr><td><strong>Superserie</strong></td><td>Dos ejercicios seguidos sin descanso en el medio. Ahorra tiempo e intensifica.</td></tr>
+      <tr><td><strong>NEAT</strong></td><td>Toda la energía que gastás moviéndote fuera del ejercicio (caminar, tareas).</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- PARTE 2 -->
+<div class="divider">
+  <div class="num">Parte 2</div>
+  <h2>Cómo entrenar bien</h2>
+  <p>La diferencia entre progresar y lesionarte está en la técnica. Antes de la biblioteca de ejercicios, estas reglas valen para todos.</p>
+</div>
+
+<!-- CAP 5 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 5</div>
+  <h2 class="chap">Técnica, respiración y calentamiento</h2>
+  <hr class="rule">
+
+  <h3>Calentá siempre (5–10 min)</h3>
+  <p>Nunca entres frío. El calentamiento prepara músculos y articulaciones y baja el riesgo de lesión:</p>
+  <ul>
+    <li>3–5 min de movimiento suave: caminar rápido, bici, saltar en el lugar, elíptico.</li>
+    <li>Movilidad: círculos de brazos, rotar cadera y rodillas, medias sentadillas sin peso.</li>
+    <li>1 serie liviana del primer ejercicio antes de sumar peso.</li>
+  </ul>
+
+  <h3>Reglas de oro de la técnica</h3>
+  <ol>
+    <li><strong>Rango completo y controlado.</strong> Mejor hacer el movimiento entero y lento que muchas reps a medias.</li>
+    <li><strong>Espalda neutra.</strong> En casi todo, la espalda va recta (ni encorvada ni súper arqueada). Sacá pecho, mirada al frente.</li>
+    <li><strong>Core activo.</strong> "Meté" un poco el ombligo y contraé el abdomen, como si fueras a recibir un golpe suave. Te protege la columna.</li>
+    <li><strong>Nada de rebotes.</strong> No uses impulso: que el músculo haga el trabajo, no la inercia.</li>
+  </ol>
+
+  <h3>Cómo respirar</h3>
+  <div class="box tip">
+    <span class="bt">Regla simple</span>
+    <strong>Exhalá (soltás el aire) en el esfuerzo</strong> —cuando empujás o subís el peso— e <strong>inhalá (tomás aire) en la parte fácil</strong> —cuando bajás o volvés. Ejemplo en flexión: bajás tomando aire, empujás soltando aire. Nunca aguantes la respiración toda la serie.</div>
+
+  <div class="box warn">
+    <span class="bt">Dolor bueno vs. dolor malo</span>
+    La <strong>ardor/fatiga muscular</strong> durante el ejercicio y las agujetas al otro día son normales. Un <strong>dolor agudo, punzante, en articulación o que aparece de golpe</strong> NO lo es: pará. Si algo te "tira" mal, bajá el peso o cambiá el ejercicio.</div>
+</div>
+
+<!-- CAP 6 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 6</div>
+  <h2 class="chap">Cómo elegir el peso y progresar</h2>
+  <hr class="rule">
+  <p class="lead">La pregunta de todo principiante: "¿cuánto peso pongo?". Acá la respuesta práctica.</p>
+
+  <h3>Elegí el peso por sensación (RIR)</h3>
+  <p>El peso correcto es el que te permite completar las repeticiones indicadas con <strong>buena técnica</strong>, terminando la serie sintiendo que te quedaban 1 o 2 reps en el tanque (RIR 1–2).</p>
+  <ul>
+    <li>Si terminás las reps <strong>muy fácil</strong> y te sobraba mucho → el peso es poco, subí.</li>
+    <li>Si <strong>no llegás</strong> a las reps o se te rompe la técnica → es mucho, bajá.</li>
+    <li>Si llegás justo, con esfuerzo y buena forma → ¡ese es tu peso!</li>
+  </ul>
+
+  <h3>Cómo aplicar la sobrecarga progresiva</h3>
+  <p>Cada semana buscá mejorar UNA variable, sin romper la técnica:</p>
+  <table>
+    <thead><tr><th>Vía de progreso</th><th>Ejemplo</th></tr></thead>
+    <tbody>
+      <tr><td>Más repeticiones</td><td>De 3×10 pasás a 3×12 con el mismo peso</td></tr>
+      <tr><td>Más peso</td><td>Cuando llegás fácil al tope de reps, subí un poco el peso y volvé a las reps bajas</td></tr>
+      <tr><td>Más series</td><td>De 3 series a 4</td></tr>
+      <tr><td>Menos descanso</td><td>De 90 seg a 60 seg entre series</td></tr>
+      <tr><td>Mejor tempo</td><td>Bajás más lento y controlado</td></tr>
+    </tbody>
+  </table>
+  <div class="box key">
+    <span class="bt">Anotá todo</span>
+    Llevá un registro de cada sesión: ejercicio, peso, series y reps. Es la única forma de saber si estás progresando de verdad. Usá el cuaderno, el celu o la planilla de seguimiento del pack.</div>
+</div>
+
+<!-- PARTE 3 -->
+<div class="divider">
+  <div class="num">Parte 3</div>
+  <h2>Biblioteca de ejercicios</h2>
+  <p>Cada ejercicio con su ilustración, los músculos que trabaja, el paso a paso y el error más común. Estos son los ladrillos de tu rutina.</p>
+</div>
+
+<!-- CAP 7 - CASA -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 7</div>
+  <h2 class="chap">Ejercicios en casa (sin equipo)</h2>
+  <hr class="rule">
+  <p class="lead">Solo con tu peso corporal podés entrenar todo el cuerpo. Ideal para arrancar y para los días que no vas al gimnasio.</p>
+
+  <!-- SENTADILLA -->
+  <div class="ex">
+    <div class="top">
+      <div class="fig">
+        <svg viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="118" x2="142" y2="118" stroke="#9bbcac" stroke-width="2"/>
+          <!-- start figure (standing) -->
+          <g fill="none" stroke="#0f7a52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="38" cy="24" r="8" fill="#0f7a52" stroke="none"/>
+            <line x1="38" y1="32" x2="38" y2="70"/>
+            <line x1="38" y1="42" x2="52" y2="58"/>
+            <line x1="38" y1="42" x2="24" y2="58"/>
+            <line x1="38" y1="70" x2="38" y2="94"/>
+            <line x1="38" y1="94" x2="38" y2="116"/>
+          </g>
+          <!-- end figure (squat) -->
+          <g fill="none" stroke="#124d6b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="104" cy="40" r="8" fill="#124d6b" stroke="none"/>
+            <line x1="104" y1="48" x2="100" y2="78"/>
+            <line x1="102" y1="56" x2="120" y2="62"/>
+            <line x1="102" y1="56" x2="88" y2="62"/>
+            <line x1="100" y1="78" x2="118" y2="86"/>
+            <line x1="118" y1="86" x2="118" y2="116"/>
+            <line x1="100" y1="78" x2="90" y2="86"/>
+            <line x1="90" y1="86" x2="90" y2="116"/>
+          </g>
+          <path d="M62 60 q12 -6 24 0" fill="none" stroke="#f5a623" stroke-width="3" stroke-linecap="round" marker-end="url(#ar1)"/>
+          <defs><marker id="ar1" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#f5a623"/></marker></defs>
+        </svg>
+      </div>
+      <div class="body">
+        <h4><span class="exnum">1</span>Sentadilla</h4>
+        <div class="musc">Piernas · Glúteos · Core</div>
+        <ol>
+          <li>Parado, pies al ancho de hombros, puntas levemente hacia afuera.</li>
+          <li>Bajá empujando la cola hacia atrás, como si fueras a sentarte en una silla.</li>
+          <li>Bajá hasta que los muslos queden paralelos al piso (o hasta donde puedas con la espalda recta).</li>
+          <li>Subí empujando con los talones, apretando los glúteos arriba.</li>
+        </ol>
+        <div class="mist"><b>Error común:</b> que las rodillas se metan hacia adentro o levantar los talones. Mantené las rodillas apuntando a las puntas de los pies y el peso en los talones.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLEXION -->
+  <div class="ex">
+    <div class="top">
+      <div class="fig">
+        <svg viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="112" x2="142" y2="112" stroke="#9bbcac" stroke-width="2"/>
+          <!-- up position -->
+          <g fill="none" stroke="#0f7a52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="26" cy="52" r="7" fill="#0f7a52" stroke="none"/>
+            <line x1="33" y1="54" x2="112" y2="70"/>
+            <line x1="45" y1="57" x2="45" y2="90"/>
+            <line x1="112" y1="70" x2="126" y2="90"/>
+          </g>
+          <!-- down position (dashed lower body reference) -->
+          <g fill="none" stroke="#124d6b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+            <circle cx="26" cy="72" r="7" fill="#124d6b" stroke="none"/>
+            <line x1="33" y1="74" x2="112" y2="86"/>
+            <line x1="45" y1="76" x2="45" y2="90"/>
+            <line x1="112" y1="86" x2="126" y2="90"/>
+          </g>
+          <path d="M20 60 l0 8" stroke="#f5a623" stroke-width="3" stroke-linecap="round" marker-end="url(#ar2)"/>
+          <defs><marker id="ar2" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#f5a623"/></marker></defs>
+        </svg>
+      </div>
+      <div class="body">
+        <h4><span class="exnum">2</span>Flexión de brazos (lagartija)</h4>
+        <div class="musc">Pecho · Hombros · Tríceps · Core</div>
+        <ol>
+          <li>Manos en el piso un poco más anchas que los hombros, cuerpo recto como una tabla.</li>
+          <li>Bajá el pecho hacia el piso doblando los codos (apuntando hacia atrás, no en cruz).</li>
+          <li>Empujá el piso para volver arriba sin aflojar la panza.</li>
+        </ol>
+        <div class="mist"><b>Versión fácil:</b> apoyá las rodillas en el piso, o hacela de pie contra una pared o mesa. <b>Error común:</b> hundir la cadera o subir la cola. El cuerpo va derecho.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZANCADA -->
+  <div class="ex">
+    <div class="top">
+      <div class="fig">
+        <svg viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="118" x2="142" y2="118" stroke="#9bbcac" stroke-width="2"/>
+          <g fill="none" stroke="#0f7a52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="70" cy="26" r="8" fill="#0f7a52" stroke="none"/>
+            <line x1="70" y1="34" x2="70" y2="72"/>
+            <line x1="70" y1="46" x2="84" y2="62"/>
+            <line x1="70" y1="46" x2="56" y2="60"/>
+            <!-- front leg bent -->
+            <line x1="70" y1="72" x2="48" y2="92"/>
+            <line x1="48" y1="92" x2="48" y2="118"/>
+            <!-- back leg -->
+            <line x1="70" y1="72" x2="98" y2="96"/>
+            <line x1="98" y1="96" x2="112" y2="118"/>
+          </g>
+          <path d="M70 60 l0 10" stroke="#f5a623" stroke-width="3" stroke-linecap="round" marker-end="url(#ar3)"/>
+          <defs><marker id="ar3" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#f5a623"/></marker></defs>
+        </svg>
+      </div>
+      <div class="body">
+        <h4><span class="exnum">3</span>Zancada (estocada)</h4>
+        <div class="musc">Cuádriceps · Glúteos · Equilibrio</div>
+        <ol>
+          <li>Parado, da un paso largo hacia adelante con una pierna.</li>
+          <li>Bajá doblando las dos rodillas hasta que la de atrás casi toque el piso.</li>
+          <li>La rodilla de adelante no pasa la punta del pie. Empujá con el talón delantero para volver.</li>
+          <li>Alterná piernas (o hacé todas de un lado y después el otro).</li>
+        </ol>
+        <div class="mist"><b>Error común:</b> dar un paso corto (sobrecarga la rodilla). Paso largo y torso erguido. Si perdés equilibrio, apoyate en una pared.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLANCHA -->
+  <div class="ex">
+    <div class="top">
+      <div class="fig">
+        <svg viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="104" x2="142" y2="104" stroke="#9bbcac" stroke-width="2"/>
+          <g fill="none" stroke="#0f7a52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="30" cy="70" r="7" fill="#0f7a52" stroke="none"/>
+            <line x1="37" y1="72" x2="120" y2="86"/>
+            <!-- forearm support -->
+            <line x1="40" y1="74" x2="40" y2="102"/>
+            <line x1="40" y1="102" x2="55" y2="102"/>
+            <!-- legs to toes -->
+            <line x1="120" y1="86" x2="132" y2="102"/>
+          </g>
+          <text x="62" y="66" font-size="9" fill="#0f7a52" font-family="Arial" font-weight="bold">cuerpo recto</text>
+        </svg>
+      </div>
+      <div class="body">
+        <h4><span class="exnum">4</span>Plancha</h4>
+        <div class="musc">Core (abdomen) · Estabilidad total</div>
+        <ol>
+          <li>Apoyá los antebrazos y las puntas de los pies en el piso.</li>
+          <li>Codos justo debajo de los hombros. Cuerpo recto de la cabeza a los talones.</li>
+          <li>Apretá abdomen y glúteos. Respirá normal. Aguantá el tiempo indicado.</li>
+        </ol>
+        <div class="mist"><b>Error común:</b> subir la cola o hundir la cadera. Imaginá una línea recta. <b>Versión fácil:</b> con las rodillas apoyadas.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PUENTE GLUTEOS -->
+  <div class="ex">
+    <div class="top">
+      <div class="fig">
+        <svg viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="110" x2="142" y2="110" stroke="#9bbcac" stroke-width="2"/>
+          <g fill="none" stroke="#0f7a52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="28" cy="96" r="7" fill="#0f7a52" stroke="none"/>
+            <!-- back on floor up to raised hips -->
+            <line x1="35" y1="96" x2="70" y2="70"/>
+            <line x1="70" y1="70" x2="92" y2="90"/>
+            <line x1="92" y1="90" x2="92" y2="108"/>
+            <!-- arm on floor -->
+            <line x1="35" y1="98" x2="35" y2="108"/>
+          </g>
+          <path d="M70 92 l0 -14" stroke="#f5a623" stroke-width="3" stroke-linecap="round" marker-end="url(#ar5)"/>
+          <defs><marker id="ar5" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#f5a623"/></marker></defs>
+        </svg>
+      </div>
+      <div class="body">
+        <h4><span class="exnum">5</span>Puente de glúteos</h4>
+        <div class="musc">Glúteos · Isquiotibiales · Zona lumbar</div>
+        <ol>
+          <li>Acostado boca arriba, rodillas dobladas, pies apoyados cerca de la cola.</li>
+          <li>Empujá con los talones y subí la cadera hasta formar una línea recta de hombros a rodillas.</li>
+          <li>Apretá fuerte los glúteos arriba 1 segundo y bajá controlado.</li>
+        </ol>
+        <div class="mist"><b>Error común:</b> arquear la zona baja de la espalda en vez de usar los glúteos. El movimiento sale de la cadera, no de la espalda.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOUNTAIN CLIMBER -->
+  <div class="ex">
+    <div class="top">
+      <div class="fig">
+        <svg viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="112" x2="142" y2="112" stroke="#9bbcac" stroke-width="2"/>
+          <g fill="none" stroke="#0f7a52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="28" cy="62" r="7" fill="#0f7a52" stroke="none"/>
+            <line x1="34" y1="64" x2="60" y2="70"/>
+            <!-- arms to floor -->
+            <line x1="40" y1="65" x2="40" y2="98"/>
+            <line x1="52" y1="67" x2="52" y2="98"/>
+            <!-- back leg extended -->
+            <line x1="60" y1="70" x2="92" y2="96"/>
+            <line x1="92" y1="96" x2="104" y2="110"/>
+            <!-- front knee driven in -->
+            <line x1="60" y1="70" x2="66" y2="92"/>
+            <line x1="66" y1="92" x2="58" y2="104"/>
+          </g>
+          <path d="M78 84 q10 4 -6 12" fill="none" stroke="#f5a623" stroke-width="3" stroke-linecap="round" marker-end="url(#ar6)"/>
+          <defs><marker id="ar6" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#f5a623"/></marker></defs>
+        </svg>
+      </div>
+      <div class="body">
+        <h4><span class="exnum">6</span>Mountain climber (escalador)</h4>
+        <div class="musc">Core · Cardio · Cuerpo completo</div>
+        <ol>
+          <li>En posición de plancha alta (brazos estirados, manos bajo los hombros).</li>
+          <li>Llevá una rodilla hacia el pecho y volvé, alternando piernas de forma rápida y controlada.</li>
+          <li>Mantené la cadera baja y el core firme; es un ejercicio dinámico que también sube pulsaciones.</li>
+        </ol>
+        <div class="mist"><b>Error común:</b> levantar mucho la cola o rebotar sin control. Ritmo firme, cadera estable. <b>Versión fácil:</b> hacelo más lento.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box tip"><span class="bt">Otros ejercicios de casa (misma lógica)</span>
+  <strong>Fondos de tríceps en silla</strong> (bajás y subís el cuerpo con las manos en el borde de una silla), <strong>Superman</strong> (boca abajo, elevás brazos y piernas para la espalda baja), <strong>Elevación de talones</strong> (de pie, subís en puntas de pie para las pantorrillas) y <strong>Abdominales / crunch</strong> (boca arriba, despegás los omóplatos llevando las costillas a la cadera). Todos con el mismo principio: técnica antes que cantidad.</div>
+</div>
+
+<!-- CAP 8 - GYM -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 8</div>
+  <h2 class="chap">Ejercicios en el gimnasio</h2>
+  <hr class="rule">
+  <p class="lead">En el gimnasio sumás máquinas y peso para progresar más. Si sos principiante, no te dé vergüenza pedirle a un profesor que te muestre una máquina: para eso están.</p>
+
+  <!-- PRENSA -->
+  <div class="ex">
+    <div class="top">
+      <div class="fig">
+        <svg viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg">
+          <!-- seat back -->
+          <line x1="18" y1="40" x2="18" y2="96" stroke="#9bbcac" stroke-width="3"/>
+          <line x1="18" y1="96" x2="46" y2="96" stroke="#9bbcac" stroke-width="3"/>
+          <!-- platform -->
+          <rect x="112" y="34" width="10" height="46" fill="#124d6b" rx="2"/>
+          <g fill="none" stroke="#0f7a52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="26" cy="52" r="7" fill="#0f7a52" stroke="none"/>
+            <line x1="30" y1="58" x2="30" y2="92"/>
+            <!-- legs pushing platform -->
+            <line x1="30" y1="80" x2="72" y2="66"/>
+            <line x1="72" y1="66" x2="108" y2="58"/>
+          </g>
+          <path d="M84 50 l16 -5" stroke="#f5a623" stroke-width="3" stroke-linecap="round" marker-end="url(#arp)"/>
+          <defs><marker id="arp" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#f5a623"/></marker></defs>
+        </svg>
+      </div>
+      <div class="body">
+        <h4><span class="exnum">7</span>Prensa de piernas</h4>
+        <div class="musc">Cuádriceps · Glúteos · Isquiotibiales</div>
+        <ol>
+          <li>Sentado en la máquina, pies apoyados en la plataforma al ancho de hombros.</li>
+          <li>Destrabá y bajá la plataforma doblando las rodillas hasta unos 90°.</li>
+          <li>Empujá con toda la planta del pie hasta casi estirar (sin bloquear de golpe las rodillas).</li>
+        </ol>
+        <div class="mist"><b>Error común:</b> bajar demasiado despegando la cola del respaldo, o estirar de golpe trabando la rodilla. Rango controlado.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRESS PECHO -->
+  <div class="ex">
+    <div class="top">
+      <div class="fig">
+        <svg viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg">
+          <!-- bench -->
+          <rect x="22" y="86" width="96" height="7" fill="#9bbcac" rx="2"/>
+          <line x1="34" y1="93" x2="34" y2="110" stroke="#9bbcac" stroke-width="3"/>
+          <line x1="106" y1="93" x2="106" y2="110" stroke="#9bbcac" stroke-width="3"/>
+          <g fill="none" stroke="#0f7a52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="34" cy="78" r="7" fill="#0f7a52" stroke="none"/>
+            <line x1="41" y1="80" x2="96" y2="84"/>
+            <!-- arms pressing up -->
+            <line x1="70" y1="82" x2="70" y2="52"/>
+            <line x1="82" y1="83" x2="82" y2="52"/>
+          </g>
+          <!-- bar -->
+          <line x1="58" y1="50" x2="94" y2="50" stroke="#124d6b" stroke-width="5" stroke-linecap="round"/>
+          <path d="M76 66 l0 -12" stroke="#f5a623" stroke-width="3" stroke-linecap="round" marker-end="url(#arc)"/>
+          <defs><marker id="arc" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#f5a623"/></marker></defs>
+        </svg>
+      </div>
+      <div class="body">
+        <h4><span class="exnum">8</span>Press de pecho (banca)</h4>
+        <div class="musc">Pecho · Hombros · Tríceps</div>
+        <ol>
+          <li>Acostado en la banca, agarrá la barra o mancuernas un poco más ancho que los hombros.</li>
+          <li>Bajá controlado hasta la altura del pecho, codos a unos 45°.</li>
+          <li>Empujá hacia arriba hasta estirar los brazos (sin trabar los codos).</li>
+        </ol>
+        <div class="mist"><b>Error común:</b> abrir los codos en cruz total (molesta el hombro) o rebotar la barra en el pecho. Con mancuernas es más amable para empezar.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REMO -->
+  <div class="ex">
+    <div class="top">
+      <div class="fig">
+        <svg viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="118" x2="142" y2="118" stroke="#9bbcac" stroke-width="2"/>
+          <g fill="none" stroke="#0f7a52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="40" cy="40" r="8" fill="#0f7a52" stroke="none"/>
+            <!-- torso bent forward -->
+            <line x1="46" y1="44" x2="86" y2="66"/>
+            <!-- legs slightly bent -->
+            <line x1="86" y1="66" x2="90" y2="92"/>
+            <line x1="90" y1="92" x2="90" y2="116"/>
+            <!-- arm pulling up -->
+            <line x1="60" y1="52" x2="60" y2="80"/>
+          </g>
+          <line x1="50" y1="82" x2="72" y2="82" stroke="#124d6b" stroke-width="5" stroke-linecap="round"/>
+          <path d="M60 76 l0 -14" stroke="#f5a623" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+          <defs><marker id="arr" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#f5a623"/></marker></defs>
+        </svg>
+      </div>
+      <div class="body">
+        <h4><span class="exnum">9</span>Remo (con mancuerna o máquina)</h4>
+        <div class="musc">Espalda · Bíceps · Parte posterior del hombro</div>
+        <ol>
+          <li>Con el torso inclinado hacia adelante y la espalda recta (o sentado en la máquina de remo).</li>
+          <li>Tirá del peso llevando el codo hacia atrás, apretando la espalda (juntando los omóplatos).</li>
+          <li>Bajá controlado estirando el brazo. No uses impulso del cuerpo.</li>
+        </ol>
+        <div class="mist"><b>Error común:</b> encorvar la espalda o tironear con el brazo sin usar la espalda. Pensá "llevo el codo al bolsillo trasero".</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JALON -->
+  <div class="ex">
+    <div class="top">
+      <div class="fig">
+        <svg viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg">
+          <!-- cable top -->
+          <line x1="70" y1="10" x2="70" y2="30" stroke="#9bbcac" stroke-width="2"/>
+          <line x1="50" y1="30" x2="90" y2="30" stroke="#124d6b" stroke-width="5" stroke-linecap="round"/>
+          <g fill="none" stroke="#0f7a52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="70" cy="58" r="8" fill="#0f7a52" stroke="none"/>
+            <line x1="70" y1="66" x2="70" y2="92"/>
+            <!-- arms up to bar -->
+            <line x1="66" y1="70" x2="52" y2="34"/>
+            <line x1="74" y1="70" x2="88" y2="34"/>
+            <!-- seated legs -->
+            <line x1="70" y1="92" x2="88" y2="96"/>
+            <line x1="88" y1="96" x2="88" y2="112"/>
+            <line x1="70" y1="92" x2="70" y2="112"/>
+          </g>
+          <path d="M100 40 l0 14" stroke="#f5a623" stroke-width="3" stroke-linecap="round" marker-end="url(#arj)"/>
+          <defs><marker id="arj" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#f5a623"/></marker></defs>
+        </svg>
+      </div>
+      <div class="body">
+        <h4><span class="exnum">10</span>Jalón al pecho (dorsalera)</h4>
+        <div class="musc">Espalda (dorsales) · Bíceps</div>
+        <ol>
+          <li>Sentado, agarrá la barra más ancho que los hombros, brazos estirados arriba.</li>
+          <li>Tirá la barra hacia la parte alta del pecho, llevando los codos hacia abajo y atrás.</li>
+          <li>Apretá la espalda abajo y volvé controlado, sin soltar de golpe.</li>
+        </ol>
+        <div class="mist"><b>Error común:</b> tirar la barra detrás de la nuca o hamacar el cuerpo. Llevala al pecho, torso levemente hacia atrás y firme.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRESS HOMBRO -->
+  <div class="ex">
+    <div class="top">
+      <div class="fig">
+        <svg viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="118" x2="142" y2="118" stroke="#9bbcac" stroke-width="2"/>
+          <g fill="none" stroke="#0f7a52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="70" cy="34" r="8" fill="#0f7a52" stroke="none"/>
+            <line x1="70" y1="42" x2="70" y2="82"/>
+            <!-- arms overhead -->
+            <line x1="66" y1="48" x2="54" y2="24"/>
+            <line x1="74" y1="48" x2="86" y2="24"/>
+            <!-- legs -->
+            <line x1="70" y1="82" x2="60" y2="116"/>
+            <line x1="70" y1="82" x2="80" y2="116"/>
+          </g>
+          <line x1="46" y1="22" x2="94" y2="22" stroke="#124d6b" stroke-width="5" stroke-linecap="round"/>
+          <path d="M104 40 l0 -12" stroke="#f5a623" stroke-width="3" stroke-linecap="round" marker-end="url(#arh)"/>
+          <defs><marker id="arh" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#f5a623"/></marker></defs>
+        </svg>
+      </div>
+      <div class="body">
+        <h4><span class="exnum">11</span>Press de hombros</h4>
+        <div class="musc">Hombros · Tríceps · Core</div>
+        <ol>
+          <li>Sentado o de pie, mancuernas a la altura de los hombros, palmas al frente.</li>
+          <li>Empujá el peso hacia arriba hasta casi estirar los brazos, sin trabar los codos.</li>
+          <li>Bajá controlado a la altura de las orejas. Mantené el abdomen firme.</li>
+        </ol>
+        <div class="mist"><b>Error común:</b> arquear mucho la espalda al empujar. Apretá el core y no uses impulso de piernas (salvo que sea "push press" a propósito).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PESO MUERTO RUMANO -->
+  <div class="ex">
+    <div class="top">
+      <div class="fig">
+        <svg viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="118" x2="142" y2="118" stroke="#9bbcac" stroke-width="2"/>
+          <!-- standing (start) -->
+          <g fill="none" stroke="#0f7a52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="38" cy="26" r="8" fill="#0f7a52" stroke="none"/>
+            <line x1="38" y1="34" x2="38" y2="74"/>
+            <line x1="38" y1="46" x2="38" y2="70"/>
+            <line x1="38" y1="74" x2="38" y2="116"/>
+          </g>
+          <line x1="28" y1="70" x2="48" y2="70" stroke="#124d6b" stroke-width="5" stroke-linecap="round"/>
+          <!-- hinged (end) -->
+          <g fill="none" stroke="#124d6b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="118" cy="52" r="8" fill="#124d6b" stroke="none"/>
+            <line x1="112" y1="54" x2="92" y2="42"/>
+            <line x1="112" y1="54" x2="96" y2="92"/>
+            <line x1="96" y1="92" x2="96" y2="116"/>
+            <!-- arms hanging -->
+            <line x1="106" y1="60" x2="106" y2="92"/>
+          </g>
+          <line x1="98" y1="94" x2="114" y2="94" stroke="#124d6b" stroke-width="5" stroke-linecap="round"/>
+          <path d="M62 56 q12 6 20 0" fill="none" stroke="#f5a623" stroke-width="3" stroke-linecap="round" marker-end="url(#arm2)"/>
+          <defs><marker id="arm2" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#f5a623"/></marker></defs>
+        </svg>
+      </div>
+      <div class="body">
+        <h4><span class="exnum">12</span>Peso muerto rumano</h4>
+        <div class="musc">Isquiotibiales · Glúteos · Espalda baja</div>
+        <ol>
+          <li>De pie, mancuernas o barra adelante de los muslos, rodillas apenas flexionadas.</li>
+          <li>Llevá la cola hacia atrás bajando el peso pegado a las piernas, espalda recta.</li>
+          <li>Bajá hasta media canilla (según flexibilidad) y volvé apretando glúteos.</li>
+        </ol>
+        <div class="mist"><b>Error común:</b> encorvar la espalda o doblar mucho las rodillas (eso es sentadilla). El movimiento es de <em>cadera</em>: cola hacia atrás, espalda siempre recta. Empezá con poco peso.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box tip"><span class="bt">Ejercicios de aislamiento útiles</span>
+  <strong>Curl de bíceps</strong> (flexionás el codo subiendo la mancuerna, para el brazo), <strong>Extensión de tríceps</strong> (estirás el codo, parte de atrás del brazo), <strong>Elevaciones laterales</strong> (subís los brazos a los costados, hombro) y <strong>Extensión de cuádriceps / Curl femoral</strong> en máquina. Se usan al final para darle detalle a un músculo puntual.</div>
+</div>
+
+<!-- PARTE 4 -->
+<div class="divider">
+  <div class="num">Parte 4</div>
+  <h2>La rutina de 12 semanas</h2>
+  <p>Tres fases de 4 semanas. Cada fase sube un escalón. Elegí la versión CASA o GYM según dónde entrenes. Todo con series, repeticiones, descanso y tips.</p>
+</div>
+
+<!-- CAP 9 - FASE 1 -->
+<div class="section">
+  <div class="chap-kicker">Semanas 1 a 4</div>
+  <h2 class="chap">Fase 1 — Adaptación</h2>
+  <hr class="rule">
+  <p class="lead">Objetivo: aprender la técnica, acostumbrar el cuerpo y crear el hábito. Nada de matarte: se trata de hacerlo bien y no faltar. <strong>3 días por semana</strong>, en días alternados (ej: lunes, miércoles, viernes).</p>
+  <div class="box key"><span class="bt">Pauta de la fase</span> 2–3 series por ejercicio · 10–12 repeticiones · descanso 60–90 seg · deja 2–3 reps en reserva (RIR 2–3). Peso/versión que te permita buena técnica.</div>
+
+  <div class="phase"><h3>🏠 Versión CASA — Cuerpo completo (full body)</h3><p>Mismo entrenamiento los 3 días. Circuito: hacé todos los ejercicios, descansá y repetí 2–3 vueltas.</p></div>
+  <table>
+    <thead><tr><th>Ejercicio</th><th class="c">Series</th><th class="c">Reps</th><th>Tip</th></tr></thead>
+    <tbody>
+      <tr><td>Sentadilla</td><td class="c">3</td><td class="c">12</td><td>Cola atrás, talones firmes</td></tr>
+      <tr><td>Flexión (rodillas si hace falta)</td><td class="c">3</td><td class="c">8–10</td><td>Cuerpo recto</td></tr>
+      <tr><td>Puente de glúteos</td><td class="c">3</td><td class="c">15</td><td>Apretá arriba 1 seg</td></tr>
+      <tr><td>Zancadas (por pierna)</td><td class="c">2</td><td class="c">10</td><td>Paso largo</td></tr>
+      <tr><td>Remo con botellas/mancuernas</td><td class="c">3</td><td class="c">12</td><td>Junta omóplatos</td></tr>
+      <tr><td>Plancha</td><td class="c">3</td><td class="c">20–30 s</td><td>Sin hundir cadera</td></tr>
+    </tbody>
+  </table>
+
+  <div class="phase"><h3>🏋️ Versión GYM — Cuerpo completo (full body)</h3><p>Mismo entrenamiento los 3 días. Empezá liviano para dominar cada máquina.</p></div>
+  <table>
+    <thead><tr><th>Ejercicio</th><th class="c">Series</th><th class="c">Reps</th><th>Tip</th></tr></thead>
+    <tbody>
+      <tr><td>Prensa de piernas</td><td class="c">3</td><td class="c">12</td><td>Rango 90°, sin trabar rodilla</td></tr>
+      <tr><td>Press de pecho (mancuernas)</td><td class="c">3</td><td class="c">10–12</td><td>Codos a 45°</td></tr>
+      <tr><td>Jalón al pecho</td><td class="c">3</td><td class="c">12</td><td>Al pecho, no a la nuca</td></tr>
+      <tr><td>Press de hombros</td><td class="c">2</td><td class="c">12</td><td>Core firme</td></tr>
+      <tr><td>Curl femoral (máquina)</td><td class="c">2</td><td class="c">12</td><td>Controlá la vuelta</td></tr>
+      <tr><td>Plancha</td><td class="c">3</td><td class="c">20–30 s</td><td>Línea recta</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Cardio:</strong> 20–30 min de caminata rápida los días que no entrenás, o al final de la sesión.</p>
+</div>
+
+<!-- CAP 10 - FASE 2 -->
+<div class="section">
+  <div class="chap-kicker">Semanas 5 a 8</div>
+  <h2 class="chap">Fase 2 — Construcción</h2>
+  <hr class="rule">
+  <p class="lead">Ya dominás la técnica. Ahora subimos el estímulo y, en el gym, dividimos el cuerpo para trabajar más cada zona. <strong>4 días por semana</strong> (ej: lun, mar, jue, vie). Si solo podés 3, mantené el full body de la Fase 1 pero con más peso.</p>
+  <div class="box key"><span class="bt">Pauta de la fase</span> 3–4 series · 8–12 repeticiones · descanso 60–90 seg · RIR 1–2 (un poco más cerca del esfuerzo real). Aplicá <strong>sobrecarga progresiva</strong>: subí reps o peso respecto a la Fase 1.</div>
+
+  <div class="phase"><h3>🏠 Versión CASA — Torso / Pierna</h3><p>Días 1 y 3: Torso. Días 2 y 4: Pierna y core. Sumá mochila con peso o gomas para exigir más.</p></div>
+  <div class="grid2">
+    <div class="col">
+      <span class="daytag">Días 1 y 3 · Torso</span>
+      <table>
+        <tbody>
+          <tr><td>Flexiones</td><td class="c">4×10–12</td></tr>
+          <tr><td>Remo con mancuernas</td><td class="c">4×12</td></tr>
+          <tr><td>Fondos de tríceps en silla</td><td class="c">3×10</td></tr>
+          <tr><td>Superman (espalda baja)</td><td class="c">3×12</td></tr>
+          <tr><td>Plancha</td><td class="c">3×40 s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <span class="daytag">Días 2 y 4 · Pierna + core</span>
+      <table>
+        <tbody>
+          <tr><td>Sentadilla (con peso)</td><td class="c">4×12</td></tr>
+          <tr><td>Zancadas por pierna</td><td class="c">3×12</td></tr>
+          <tr><td>Puente de glúteos</td><td class="c">4×15</td></tr>
+          <tr><td>Elevación de talones</td><td class="c">3×20</td></tr>
+          <tr><td>Mountain climbers</td><td class="c">3×30 s</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="phase"><h3>🏋️ Versión GYM — Torso / Pierna</h3></div>
+  <div class="grid2">
+    <div class="col">
+      <span class="daytag">Días 1 y 3 · Torso</span>
+      <table>
+        <tbody>
+          <tr><td>Press de pecho</td><td class="c">4×10</td></tr>
+          <tr><td>Jalón al pecho</td><td class="c">4×10–12</td></tr>
+          <tr><td>Press de hombros</td><td class="c">3×12</td></tr>
+          <tr><td>Remo en máquina</td><td class="c">3×12</td></tr>
+          <tr><td>Curl bíceps + Extensión tríceps</td><td class="c">3×12</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <span class="daytag">Días 2 y 4 · Pierna</span>
+      <table>
+        <tbody>
+          <tr><td>Prensa de piernas</td><td class="c">4×12</td></tr>
+          <tr><td>Peso muerto rumano</td><td class="c">3×10</td></tr>
+          <tr><td>Extensión de cuádriceps</td><td class="c">3×12</td></tr>
+          <tr><td>Curl femoral</td><td class="c">3×12</td></tr>
+          <tr><td>Elevación de talones</td><td class="c">3×20</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p><strong>Cardio:</strong> 2–3 sesiones de 25–30 min (caminata rápida, bici o elíptico), en días de descanso o al final.</p>
+</div>
+
+<!-- CAP 11 - FASE 3 -->
+<div class="section">
+  <div class="chap-kicker">Semanas 9 a 12</div>
+  <h2 class="chap">Fase 3 — Intensificación</h2>
+  <hr class="rule">
+  <p class="lead">La recta final antes del verano. Subimos densidad y esfuerzo con superseries y un poco menos de descanso, para exprimir el resultado. <strong>4 días por semana.</strong></p>
+  <div class="box key"><span class="bt">Pauta de la fase</span> 3–4 series · 10–15 repeticiones · descanso 45–60 seg · RIR 1 (cerca del esfuerzo, sin romper técnica). Usá <strong>superseries</strong> (dos ejercicios seguidos sin pausa) para intensificar y ahorrar tiempo.</div>
+
+  <div class="box tip"><span class="bt">Cómo leer una superserie</span> "A1 + A2" significa que hacés una serie de A1 e inmediatamente una de A2, y recién ahí descansás. Repetís hasta completar las series.</div>
+
+  <div class="phase"><h3>🏠 Versión CASA — Full body intenso (en circuito)</h3><p>3–4 vueltas al circuito completo, descansando 60 seg entre vueltas.</p></div>
+  <table>
+    <thead><tr><th>Bloque</th><th>Ejercicios</th><th class="c">Formato</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td>Sentadilla + Flexión</td><td class="c">3–4 × 15 / 12</td></tr>
+      <tr><td>B</td><td>Zancadas + Remo mancuernas</td><td class="c">3–4 × 12 / 12</td></tr>
+      <tr><td>C</td><td>Puente de glúteos + Fondos tríceps</td><td class="c">3–4 × 15 / 12</td></tr>
+      <tr><td>D (core)</td><td>Plancha + Mountain climbers</td><td class="c">3 × 45 s / 30 s</td></tr>
+    </tbody>
+  </table>
+
+  <div class="phase"><h3>🏋️ Versión GYM — Torso / Pierna con superseries</h3></div>
+  <div class="grid2">
+    <div class="col">
+      <span class="daytag">Días 1 y 3 · Torso</span>
+      <table>
+        <tbody>
+          <tr><td>Press pecho + Jalón</td><td class="c">4×12</td></tr>
+          <tr><td>Press hombros + Remo</td><td class="c">3×12</td></tr>
+          <tr><td>Curl + Extensión tríceps</td><td class="c">3×15</td></tr>
+          <tr><td>Plancha</td><td class="c">3×45 s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <span class="daytag">Días 2 y 4 · Pierna</span>
+      <table>
+        <tbody>
+          <tr><td>Prensa + Peso muerto rumano</td><td class="c">4×12</td></tr>
+          <tr><td>Extensión cuád + Curl femoral</td><td class="c">3×15</td></tr>
+          <tr><td>Zancadas caminando</td><td class="c">3×12</td></tr>
+          <tr><td>Elevación de talones</td><td class="c">4×20</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p><strong>Cardio:</strong> 3 sesiones de 25–35 min. Podés probar intervalos suaves (1 min rápido / 2 min tranquilo) si tu estado lo permite.</p>
+
+  <div class="box quote">Llegaste a la Fase 3. Si venís cumpliendo, ya no sos la misma persona que empezó en la semana 1: sabés entrenar, entendés tu cuerpo y tenés un hábito instalado. Eso no se pierde en el invierno.</div>
+</div>
+
+<!-- PARTE 5 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 12</div>
+  <h2 class="chap">Estiramiento, descanso y dudas frecuentes</h2>
+  <hr class="rule">
+
+  <h3>Enfriar y estirar (5 min al final)</h3>
+  <p>Al terminar, bajá el ritmo con 2–3 min de caminata suave y estirá los músculos que trabajaste, sin rebotes, manteniendo cada estiramiento 20–30 seg. Ayuda a la movilidad y a sentirte mejor al otro día.</p>
+
+  <h3>El descanso es parte del plan</h3>
+  <ul>
+    <li><strong>Días de descanso:</strong> respetá al menos 1–2 días sin entrenar fuerza por semana. El músculo crece ahí.</li>
+    <li><strong>Sueño:</strong> 7–8 h. Es cuando tu cuerpo repara y se pone más fuerte.</li>
+    <li><strong>Agujetas:</strong> es normal los primeros días. Si un músculo quedó muy dolorido, entrená otro grupo o descansá esa zona.</li>
+  </ul>
+
+  <h3>Preguntas frecuentes</h3>
+  <div class="card"><h4>Nunca entrené, ¿por dónde empiezo?</h4><p>Por la Fase 1, versión que te quede cómoda (casa o gym), con poco peso y foco total en la técnica. No te compares con nadie: todos arrancaron alguna vez.</p></div>
+  <div class="card"><h4>¿Necesito suplementos?</h4><p>No. Con buena comida alcanza. La proteína en polvo es solo una comodidad para llegar a tu proteína diaria, no es obligatoria ni mágica. Nada de quemadores ni cosas raras.</p></div>
+  <div class="card"><h4>¿Puedo entrenar todos los días?</h4><p>No hace falta y puede ser contraproducente. 3–4 días de fuerza bien hechos + caminatas rinden más que entrenar sin descanso.</p></div>
+  <div class="card"><h4>¿Y si me salteo un día?</h4><p>No pasa nada, retomá al siguiente. La regla es no faltar dos veces seguidas. La constancia a lo largo de las semanas es lo que cuenta, no la perfección.</p></div>
+  <div class="card"><h4>La balanza no baja pero me veo mejor, ¿por qué?</h4><p>Porque estás ganando algo de músculo mientras perdés grasa. Guiate también por el espejo, las medidas y cómo te queda la ropa, no solo por el número.</p></div>
+
+  <div class="box warn"><span class="bt">Recordá siempre</span> Ante dolor articular, mareo o cualquier molestia rara, pará y consultá a un profesional. Entrenar es para sumar salud, nunca para lastimarte. Escuchá a tu cuerpo.</div>
+
+  <div class="box key"><span class="bt">Tu plan completo</span> Combiná este entrenamiento con el ebook <em>12 Semanas al Verano</em> (alimentación, hábitos y mente), los licuados del Bonus 1 y el recetario del Bonus 2. Comida + entrenamiento + descanso + constancia = tu mejor verano. Nos vemos en la playa. 🌊</div>
+  <p class="center small" style="margin-top:10mm">Entrená para el Verano — Guía de Entrenamiento 12 Semanas · Bonus 3 del pack.</p>
+</div>
+
+</body>
+</html>
