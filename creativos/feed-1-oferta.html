@@ -1,0 +1,50 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1080px}
+body{font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;overflow:hidden;position:relative;
+  background:radial-gradient(120% 80% at 78% 20%,#16b985 0%,#0f9d6b 34%,#0b6a58 70%,#093f52 100%)}
+.wrap{position:absolute;inset:0;display:flex;align-items:center;padding:70px}
+.left{width:56%;padding-right:20px}
+.eyebrow{color:#12314a;background:#f5a623;font-weight:800;letter-spacing:3px;text-transform:uppercase;font-size:22px;padding:12px 24px;border-radius:100px;display:inline-block}
+h1{color:#fff;font-weight:800;font-size:82px;line-height:.98;margin-top:28px;letter-spacing:-.02em}
+h1 .hl{color:#fff5d6}
+.benes{margin-top:34px;display:flex;flex-direction:column;gap:20px}
+.brow{display:flex;align-items:center;gap:18px;color:#eafff4;font-size:31px;font-weight:700}
+.brow .ic{flex:none;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.45);display:grid;place-items:center;font-size:24px;color:#fff}
+.cta{margin-top:38px;background:#fff;color:#0b7a52;font-weight:800;font-size:36px;padding:26px 46px;border-radius:100px;display:inline-flex;align-items:center;gap:16px;box-shadow:0 16px 30px rgba(0,0,0,.3)}
+.arrowc{width:46px;height:46px;border-radius:50%;background:#0f9d6b;color:#fff;display:grid;place-items:center;font-size:26px}
+/* pack right */
+.pack{position:relative;width:44%;height:100%}
+.book{position:absolute;border-radius:14px;overflow:hidden;color:#fff;box-shadow:0 12px 26px rgba(0,0,0,.45), inset 14px 0 24px -14px rgba(0,0,0,.5), inset 3px 0 0 rgba(255,255,255,.25)}
+.book .in{position:absolute;inset:0;padding:22px 18px;display:flex;flex-direction:column}
+.book .eb{font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;opacity:.9}
+.book .tt{font-weight:800;line-height:1.03;margin-top:auto}
+.glow{position:absolute;right:-40%;top:-30%;width:120%;height:120%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.2),transparent 60%)}
+.b-main{background:linear-gradient(150deg,#0b7a52,#0f9d6b 45%,#16b985 72%,#f5b83d 140%)}
+.b-lic{background:linear-gradient(155deg,#e8571f,#f5872b 52%,#ffb347)}
+.b-rec{background:linear-gradient(155deg,#0b6a8a,#0e97b4 50%,#25c0cf)}
+.b-ent{background:linear-gradient(150deg,#0c2f4a,#124d6b 45%,#0f9d6b 118%)}
+.badge{position:absolute;top:40px;right:30px;z-index:9;background:#f5a623;color:#12314a;font-weight:800;font-size:26px;
+  width:150px;height:150px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1;box-shadow:0 12px 24px rgba(0,0,0,.35);transform:rotate(8deg)}
+.badge b{font-size:20px;font-weight:700;opacity:.85}
+</style></head><body>
+<div class="wrap">
+  <div class="left">
+    <div class="eyebrow">Método 12 semanas</div>
+    <h1>Tu proyecto<br>verano<br><span class="hl">empieza hoy</span></h1>
+    <div class="benes">
+      <div class="brow"><span class="ic">✓</span> Ebook + 3 bonus de regalo</div>
+      <div class="brow"><span class="ic">✓</span> Comida + entrenamiento + hábitos</div>
+      <div class="brow"><span class="ic">✓</span> Para hacer en casa o en el gym</div>
+    </div>
+    <div class="cta">Lo quiero <span class="arrowc">→</span></div>
+  </div>
+  <div class="pack">
+    <div class="badge"><span>4×1</span><b>en 1 pack</b></div>
+    <div class="book b-ent" style="width:196px;height:280px;left:20px;top:400px;transform:rotate(-13deg)"><div class="glow"></div><div class="in"><div class="eb">Bonus</div><div class="tt" style="font-size:27px">Entrená para<br>el Verano</div></div></div>
+    <div class="book b-rec" style="width:196px;height:280px;left:250px;top:400px;transform:rotate(13deg)"><div class="glow"></div><div class="in"><div class="eb">Bonus</div><div class="tt" style="font-size:27px">Recetario<br>Fit</div></div></div>
+    <div class="book b-lic" style="width:206px;height:296px;left:70px;top:370px;transform:rotate(-6deg)"><div class="glow"></div><div class="in"><div class="eb">Bonus</div><div class="tt" style="font-size:28px">Licuados<br>que Queman</div></div></div>
+    <div class="book b-main" style="width:250px;height:356px;left:120px;top:330px;transform:rotate(-1deg);z-index:5"><div class="glow"></div><div class="in"><div class="eb">Guía</div><div class="tt" style="font-size:38px">12 Semanas<br><span style="color:#fff5d6">al Verano</span></div></div></div>
+  </div>
+</div>
+</body></html>

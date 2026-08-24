@@ -1,0 +1,20 @@
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%}
+body{font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;overflow:hidden;position:relative}
+.stage{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;overflow:hidden}
+.display{font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02}
+/* book mockup */
+.pack{position:relative;filter:drop-shadow(0 40px 60px rgba(0,0,0,.45))}
+.book{position:absolute;border-radius:14px;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.35), inset 14px 0 24px -14px rgba(0,0,0,.45), inset 3px 0 0 rgba(255,255,255,.25)}
+.book .bcont{position:absolute;inset:0;padding:26px 20px 20px;color:#fff;display:flex;flex-direction:column}
+.book .eb{font-size:15px;font-weight:800;letter-spacing:3px;text-transform:uppercase;opacity:.9}
+.book .bt{font-weight:800;line-height:1.02;letter-spacing:-.01em;margin-top:auto}
+.book .glow{position:absolute;right:-40%;top:-30%;width:120%;height:120%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 60%)}
+.b-main{background:linear-gradient(150deg,#0b7a52,#0f9d6b 45%,#16b985 72%,#f5b83d 135%)}
+.b-lic{background:linear-gradient(155deg,#e8571f,#f5872b 50%,#ffb347)}
+.b-rec{background:linear-gradient(155deg,#0b6a8a,#0e97b4 50%,#25c0cf)}
+.b-ent{background:linear-gradient(150deg,#0c2f4a,#124d6b 45%,#0f9d6b 115%)}
+.cta{background:#fff;color:#0b7a52;font-weight:800;border-radius:100px;display:inline-flex;align-items:center;gap:14px;box-shadow:0 14px 30px rgba(0,0,0,.28)}
+.badge{background:#f5a623;color:#12314a;font-weight:800;border-radius:100px;display:inline-block}
+.check{display:flex;align-items:center;gap:18px;font-weight:700}
+.check .ic{flex:none;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.5)}
