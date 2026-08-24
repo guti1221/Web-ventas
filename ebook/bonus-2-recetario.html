@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Bonus 2 — Recetario Uruguayo Fit</title>
+<style>
+@page{ size:A4; margin:18mm 16mm 20mm 16mm;
+  @bottom-center{ content:counter(page); font-family:Georgia,serif; font-size:9pt; color:#2a6a86; }
+}
+@page:first{ margin:0; @bottom-center{content:none} }
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:"Segoe UI",Helvetica,Arial,sans-serif;color:#132833;line-height:1.5;font-size:10.5pt}
+h1,h2,h3,h4{font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;line-height:1.15;color:#0d5a75}
+p{margin:.4em 0}
+strong{color:#093f52}
+em{color:#0e8fa8;font-style:normal;font-weight:600}
+
+.cover{position:relative;height:297mm;width:100%;
+  background:linear-gradient(155deg,#0b6a8a 0%,#0e97b4 45%,#25c0cf 78%,#8fe3d6 125%);
+  color:#fff;padding:36mm 22mm;display:flex;flex-direction:column;page-break-after:always;overflow:hidden}
+.cover::after{content:"";position:absolute;right:-70mm;top:-70mm;width:180mm;height:180mm;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.18),transparent 60%)}
+.cover .eyebrow{position:relative;z-index:2;font-size:12pt;letter-spacing:.3em;text-transform:uppercase;font-weight:700;opacity:.95}
+.cover h1{position:relative;z-index:2;color:#fff;font-size:44pt;font-weight:800;margin:12mm 0 5mm;text-shadow:0 4px 22px rgba(0,0,0,.15)}
+.cover .sub{position:relative;z-index:2;font-size:15pt;font-weight:600;max-width:132mm;opacity:.97}
+.cover .foot{position:relative;z-index:2;margin-top:auto;font-size:13pt;font-weight:600;border-top:2px solid rgba(255,255,255,.5);padding-top:6mm;max-width:120mm}
+
+.intro{page-break-after:always}
+h2.chap{font-size:22pt;color:#0e8fa8;font-weight:800;margin-bottom:2mm}
+.rule{height:3px;width:44mm;background:linear-gradient(90deg,#0b6a8a,#25c0cf);border:0;margin:2mm 0 5mm;border-radius:3px}
+.lead{font-size:12pt;color:#33586a;margin-bottom:4mm}
+h3{font-size:14pt;color:#0d5a75;margin:6mm 0 2mm;border-left:4px solid #0e97b4;padding-left:4mm}
+.box{border-radius:9px;padding:4mm 5mm;margin:4mm 0;page-break-inside:avoid}
+.box .bt{font-weight:800;display:block;margin-bottom:1mm}
+.box.tip{background:#e3f6fa;border:1px solid #a8dfe9}.box.tip .bt{color:#0d7a95}
+.box.warn{background:#fdeee9;border:1px solid #f6c6b4}.box.warn .bt{color:#d1502b}
+ul,ol{margin:.3em 0 .3em 1.2em}li{margin:.2em 0}
+
+.cat{page-break-before:always;background:linear-gradient(135deg,#0b6a8a,#0e97b4);color:#fff;border-radius:9px;padding:7mm 8mm;margin-bottom:5mm}
+.cat h2{color:#fff;font-size:20pt;margin:0}
+.cat p{margin:1mm 0 0;opacity:.95;font-size:11pt}
+
+.rec{border:1px solid #cfe6ec;border-left:5px solid #0e97b4;border-radius:9px;padding:4mm 5mm;margin:4mm 0;page-break-inside:avoid;background:#fbfeff;position:relative}
+.rec .n{position:absolute;top:4mm;right:5mm;color:#0e97b4;font-weight:800;font-size:16pt;opacity:.35}
+.rec h4{font-size:13pt;color:#0d5a75;margin:0 0 1mm;padding-right:12mm}
+.rec .meta{font-size:8.8pt;color:#5a7885;margin-bottom:2mm;text-transform:uppercase;letter-spacing:.04em;font-weight:700}
+.rec .ing,.rec .prep{font-size:9.8pt;color:#23414f}
+.rec .ing b,.rec .prep b{color:#0d5a75}
+.rec .prep{margin-top:1.5mm}
+.small{font-size:9pt;color:#5a7885}
+.center{text-align:center}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="eyebrow">Bonus 2</div>
+  <h1>Recetario<br>Uruguayo Fit</h1>
+  <p class="sub">40 recetas ricas, sencillas y saludables con productos de acá. Desayunos, almuerzos, cenas y snacks para no aburrirte nunca y comer bien sin resignar el sabor.</p>
+  <div class="foot">Un complemento de <em style="color:#fff">12 Semanas al Verano</em>. Comé rico, comé bien.</div>
+</div>
+
+<div class="intro">
+  <h2 class="chap">Comer sano no es comer aburrido</h2>
+  <hr class="rule">
+  <p class="lead">La mayoría abandona la dieta porque se aburre o porque siente que renuncia a todo lo que le gusta. Este recetario está pensado para lo contrario: versiones más livianas de nuestros clásicos, con ingredientes que conseguís en cualquier feria o súper del país.</p>
+
+  <h3>Cómo aprovecharlo</h3>
+  <ul>
+    <li><strong>Elegí 2–3 recetas por categoría</strong> que te gusten y rotalas. No necesitás cocinar 40 cosas distintas.</li>
+    <li><strong>Cociná de más (batch cooking):</strong> preparé porciones para 2–3 días y guardá en la heladera. Así no caés en el delivery.</li>
+    <li><strong>Armá el plato equilibrado:</strong> medio de verduras, un cuarto de proteína, un cuarto de carbohidrato. Estas recetas ya siguen esa lógica.</li>
+    <li><strong>Ajustá las porciones</strong> a tu hambre y tu objetivo. Las cantidades son orientativas.</li>
+  </ul>
+  <div class="box tip">
+    <span class="bt">Sustituciones inteligentes que usamos</span>
+    Crema → yogur natural · Fritura → horno o airfryer · Pan blanco → integral · Azúcar → fruta o edulcorante · Mayonesa → palta o yogur · Milanesa frita → al horno. Pequeños cambios, mismo sabor, mitad de calorías.
+  </div>
+  <div class="box warn">
+    <span class="bt">Nota</span>
+    Las recetas son orientativas y adaptables. Si tenés alguna condición de salud, alergia o seguís una dieta indicada, consultá con tu nutricionista o médico antes de aplicarlas.
+  </div>
+</div>
+
+<!-- DESAYUNOS -->
+<div class="cat"><h2>☀️ Desayunos y meriendas</h2><p>Para arrancar con energía y llegar bien a la próxima comida.</p></div>
+
+<div class="rec"><span class="n">1</span><h4>Tostadas de pan integral con palta y huevo</h4><div class="meta">10 min · alto en proteína y grasas buenas</div><div class="ing"><b>Ingredientes:</b> 2 rebanadas de pan integral, ½ palta, 1 huevo, sal, pimienta, jugo de limón.</div><div class="prep"><b>Preparación:</b> Tostá el pan. Pisá la palta con limón y sal, untá. Cociná el huevo (poché o plancha) y ponelo arriba. Pimienta y listo.</div></div>
+
+<div class="rec"><span class="n">2</span><h4>Yogur con avena, fruta y nueces (overnight)</h4><div class="meta">5 min + heladera · saciante</div><div class="ing"><b>Ingredientes:</b> 1 yogur natural, 3 cdas de avena, 1 fruta picada, puñado de nueces, canela.</div><div class="prep"><b>Preparación:</b> Mezclá todo en un frasco la noche anterior y dejá en la heladera. A la mañana está listo para llevar.</div></div>
+
+<div class="rec"><span class="n">3</span><h4>Panqueques de avena y banana</h4><div class="meta">15 min · sin harina blanca</div><div class="ing"><b>Ingredientes:</b> 1 banana pisada, 2 huevos, 4 cdas de avena, canela, esencia de vainilla.</div><div class="prep"><b>Preparación:</b> Mezclá todo hasta una pasta. Cociná en sartén antiadherente porciones chicas, 1–2 min por lado. Serví con fruta.</div></div>
+
+<div class="rec"><span class="n">4</span><h4>Revuelto de huevo y espinaca</h4><div class="meta">10 min · bajo en carbohidratos</div><div class="ing"><b>Ingredientes:</b> 2 huevos, puñado de espinaca, ½ tomate, sal, pimienta.</div><div class="prep"><b>Preparación:</b> Salteá la espinaca y el tomate. Sumá los huevos batidos y revolvé hasta cocinar. Acompañá con una tostada integral.</div></div>
+
+<div class="rec"><span class="n">5</span><h4>Tostada de ricota y frutillas</h4><div class="meta">5 min · dulce y liviano</div><div class="ing"><b>Ingredientes:</b> 1 rebanada de pan integral, 2 cdas de ricota magra, frutillas, un hilo de miel.</div><div class="prep"><b>Preparación:</b> Untá la ricota sobre el pan, cubrí con frutillas en rodajas y un toque de miel.</div></div>
+
+<div class="rec"><span class="n">6</span><h4>Budín de avena en taza (microondas)</h4><div class="meta">4 min · antojo exprés</div><div class="ing"><b>Ingredientes:</b> 4 cdas de avena, 1 huevo, 1 cdita de cacao, edulcorante, ½ cdita de polvo de hornear.</div><div class="prep"><b>Preparación:</b> Mezclá todo en una taza. Microondas 1½–2 min. Sale un budín esponjoso para la merienda.</div></div>
+
+<div class="rec"><span class="n">7</span><h4>Mate cocido con tostadas de queso magro</h4><div class="meta">5 min · clásico liviano</div><div class="ing"><b>Ingredientes:</b> pan integral, queso magro (dambo light o port salut light), tomate, orégano.</div><div class="prep"><b>Preparación:</b> Tostá el pan con el queso hasta fundir, sumá rodajas de tomate y orégano. Acompañá con mate cocido sin azúcar.</div></div>
+
+<div class="rec"><span class="n">8</span><h4>Bowl de yogur proteico</h4><div class="meta">5 min · post-entreno</div><div class="ing"><b>Ingredientes:</b> 1 yogur griego, ½ banana, arándanos o frutillas, 1 cda de semillas, granola sin azúcar.</div><div class="prep"><b>Preparación:</b> Poné el yogur en un bowl y decorá con la fruta, semillas y granola. Simple y muy saciante.</div></div>
+
+<!-- ALMUERZOS -->
+<div class="cat"><h2>🍽️ Almuerzos</h2><p>Platos completos y contundentes para el mediodía.</p></div>
+
+<div class="rec"><span class="n">9</span><h4>Milanesa de pollo al horno con ensalada</h4><div class="meta">30 min · el clásico, en versión fit</div><div class="ing"><b>Ingredientes:</b> pechuga de pollo, 1 huevo, pan rallado integral, ensalada de hojas verdes, tomate.</div><div class="prep"><b>Preparación:</b> Pasá el pollo por huevo y pan rallado. Horneá 20–25 min (o airfryer) hasta dorar, dándola vuelta. Acompañá con ensalada abundante.</div></div>
+
+<div class="rec"><span class="n">10</span><h4>Bowl de arroz integral, carne magra y verduras</h4><div class="meta">25 min · plato equilibrado</div><div class="ing"><b>Ingredientes:</b> ½ taza de arroz integral, 120 g de carne magra en tiras, morrón, zanahoria, cebolla.</div><div class="prep"><b>Preparación:</b> Salteá la carne con las verduras. Serví sobre el arroz cocido. Condimentá con salsa de soja liviana o especias.</div></div>
+
+<div class="rec"><span class="n">11</span><h4>Tarta de acelga con masa integral</h4><div class="meta">45 min · rinde varias porciones</div><div class="ing"><b>Ingredientes:</b> masa integral, 1 atado de acelga, 2 huevos, 3 cdas de ricota magra, cebolla.</div><div class="prep"><b>Preparación:</b> Salteá acelga y cebolla. Mezclá con huevos y ricota. Volcá sobre la masa y horneá 30 min. Ideal para llevar al trabajo.</div></div>
+
+<div class="rec"><span class="n">12</span><h4>Pollo al horno con boniato</h4><div class="meta">40 min · sabroso y saciante</div><div class="ing"><b>Ingredientes:</b> pata-muslo de pollo sin piel, boniato en cubos, romero, ajo, aceite de oliva.</div><div class="prep"><b>Preparación:</b> Condimentá todo, colocá en una fuente y horneá 35–40 min hasta dorar. El boniato aporta energía de calidad.</div></div>
+
+<div class="rec"><span class="n">13</span><h4>Ensalada completa de atún y huevo</h4><div class="meta">15 min · sin cocina, rápido</div><div class="ing"><b>Ingredientes:</b> lata de atún al natural, 1 huevo duro, lechuga, tomate, choclo, ½ palta.</div><div class="prep"><b>Preparación:</b> Mezclá todo en un bowl. Aliñá con aceite de oliva, limón y sal. Comida completa y fresca para el calor.</div></div>
+
+<div class="rec"><span class="n">14</span><h4>Guiso de lentejas liviano</h4><div class="meta">40 min · proteína vegetal</div><div class="ing"><b>Ingredientes:</b> 1 taza de lentejas, zanahoria, cebolla, morrón, tomate, un poco de calabaza.</div><div class="prep"><b>Preparación:</b> Rehogá las verduras, sumá las lentejas y agua/caldo. Cociná 30 min. Nutritivo, económico y saciante.</div></div>
+
+<div class="rec"><span class="n">15</span><h4>Pescado a la plancha con puré de calabaza</h4><div class="meta">25 min · liviano y proteico</div><div class="ing"><b>Ingredientes:</b> filete de merluza o pescado blanco, calabaza, ajo, perejil, limón.</div><div class="prep"><b>Preparación:</b> Hervé y pisá la calabaza. Cociná el pescado a la plancha con limón y perejil. Acompañá con ensalada.</div></div>
+
+<div class="rec"><span class="n">16</span><h4>Wok de fideos integrales con pollo</h4><div class="meta">20 min · rápido</div><div class="ing"><b>Ingredientes:</b> fideos integrales, pechuga en tiras, brócoli, zanahoria, morrón, salsa de soja.</div><div class="prep"><b>Preparación:</b> Salteá el pollo y las verduras a fuego fuerte. Sumá los fideos cocidos y la salsa de soja. Mezclá y serví.</div></div>
+
+<div class="rec"><span class="n">17</span><h4>Hamburguesas caseras de carne magra</h4><div class="meta">20 min · versión sana del finde</div><div class="ing"><b>Ingredientes:</b> carne picada magra, ajo, perejil, pan integral, tomate, lechuga, cebolla.</div><div class="prep"><b>Preparación:</b> Formá los medallones y cociná a la plancha. Armá en pan integral con vegetales. Sin fritura ni salsas cargadas.</div></div>
+
+<div class="rec"><span class="n">18</span><h4>Zapallitos rellenos</h4><div class="meta">40 min · bajo en calorías</div><div class="ing"><b>Ingredientes:</b> zapallitos, carne picada magra o pollo, cebolla, tomate, un poco de queso magro.</div><div class="prep"><b>Preparación:</b> Ahuecá los zapallitos, rellená con el salteado de carne y verduras, cubrí con queso y gratiná al horno.</div></div>
+
+<!-- CENAS -->
+<div class="cat"><h2>🌙 Cenas livianas</h2><p>Comidas que no te dejan pesado y cuidan tu descanso.</p></div>
+
+<div class="rec"><span class="n">19</span><h4>Tortilla de verduras al horno</h4><div class="meta">25 min · liviana</div><div class="ing"><b>Ingredientes:</b> 3 huevos, zapallito, cebolla, morrón, espinaca, sal, pimienta.</div><div class="prep"><b>Preparación:</b> Salteá las verduras, mezclá con los huevos batidos y cociná en sartén o al horno hasta cuajar. Cena completa y ligera.</div></div>
+
+<div class="rec"><span class="n">20</span><h4>Sopa crema de calabaza y jengibre</h4><div class="meta">30 min · reconfortante</div><div class="ing"><b>Ingredientes:</b> calabaza, cebolla, jengibre, caldo de verduras, un toque de yogur natural.</div><div class="prep"><b>Preparación:</b> Hervé la calabaza con cebolla y jengibre, procesá con el caldo. Terminá con una cucharada de yogur en vez de crema.</div></div>
+
+<div class="rec"><span class="n">21</span><h4>Pechuga a la plancha con ensalada tibia</h4><div class="meta">20 min · proteica</div><div class="ing"><b>Ingredientes:</b> pechuga de pollo, brócoli, zanahoria, chauchas, aceite de oliva, limón.</div><div class="prep"><b>Preparación:</b> Cociná el pollo a la plancha. Hervé o salteá las verduras y serví tibias con un hilo de oliva y limón.</div></div>
+
+<div class="rec"><span class="n">22</span><h4>Omelette de queso magro y tomate</h4><div class="meta">10 min · exprés</div><div class="ing"><b>Ingredientes:</b> 2 huevos, queso magro, tomate, orégano, sal.</div><div class="prep"><b>Preparación:</b> Batí los huevos, volcá en sartén, sumá queso y tomate, cerrá el omelette. Rápido cuando llegás cansado.</div></div>
+
+<div class="rec"><span class="n">23</span><h4>Ensalada de garbanzos</h4><div class="meta">15 min · proteína vegetal</div><div class="ing"><b>Ingredientes:</b> garbanzos cocidos, tomate, pepino, cebolla morada, perejil, aceite de oliva, limón.</div><div class="prep"><b>Preparación:</b> Mezclá todo frío. Fresca, saciante y perfecta para las noches de calor.</div></div>
+
+<div class="rec"><span class="n">24</span><h4>Pizza de coliflor</h4><div class="meta">40 min · sin harina</div><div class="ing"><b>Ingredientes:</b> coliflor procesada, 1 huevo, queso magro rallado, salsa de tomate, orégano, vegetales.</div><div class="prep"><b>Preparación:</b> Mezclá coliflor rallada con huevo y queso, formá la base y horneá. Sumá salsa y toppings, gratiná. Antojo de pizza sin culpa.</div></div>
+
+<div class="rec"><span class="n">25</span><h4>Brochetas de pollo y vegetales</h4><div class="meta">25 min · a la parrilla o plancha</div><div class="ing"><b>Ingredientes:</b> pechuga en cubos, morrón, cebolla, zapallito, tomate cherry, especias.</div><div class="prep"><b>Preparación:</b> Ensartá pollo y vegetales, condimentá y cociná a la parrilla o plancha girando. Rico y vistoso.</div></div>
+
+<div class="rec"><span class="n">26</span><h4>Merluza al papillote</h4><div class="meta">25 min · sin grasa agregada</div><div class="ing"><b>Ingredientes:</b> filete de merluza, zanahoria en juliana, puerro, limón, hierbas.</div><div class="prep"><b>Preparación:</b> Envolvé el pescado con las verduras y limón en papel manteca. Horneá 20 min. Se cocina en su jugo, súper liviano.</div></div>
+
+<div class="rec"><span class="n">27</span><h4>Revuelto de calabacín y pollo</h4><div class="meta">15 min · bajo en carbohidratos</div><div class="ing"><b>Ingredientes:</b> zapallito, pechuga en cubos, cebolla, ajo, huevo, especias.</div><div class="prep"><b>Preparación:</b> Salteá el pollo con las verduras, sumá el huevo y revolvé. Cena rápida, proteica y liviana.</div></div>
+
+<div class="rec"><span class="n">28</span><h4>Ensalada César fit</h4><div class="meta">15 min · clásico aligerado</div><div class="ing"><b>Ingredientes:</b> lechuga, pollo a la plancha, crutones integrales, aderezo de yogur con mostaza y limón.</div><div class="prep"><b>Preparación:</b> Reemplazá el aderezo cremoso por yogur, mostaza, limón y ajo. Todo el sabor, la mitad de las calorías.</div></div>
+
+<!-- SNACKS Y POSTRES -->
+<div class="cat"><h2>🍎 Snacks y postres sanos</h2><p>Para el picoteo inteligente y el gusto dulce sin descarrilar.</p></div>
+
+<div class="rec"><span class="n">29</span><h4>Hummus casero con bastones de vegetales</h4><div class="meta">10 min · snack saciante</div><div class="ing"><b>Ingredientes:</b> garbanzos, jugo de limón, ajo, aceite de oliva, zanahoria y apio en bastones.</div><div class="prep"><b>Preparación:</b> Procesá los garbanzos con limón, ajo y oliva. Serví con vegetales para mojar. Ideal media tarde.</div></div>
+
+<div class="rec"><span class="n">30</span><h4>Chips de boniato al horno</h4><div class="meta">30 min · en vez de papas fritas</div><div class="ing"><b>Ingredientes:</b> boniato en rodajas finas, aceite de oliva en spray, sal, pimentón.</div><div class="prep"><b>Preparación:</b> Colocá las rodajas en placa, rocío de oliva y especias. Horneá hasta crocantes. El antojo salado, resuelto.</div></div>
+
+<div class="rec"><span class="n">31</span><h4>Manzana asada con canela</h4><div class="meta">25 min · postre natural</div><div class="ing"><b>Ingredientes:</b> 1 manzana, canela, un toque de miel, nueces picadas.</div><div class="prep"><b>Preparación:</b> Sin el centro, rellená con canela, miel y nueces. Horneá 20 min. Postre tibio y reconfortante.</div></div>
+
+<div class="rec"><span class="n">32</span><h4>Gelatina light con frutas</h4><div class="meta">5 min + heladera · muy bajo en calorías</div><div class="ing"><b>Ingredientes:</b> gelatina dietética, frutillas o durazno en trozos.</div><div class="prep"><b>Preparación:</b> Prepará la gelatina, sumá la fruta y llevá a la heladera. Postre fresco casi sin calorías.</div></div>
+
+<div class="rec"><span class="n">33</span><h4>Bolitas de avena, cacao y maní</h4><div class="meta">15 min · energía para llevar</div><div class="ing"><b>Ingredientes:</b> avena, mantequilla de maní, 1 cdita de cacao, miel, coco rallado.</div><div class="prep"><b>Preparación:</b> Mezclá todo, formá bolitas y pasá por coco. Enfriá. Snack pre-entreno o para el antojo dulce.</div></div>
+
+<div class="rec"><span class="n">34</span><h4>Yogur helado de frutilla</h4><div class="meta">5 min + freezer · postre exprés</div><div class="ing"><b>Ingredientes:</b> 1 yogur natural, 1 taza de frutillas congeladas, edulcorante.</div><div class="prep"><b>Preparación:</b> Procesá las frutillas congeladas con el yogur hasta cremoso. Serví al momento, textura de helado.</div></div>
+
+<div class="rec"><span class="n">35</span><h4>Palitos de queso magro y tomate cherry</h4><div class="meta">5 min · picoteo proteico</div><div class="ing"><b>Ingredientes:</b> queso magro en cubos, tomates cherry, orégano, oliva.</div><div class="prep"><b>Preparación:</b> Ensartá en palillos, condimentá. Snack rápido con proteína que corta el hambre.</div></div>
+
+<div class="rec"><span class="n">36</span><h4>Mousse de banana y cacao</h4><div class="meta">10 min · 2 ingredientes</div><div class="ing"><b>Ingredientes:</b> 2 bananas congeladas, 1 cdita de cacao puro.</div><div class="prep"><b>Preparación:</b> Procesá la banana congelada con el cacao hasta cremoso. Postre tipo helado, sin azúcar ni lácteos.</div></div>
+
+<div class="rec"><span class="n">37</span><h4>Tostada de pan integral con ricota y tomate</h4><div class="meta">5 min · merienda salada</div><div class="ing"><b>Ingredientes:</b> pan integral, ricota magra, tomate, albahaca, oliva.</div><div class="prep"><b>Preparación:</b> Untá ricota, sumá tomate y albahaca, un hilo de oliva. Merienda liviana y saciante.</div></div>
+
+<div class="rec"><span class="n">38</span><h4>Frutos secos porcionados</h4><div class="meta">1 min · el snack más práctico</div><div class="ing"><b>Ingredientes:</b> mix de nueces, almendras y maní sin sal.</div><div class="prep"><b>Preparación:</b> Armá bolsitas de un puñado (30 g) cada una. Llevá una en la mochila. Energía y grasas buenas para el antojo.</div></div>
+
+<div class="rec"><span class="n">39</span><h4>Pop de maíz casero (sin manteca)</h4><div class="meta">10 min · película sin culpa</div><div class="ing"><b>Ingredientes:</b> maíz pisingallo, olla con tapa, un toque de oliva, sal.</div><div class="prep"><b>Preparación:</b> Hacé el pop en olla con muy poco aceite. Sin manteca ni caramelo, es un snack liviano y con fibra.</div></div>
+
+<div class="rec"><span class="n">40</span><h4>Brownie de avena y banana</h4><div class="meta">30 min · postre estrella</div><div class="ing"><b>Ingredientes:</b> 2 bananas, 2 huevos, 5 cdas de avena, 2 cdas de cacao, edulcorante, polvo de hornear.</div><div class="prep"><b>Preparación:</b> Mezclá todo, volcá en molde y horneá 20–25 min. Húmedo y chocolatoso, sin harina ni azúcar. El gusto del finde, sin arruinar la semana.</div></div>
+
+<div style="page-break-before:always"></div>
+<h2 class="chap">Tu semana resuelta</h2>
+<hr class="rule">
+<p class="lead">No improvises con hambre. Cada domingo, elegí y anotá tus comidas de la semana combinando estas recetas con los licuados del Bonus 1.</p>
+<div class="box tip"><span class="bt">Fórmula simple del día</span>
+Desayuno (una receta de la primera sección o un licuado) · Almuerzo (medio plato de verduras + proteína + carbohidrato) · Merienda (snack sano o licuado) · Cena liviana (una receta de la sección noche). Agua durante todo el día.</div>
+<div class="box warn"><span class="bt">Recordá</span> La clave no es la perfección de un día, sino la constancia de la semana. Comé rico, comé real y disfrutá el proceso. Tu verano se cocina hoy.</div>
+<p class="center small" style="margin-top:12mm">Recetario Uruguayo Fit — Bonus 2 de 12 Semanas al Verano.</p>
+
+</body>
+</html>

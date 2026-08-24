@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Bonus 1 — Licuados que Queman</title>
+<style>
+@page{ size:A4; margin:18mm 16mm 20mm 16mm;
+  @bottom-center{ content:counter(page); font-family:Georgia,serif; font-size:9pt; color:#a06a2a; }
+}
+@page:first{ margin:0; @bottom-center{content:none} }
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:"Segoe UI",Helvetica,Arial,sans-serif;color:#3a2410;line-height:1.5;font-size:10.5pt}
+h1,h2,h3,h4{font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;line-height:1.15;color:#7a3d0a}
+p{margin:.4em 0}
+strong{color:#5a2d06}
+em{color:#c0620d;font-style:normal;font-weight:600}
+
+/* Cover */
+.cover{position:relative;height:297mm;width:100%;
+  background:linear-gradient(155deg,#e8571f 0%,#f5872b 45%,#ffb347 78%,#ffd98a 120%);
+  color:#fff;padding:36mm 22mm;display:flex;flex-direction:column;page-break-after:always;overflow:hidden}
+.cover::after{content:"";position:absolute;left:-70mm;bottom:-70mm;width:180mm;height:180mm;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.18),transparent 60%)}
+.cover .eyebrow{position:relative;z-index:2;font-size:12pt;letter-spacing:.3em;text-transform:uppercase;font-weight:700;opacity:.95}
+.cover h1{position:relative;z-index:2;color:#fff;font-size:46pt;font-weight:800;margin:12mm 0 5mm;text-shadow:0 4px 22px rgba(0,0,0,.15)}
+.cover .sub{position:relative;z-index:2;font-size:15pt;font-weight:600;max-width:130mm;opacity:.97}
+.cover .foot{position:relative;z-index:2;margin-top:auto;font-size:13pt;font-weight:600;border-top:2px solid rgba(255,255,255,.5);padding-top:6mm;max-width:120mm}
+.cover .num{position:relative;z-index:2;font-size:40pt;font-weight:800;opacity:.25;margin-top:4mm}
+
+.intro{page-break-after:always}
+h2.chap{font-size:22pt;color:#c0620d;font-weight:800;margin-bottom:2mm}
+.rule{height:3px;width:44mm;background:linear-gradient(90deg,#e8571f,#ffb347);border:0;margin:2mm 0 5mm;border-radius:3px}
+.lead{font-size:12pt;color:#6a4520;margin-bottom:4mm}
+h3{font-size:14pt;color:#7a3d0a;margin:6mm 0 2mm;border-left:4px solid #f5872b;padding-left:4mm}
+.box{border-radius:9px;padding:4mm 5mm;margin:4mm 0;page-break-inside:avoid}
+.box .bt{font-weight:800;display:block;margin-bottom:1mm}
+.box.tip{background:#fff2e2;border:1px solid #f7cf9c}.box.tip .bt{color:#c0620d}
+.box.warn{background:#fdeee9;border:1px solid #f6c6b4}.box.warn .bt{color:#d1502b}
+ul,ol{margin:.3em 0 .3em 1.2em}li{margin:.2em 0}
+
+/* Section headers */
+.cat{page-break-before:always;background:linear-gradient(135deg,#e8571f,#f5872b);color:#fff;border-radius:9px;padding:7mm 8mm;margin-bottom:5mm}
+.cat h2{color:#fff;font-size:20pt;margin:0}
+.cat p{margin:1mm 0 0;opacity:.95;font-size:11pt}
+.cat.cont{page-break-before:auto}
+
+/* Recipe cards */
+.recipes{display:flex;flex-wrap:wrap;gap:5mm}
+.rec{flex:1 1 44%;min-width:78mm;border:1px solid #f0d6b8;border-radius:10px;padding:4mm 5mm;page-break-inside:avoid;background:#fffdf9;position:relative}
+.rec .n{position:absolute;top:-4mm;right:4mm;background:#e8571f;color:#fff;width:9mm;height:9mm;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11pt;box-shadow:0 2px 6px rgba(232,87,31,.4)}
+.rec h4{font-size:12.5pt;color:#c0620d;margin:0 0 2mm;padding-right:10mm}
+.rec .ing{font-size:9.7pt;color:#4a3418}
+.rec .ing b{color:#7a3d0a}
+.rec .ben{margin-top:2.5mm;font-size:9pt;color:#8a6a3a;border-top:1px dashed #ecd3b0;padding-top:2mm}
+.rec .ben span{font-weight:700;color:#c0620d}
+.small{font-size:9pt;color:#8a6a3a}
+.center{text-align:center}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="eyebrow">Bonus 1</div>
+  <h1>Licuados que Queman</h1>
+  <p class="sub">30 licuados y batidos con ingredientes de acá. Ricos, rápidos y saciantes: para arrancar el día, recuperar después de entrenar y cortar el antojo dulce.</p>
+  <div class="foot">Un complemento de <em style="color:#fff">12 Semanas al Verano</em>. Batí, tomá y seguí.</div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <h2 class="chap">Cómo usar este recetario</h2>
+  <hr class="rule">
+  <p class="lead">Un buen licuado te salva el desayuno apurado, te calma el antojo de algo dulce y te ayuda a llegar a tu proteína y tus frutas del día. Pero ojo: un licuado no es "gratis". Estas son las reglas para que jueguen a favor y no en contra.</p>
+
+  <h3>5 reglas de oro</h3>
+  <ol>
+    <li><strong>Priorizá la saciedad.</strong> Sumá siempre algo de proteína (yogur, leche, claras, proteína en polvo) y/o fibra (avena, semillas) para que te llene de verdad.</li>
+    <li><strong>Cuidado con la fruta de más.</strong> La fruta es sana, pero mucha suma bastante azúcar. Con 1 fruta (o 1 taza) por licuado alcanza.</li>
+    <li><strong>Nada de azúcar agregada.</strong> Si necesitás endulzar, usá la fruta, un poco de miel o edulcorante. No le pongas azúcar ni dulce de leche.</li>
+    <li><strong>Que reemplace, no que se sume.</strong> Un licuado completo reemplaza una comida o merienda. No lo tomes además de todo lo demás.</li>
+    <li><strong>Tomalo recién hecho</strong> y masticá un poco al tomarlo: ayuda a la saciedad.</li>
+  </ol>
+
+  <div class="box tip">
+    <span class="bt">Base para no fallar</span>
+    Casi todos siguen la fórmula: <strong>1 líquido</strong> (agua, leche, bebida vegetal) + <strong>1 fruta</strong> + <strong>1 proteína/fibra</strong> (yogur, avena, semillas) + <strong>hielo</strong>. Con eso armás cientos de combinaciones.
+  </div>
+  <div class="box warn">
+    <span class="bt">Valores aproximados</span>
+    Las porciones y beneficios son orientativos y varían según marcas y cantidades. Adaptá a tu gusto y a lo que tengas en casa. Ante dudas o condiciones de salud, consultá a un profesional.
+  </div>
+</div>
+
+<!-- CATEGORY 1: DESAYUNO -->
+<div class="cat"><h2>☀️ Para arrancar el día</h2><p>Desayunos completos que te sostienen toda la mañana.</p></div>
+<div class="recipes">
+  <div class="rec"><div class="n">1</div><h4>Energía de avena y banana</h4><div class="ing"><b>Ingredientes:</b> 1 vaso de leche, 1 banana, 3 cdas de avena, 1 cdita de miel, canela, hielo.</div><div class="ben"><span>Beneficio:</span> saciante y energético, ideal antes de un día largo.</div></div>
+  <div class="rec"><div class="n">2</div><h4>Verde detox mañanero</h4><div class="ing"><b>Ingredientes:</b> agua, 1 manzana verde, puñado de espinaca, ½ pepino, jugo de ½ limón, jengibre.</div><div class="ben"><span>Beneficio:</span> liviano, hidratante y cargado de vitaminas.</div></div>
+  <div class="rec"><div class="n">3</div><h4>Frutilla y yogur</h4><div class="ing"><b>Ingredientes:</b> 1 yogur natural, 1 taza de frutillas, 2 cdas de avena, hielo.</div><div class="ben"><span>Beneficio:</span> proteína + antioxidantes, corta el antojo dulce.</div></div>
+  <div class="rec"><div class="n">4</div><h4>Manzana y canela</h4><div class="ing"><b>Ingredientes:</b> leche, 1 manzana, 2 cdas de avena, canela, nuez moscada, hielo.</div><div class="ben"><span>Beneficio:</span> sabor a postre, fibra que regula el apetito.</div></div>
+  <div class="rec"><div class="n">5</div><h4>Durazno cremoso</h4><div class="ing"><b>Ingredientes:</b> 1 yogur, 1 durazno, ½ banana, 1 cdita de miel, hielo.</div><div class="ben"><span>Beneficio:</span> cremoso y proteico, muy fácil de digerir.</div></div>
+  <div class="rec"><div class="n">6</div><h4>Avena, cacao y maní</h4><div class="ing"><b>Ingredientes:</b> leche, 3 cdas de avena, 1 cdita de cacao puro, 1 cdita de maní, ½ banana.</div><div class="ben"><span>Beneficio:</span> sabor chocolatado sin culpa, mucha saciedad.</div></div>
+</div>
+
+<!-- CATEGORY 2: POST ENTRENO -->
+<div class="cat"><h2>💪 Recuperación post-entreno</h2><p>Más proteína para reparar el músculo después de moverte.</p></div>
+<div class="recipes">
+  <div class="rec"><div class="n">7</div><h4>Proteico de banana</h4><div class="ing"><b>Ingredientes:</b> leche, 1 banana, 1 scoop de proteína (o 1 yogur griego), 1 cdita de maní, hielo.</div><div class="ben"><span>Beneficio:</span> clásico post-entreno, repara y sacia.</div></div>
+  <div class="rec"><div class="n">8</div><h4>Frutos rojos y proteína</h4><div class="ing"><b>Ingredientes:</b> agua o leche, 1 taza de frutos rojos, 1 scoop de proteína vainilla, hielo.</div><div class="ben"><span>Beneficio:</span> antioxidantes + proteína, bajo en calorías.</div></div>
+  <div class="rec"><div class="n">9</div><h4>Verde fuerte</h4><div class="ing"><b>Ingredientes:</b> agua de coco, espinaca, ½ banana, 1 yogur griego, hielo.</div><div class="ben"><span>Beneficio:</span> reponé electrolitos y proteína tras sudar.</div></div>
+  <div class="rec"><div class="n">10</div><h4>Café proteico frío</h4><div class="ing"><b>Ingredientes:</b> café frío, leche, 1 scoop de proteína, hielo, canela.</div><div class="ben"><span>Beneficio:</span> energía y proteína en uno, ideal de mañana.</div></div>
+  <div class="rec"><div class="n">11</div><h4>Avena, banana y clara</h4><div class="ing"><b>Ingredientes:</b> leche, 3 cdas de avena, 1 banana, 2 claras pasteurizadas, canela.</div><div class="ben"><span>Beneficio:</span> muy completo, arma comida entera post-entreno.</div></div>
+  <div class="rec"><div class="n">12</div><h4>Piña recuperadora</h4><div class="ing"><b>Ingredientes:</b> agua, 1 taza de ananá, 1 yogur griego, jengibre, hielo.</div><div class="ben"><span>Beneficio:</span> el ananá ayuda a desinflamar; refrescante.</div></div>
+</div>
+
+<!-- CATEGORY 3: CORTA ANTOJO -->
+<div class="cat"><h2>🍫 Corta-antojos dulces</h2><p>Cuando pinta lo dulce, tomá esto en vez de atacar la alacena.</p></div>
+<div class="recipes">
+  <div class="rec"><div class="n">13</div><h4>Chocolatado fit</h4><div class="ing"><b>Ingredientes:</b> leche, 1 cdita de cacao puro, ½ banana congelada, edulcorante, hielo.</div><div class="ben"><span>Beneficio:</span> gusto a chocolatada, muchísimas menos calorías.</div></div>
+  <div class="rec"><div class="n">14</div><h4>Cheesecake de frutilla</h4><div class="ing"><b>Ingredientes:</b> 1 yogur, 1 taza de frutillas, 2 cdas de queso untable light, edulcorante, hielo.</div><div class="ben"><span>Beneficio:</span> sabor a postre, alto en proteína.</div></div>
+  <div class="rec"><div class="n">15</div><h4>Banana split</h4><div class="ing"><b>Ingredientes:</b> leche, 1 banana congelada, 1 cdita de cacao, 1 cdita de maní, canela.</div><div class="ben"><span>Beneficio:</span> cremoso como un helado, sin azúcar agregada.</div></div>
+  <div class="rec"><div class="n">16</div><h4>Coco y vainilla</h4><div class="ing"><b>Ingredientes:</b> bebida de coco, ½ banana, 1 scoop de proteína vainilla, hielo.</div><div class="ben"><span>Beneficio:</span> tropical y dulce, corta la ansiedad de la tarde.</div></div>
+  <div class="rec"><div class="n">17</div><h4>Postre de vainilla y canela</h4><div class="ing"><b>Ingredientes:</b> leche, 1 yogur, 2 cdas de avena, esencia de vainilla, canela, edulcorante.</div><div class="ben"><span>Beneficio:</span> reconfortante, ideal de noche sin remordimiento.</div></div>
+  <div class="rec"><div class="n">18</div><h4>Mocca helado</h4><div class="ing"><b>Ingredientes:</b> café frío, leche, 1 cdita de cacao, edulcorante, hielo.</div><div class="ben"><span>Beneficio:</span> antojo de cafetería, casi sin calorías.</div></div>
+</div>
+
+<!-- CATEGORY 4: DETOX / LIVIANOS -->
+<div class="cat"><h2>🥬 Livianos y refrescantes</h2><p>Bajos en calorías, para hidratarte y sumar verduras y frutas.</p></div>
+<div class="recipes">
+  <div class="rec"><div class="n">19</div><h4>Verde clásico</h4><div class="ing"><b>Ingredientes:</b> agua, espinaca, 1 manzana verde, ½ pepino, apio, limón.</div><div class="ben"><span>Beneficio:</span> muy liviano, ideal media mañana.</div></div>
+  <div class="rec"><div class="n">20</div><h4>Sandía refrescante</h4><div class="ing"><b>Ingredientes:</b> 2 tazas de sandía, jugo de ½ limón, menta, hielo.</div><div class="ben"><span>Beneficio:</span> hidrata en el calor, pocas calorías.</div></div>
+  <div class="rec"><div class="n">21</div><h4>Pepino y menta</h4><div class="ing"><b>Ingredientes:</b> agua, ½ pepino, menta, jugo de ½ lima, hielo.</div><div class="ben"><span>Beneficio:</span> desinflama y refresca, cero pesadez.</div></div>
+  <div class="rec"><div class="n">22</div><h4>Naranja y zanahoria</h4><div class="ing"><b>Ingredientes:</b> agua, 1 naranja, 1 zanahoria, jengibre, hielo.</div><div class="ben"><span>Beneficio:</span> vitamina C, defensa y energía.</div></div>
+  <div class="rec"><div class="n">23</div><h4>Kiwi y espinaca</h4><div class="ing"><b>Ingredientes:</b> agua, 2 kiwis, puñado de espinaca, ½ manzana, hielo.</div><div class="ben"><span>Beneficio:</span> fibra que ayuda a la digestión.</div></div>
+  <div class="rec"><div class="n">24</div><h4>Limonada verde de jengibre</h4><div class="ing"><b>Ingredientes:</b> agua, jugo de 1 limón, espinaca, jengibre, menta, edulcorante.</div><div class="ben"><span>Beneficio:</span> súper liviano, activa el metabolismo.</div></div>
+</div>
+
+<!-- CATEGORY 5: SACIANTES / COMIDA -->
+<div class="cat"><h2>🍽️ Sustituto de comida</h2><p>Los más completos: reemplazan un almuerzo o cena cuando no tenés tiempo.</p></div>
+<div class="recipes">
+  <div class="rec"><div class="n">25</div><h4>Completo verde y proteico</h4><div class="ing"><b>Ingredientes:</b> leche, espinaca, ½ banana, 1 scoop de proteína, 2 cdas de avena, 1 cdita de maní.</div><div class="ben"><span>Beneficio:</span> comida entera líquida, mucha saciedad.</div></div>
+  <div class="rec"><div class="n">26</div><h4>Avena, frutos secos y cacao</h4><div class="ing"><b>Ingredientes:</b> leche, 4 cdas de avena, 1 cdita de cacao, mix de frutos secos, ½ banana.</div><div class="ben"><span>Beneficio:</span> energía sostenida, ideal desayuno-almuerzo.</div></div>
+  <div class="rec"><div class="n">27</div><h4>Banana, maní y semillas</h4><div class="ing"><b>Ingredientes:</b> leche, 1 banana, 1 cda de mantequilla de maní, 1 cda de semillas de chía, hielo.</div><div class="ben"><span>Beneficio:</span> grasas buenas y fibra, te sostiene horas.</div></div>
+  <div class="rec"><div class="n">28</div><h4>Frutilla, avena y yogur griego</h4><div class="ing"><b>Ingredientes:</b> 1 yogur griego, 1 taza de frutillas, 3 cdas de avena, hielo.</div><div class="ben"><span>Beneficio:</span> alto en proteína, muy saciante y bajo en grasa.</div></div>
+  <div class="rec"><div class="n">29</div><h4>Tropical completo</h4><div class="ing"><b>Ingredientes:</b> bebida de coco, ½ mango, ½ banana, 1 scoop de proteína, chía.</div><div class="ben"><span>Beneficio:</span> sabor a vacaciones, comida en un vaso.</div></div>
+  <div class="rec"><div class="n">30</div><h4>Café, avena y proteína</h4><div class="ing"><b>Ingredientes:</b> café frío, leche, 3 cdas de avena, 1 scoop de proteína, canela, hielo.</div><div class="ben"><span>Beneficio:</span> desayuno-energía completo para días apurados.</div></div>
+</div>
+
+<div style="page-break-before:always"></div>
+<h2 class="chap">Consejos finales</h2>
+<hr class="rule">
+<ul>
+  <li><strong>Congelá fruta madura</strong> en trozos: da textura de helado y evita desperdicio.</li>
+  <li><strong>Preparate bolsitas</strong> con la fruta y avena listas en el freezer: a la mañana solo agregás líquido y batís.</li>
+  <li><strong>Ajustá el líquido</strong> a tu gusto: más para tomar, menos para "comer" con cuchara.</li>
+  <li><strong>Sumá hielo</strong> siempre: rinde más, refresca y te obliga a tomarlo despacio.</li>
+</ul>
+<div class="box tip"><span class="bt">Recordá</span> Estos licuados son un complemento de tu plan de 12 semanas, no un reemplazo de comer variado y de verdad. Combinalos con el recetario del Bonus 2 y con tus comidas equilibradas.</div>
+<p class="center small" style="margin-top:12mm">Licuados que Queman — Bonus 1 de 12 Semanas al Verano.</p>
+
+</body>
+</html>

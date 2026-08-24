@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>12 Semanas al Verano</title>
+<style>
+@page{ size:A4; margin:20mm 18mm 22mm 18mm;
+  @bottom-center{ content:counter(page); font-family:Georgia,serif; font-size:9pt; color:#7a8aa0; }
+}
+@page:first{ margin:0; @bottom-center{content:none} }
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:"Segoe UI",Helvetica,Arial,sans-serif;color:#1e2a3a;line-height:1.62;font-size:11pt}
+h1,h2,h3,h4{font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;line-height:1.18;color:#12314a}
+p{margin:.55em 0}
+strong{color:#0d2b45}
+em{color:#0f7d57;font-style:italic}
+ul,ol{margin:.5em 0 .8em 1.3em}
+li{margin:.28em 0}
+
+/* ---------- Cover ---------- */
+.cover{position:relative;height:297mm;width:100%;
+  background:linear-gradient(150deg,#0b7a52 0%,#0f9d6b 42%,#16b985 72%,#f5b83d 140%);
+  color:#fff;padding:34mm 22mm;display:flex;flex-direction:column;page-break-after:always;overflow:hidden}
+.cover::after{content:"";position:absolute;right:-90mm;top:-60mm;width:200mm;height:200mm;border-radius:50%;
+  background:radial-gradient(circle at center,rgba(255,255,255,.16),transparent 62%)}
+.cover .kile{position:relative;z-index:2}
+.cover .eyebrow{font-size:12pt;letter-spacing:.32em;text-transform:uppercase;font-weight:700;opacity:.92}
+.cover h1{color:#fff;font-size:52pt;font-weight:800;letter-spacing:-.01em;margin:14mm 0 6mm;text-shadow:0 4px 24px rgba(0,0,0,.16)}
+.cover h1 span{display:block;color:#fff4d6}
+.cover .sub{font-size:16pt;font-weight:600;max-width:130mm;opacity:.96}
+.cover .foot{position:relative;z-index:2;margin-top:auto}
+.cover .foot .tagline{font-size:13pt;font-weight:600;border-top:2px solid rgba(255,255,255,.5);padding-top:6mm;max-width:120mm}
+.cover .pill{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.45);
+  padding:3mm 6mm;border-radius:40px;font-size:11pt;font-weight:700;margin:2mm 2mm 0 0}
+
+/* ---------- Section dividers ---------- */
+.divider{page-break-before:always;page-break-after:always;height:245mm;display:flex;flex-direction:column;justify-content:center;
+  background:linear-gradient(135deg,#0f9d6b,#0b7a52);color:#fff;padding:0 24mm;border-radius:10px;margin-top:6mm}
+.divider .num{font-size:15pt;letter-spacing:.3em;text-transform:uppercase;opacity:.85;font-weight:700}
+.divider h2{color:#fff;font-size:34pt;margin:5mm 0;font-weight:800}
+.divider p{font-size:13pt;opacity:.95;max-width:120mm}
+
+/* ---------- Generic sections ---------- */
+.section{page-break-before:always}
+.section.cont{page-break-before:auto}
+h2.chap{font-size:23pt;color:#0b7a52;margin:0 0 2mm;font-weight:800}
+.chap-kicker{font-size:10pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#f5a623;margin-bottom:1mm}
+h3{font-size:15pt;margin:7mm 0 2mm;color:#12314a;border-left:4px solid #0f9d6b;padding-left:4mm}
+h4{font-size:12.5pt;margin:5mm 0 1mm;color:#0b7a52}
+.lead{font-size:12.5pt;color:#3a4a5e;margin:2mm 0 4mm}
+
+.rule{height:3px;width:44mm;background:linear-gradient(90deg,#0f9d6b,#f5a623);border:0;margin:3mm 0 5mm;border-radius:3px}
+
+/* Callouts */
+.box{border-radius:9px;padding:5mm 6mm;margin:5mm 0;page-break-inside:avoid}
+.box .bt{font-weight:800;font-size:11pt;margin-bottom:1.5mm;display:block}
+.box.tip{background:#e8f7f0;border:1px solid #b9e6d2}
+.box.tip .bt{color:#0b7a52}
+.box.warn{background:#fdeee9;border:1px solid #f6c6b4}
+.box.warn .bt{color:#d1502b}
+.box.key{background:#fff6e0;border:1px solid #f4d58a}
+.box.key .bt{color:#c8901a}
+.box.quote{background:#eef3ff;border-left:5px solid #2563eb;font-style:italic;color:#243b63}
+
+/* Cards / grids */
+.grid2{display:flex;gap:5mm;flex-wrap:wrap}
+.grid2 .col{flex:1 1 42%;min-width:70mm}
+.card{border:1px solid #dfe6ef;border-radius:9px;padding:4mm 5mm;margin:3mm 0;page-break-inside:avoid;background:#fbfdff}
+.card h4{margin-top:0}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;margin:4mm 0;font-size:10pt;page-break-inside:avoid}
+th,td{border:1px solid #d8e0ea;padding:2.6mm 3mm;text-align:left;vertical-align:top}
+th{background:#0f9d6b;color:#fff;font-weight:700;font-size:9.5pt;text-transform:uppercase;letter-spacing:.03em}
+tbody tr:nth-child(even){background:#f3f8f5}
+.tag{display:inline-block;background:#e8f7f0;color:#0b7a52;font-weight:700;font-size:8.5pt;padding:1mm 2.5mm;border-radius:20px}
+
+/* Checklist */
+.check{list-style:none;margin-left:0}
+.check li{position:relative;padding-left:8mm;margin:2mm 0}
+.check li::before{content:"";position:absolute;left:0;top:.3em;width:4.5mm;height:4.5mm;border:2px solid #0f9d6b;border-radius:3px}
+
+/* Week block */
+.week{border:1px solid #dfe6ef;border-left:6px solid #0f9d6b;border-radius:9px;padding:5mm 6mm;margin:5mm 0;page-break-inside:avoid;background:#fbfdff}
+.week .wh{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #e6ecf3;padding-bottom:2mm;margin-bottom:2mm}
+.week .wh b{font-size:14pt;color:#0b7a52}
+.week .wh .foco{font-size:9.5pt;color:#f5a623;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.week ul{margin:1mm 0 0 5mm}
+.week .mini{font-size:9pt;color:#6b7a8d;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-top:2mm}
+
+/* TOC */
+.toc{page-break-after:always}
+.toc h2{font-size:22pt;color:#0b7a52;margin-bottom:5mm}
+.toc ol{list-style:none;margin-left:0}
+.toc li{display:flex;justify-content:space-between;border-bottom:1px dotted #cdd7e2;padding:2.4mm 0;font-size:11.5pt}
+.toc li b{color:#12314a}
+.toc .part{color:#f5a623;font-weight:800;text-transform:uppercase;font-size:9.5pt;letter-spacing:.12em;margin:5mm 0 1mm;border:0}
+
+.small{font-size:9pt;color:#6b7a8d}
+.center{text-align:center}
+</style>
+</head>
+<body>
+
+<!-- ===================== COVER ===================== -->
+<div class="cover">
+  <div class="kile">
+    <div class="eyebrow">Guía real · 12 semanas</div>
+    <h1>12 Semanas<span>al Verano</span></h1>
+    <p class="sub">El cambio de verdad, de adentro hacia afuera. Sin dietas imposibles, sin pasar hambre, sin volver atrás.</p>
+  </div>
+  <div class="foot">
+    <span class="pill">🥗 Alimentación</span>
+    <span class="pill">🏃 Movimiento</span>
+    <span class="pill">🧠 Mentalidad</span>
+    <span class="pill">😴 Descanso</span>
+    <span class="pill">🔁 Hábitos</span>
+    <p class="tagline">De la remera puesta a disfrutar la playa. Un método para transformar tu cuerpo <em style="color:#fff4d6">y tu vida</em> en 12 semanas.</p>
+  </div>
+</div>
+
+<!-- ===================== LEGAL ===================== -->
+<div class="section">
+  <h2 class="chap">Antes de empezar: aviso importante</h2>
+  <hr class="rule">
+  <p>Esta guía es material educativo y de acompañamiento para mejorar tus hábitos de alimentación, movimiento y descanso. <strong>No sustituye la consulta con un médico, nutricionista ni profesional de la salud.</strong></p>
+  <div class="box warn">
+    <span class="bt">Consultá antes de arrancar</span>
+    Antes de empezar cualquier plan de alimentación o ejercicio, hacete un chequeo médico. Es especialmente importante si tenés alguna condición de salud (diabetes, presión alta, problemas de tiroides, cardíacos o articulares), si estás embarazada o en lactancia, si tomás medicación, o si tenés o tuviste un trastorno de la conducta alimentaria. Ante cualquier dolor, mareo o malestar, pará y consultá.
+  </div>
+  <p>Los resultados varían de persona a persona: dependen de tu punto de partida, tu genética, tu constancia y tu contexto. Acá no te vamos a prometer milagros ni cifras mágicas. Te vamos a dar un <strong>método sensato y sostenible</strong> para que bajes de peso a un ritmo saludable (aproximadamente 0,5&nbsp;kg por semana) y, sobre todo, para que no lo recuperes.</p>
+  <p class="small">© 2026 — Uso personal. Prohibida la reventa o redistribución de este material.</p>
+</div>
+
+<!-- ===================== TOC ===================== -->
+<div class="section toc">
+  <h2>Índice</h2>
+  <ol>
+    <li class="part">Parte 1 · La cabeza primero</li>
+    <li><b>1. Por qué esta vez sí</b><span>La verdad sobre por qué fallan las dietas</span></li>
+    <li><b>2. Tu porqué profundo</b><span>El motor que te sostiene los días difíciles</span></li>
+    <li><b>3. De la culpa a la acción</b><span>La remera en la playa y la inseguridad</span></li>
+
+    <li class="part">Parte 2 · Los 5 pilares del cambio real</li>
+    <li><b>4. Pilar 1 — Alimentación sin locuras</b><span>Comer para bajar sin dietas extremas</span></li>
+    <li><b>5. Pilar 2 — Movimiento</b><span>Entrenar en casa o en el gimnasio</span></li>
+    <li><b>6. Pilar 3 — Descanso y sueño</b><span>Lo que nadie te dice sobre dormir</span></li>
+    <li><b>7. Pilar 4 — Agua e hidratación</b><span>El detalle que cambia todo</span></li>
+    <li><b>8. Pilar 5 — Estrés y emociones</b><span>El hambre que no viene del estómago</span></li>
+
+    <li class="part">Parte 3 · Hábitos que cambian tu vida</li>
+    <li><b>9. La ciencia del hábito</b><span>Cómo hacer que lo bueno sea automático</span></li>
+    <li><b>10. Tus micro-hábitos diarios</b><span>Pequeño y constante gana</span></li>
+
+    <li class="part">Parte 4 · El plan semana a semana</li>
+    <li><b>11. Semana 0 — Punto de partida</b><span>Medí, fotografiá, definí</span></li>
+    <li><b>12. Semanas 1 a 12</b><span>Tu hoja de ruta al verano</span></li>
+
+    <li class="part">Parte 5 · Para toda la vida</li>
+    <li><b>13. Cómo no aflojar</b><span>Recaídas, mesetas y mantenimiento</span></li>
+    <li><b>14. Tus dos bonus</b><span>Licuados y recetario uruguayo fit</span></li>
+  </ol>
+</div>
+
+<!-- ===================== PARTE 1 DIVIDER ===================== -->
+<div class="divider">
+  <div class="num">Parte 1</div>
+  <h2>La cabeza primero</h2>
+  <p>Ningún cuerpo cambia si la mente no cambia antes. Acá arranca todo: tu porqué, tu forma de verte y la decisión que te va a sostener las 12 semanas.</p>
+</div>
+
+<!-- CAP 1 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 1</div>
+  <h2 class="chap">Por qué esta vez sí</h2>
+  <hr class="rule">
+  <p class="lead">Seguramente ya intentaste bajar de peso antes. Empezaste un lunes con toda la energía, aguantaste unos días o unas semanas… y después la vida se puso en el medio. No es tu culpa: fallaste porque el método estaba roto, no vos.</p>
+
+  <h3>Por qué fallan casi todas las dietas</h3>
+  <p>Las dietas de moda tienen tres problemas que las condenan desde el arranque:</p>
+  <ul>
+    <li><strong>Son demasiado extremas.</strong> Prometen bajar 8&nbsp;kilos en un mes cortando todo. Tu cuerpo entra en modo alarma, tenés hambre todo el día y a la primera de cambio, comés de más.</li>
+    <li><strong>Se basan en la fuerza de voluntad.</strong> La fuerza de voluntad es un recurso que se agota. Si tu plan depende de "aguantar", perdés. Lo que gana es el <em>sistema</em>: hábitos que no requieren pelear cada día.</li>
+    <li><strong>Tienen fecha de fin.</strong> "Hago la dieta hasta el verano." ¿Y después? Volvés a lo de antes y recuperás todo. Por eso acá no hablamos de dieta: hablamos de <strong>cambiar cómo vivís</strong>.</li>
+  </ul>
+
+  <div class="box key">
+    <span class="bt">La idea que lo cambia todo</span>
+    No vas a hacer una dieta de 12 semanas. Vas a usar estas 12 semanas para instalar hábitos que te van a acompañar toda la vida. El verano es la excusa perfecta para empezar; el objetivo real es que en marzo sigas siendo la nueva versión de vos.
+  </div>
+
+  <h3>Qué hace diferente a este método</h3>
+  <table>
+    <thead><tr><th>La dieta típica</th><th>Este método</th></tr></thead>
+    <tbody>
+      <tr><td>Cortás todo de golpe</td><td>Cambiás de a poco, semana a semana</td></tr>
+      <tr><td>Pasás hambre</td><td>Comés suficiente y con estrategia</td></tr>
+      <tr><td>Prohibido el asado y el mate</td><td>Aprendés a incluirlos sin culpa</td></tr>
+      <tr><td>Depende de aguantar</td><td>Depende de hábitos automáticos</td></tr>
+      <tr><td>Termina y recuperás todo</td><td>Es para siempre</td></tr>
+    </tbody>
+  </table>
+  <p>Si venís de fracasar otras veces, escuchá esto: <strong>no estás roto y no es demasiado tarde.</strong> Solo te faltaba un plan pensado para personas reales, con trabajo, familia, asado los domingos y días en los que no dan ganas.</p>
+</div>
+
+<!-- CAP 2 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 2</div>
+  <h2 class="chap">Tu porqué profundo</h2>
+  <hr class="rule">
+  <p class="lead">Los días fáciles cualquiera entrena. Lo que te va a sostener en los días difíciles —cuando llueve, cuando estás cansado, cuando alguien trae torta a la oficina— es tu <em>porqué</em>. Y tiene que ser más fuerte que "quiero bajar unos kilos".</p>
+
+  <h3>Bajá tres capas</h3>
+  <p>Preguntate "¿por qué?" tres veces, cada vez más profundo:</p>
+  <div class="card">
+    <p><strong>— Quiero bajar de peso.</strong> ¿Por qué?</p>
+    <p><strong>— Para verme mejor en verano.</strong> ¿Por qué te importa?</p>
+    <p><strong>— Porque quiero volver a sentirme cómodo con mi cuerpo, sacarme la remera en la playa sin pensarlo, tener energía para jugar con mis hijos y mirarme al espejo con orgullo.</strong></p>
+  </div>
+  <p>Esa última frase es tu combustible. No es sobre un número en la balanza: es sobre <strong>cómo querés sentirte y vivir</strong>.</p>
+
+  <div class="box tip">
+    <span class="bt">Ejercicio de 5 minutos</span>
+    Agarrá papel y lapicera (o el celu) y escribí tu porqué profundo en una frase. Sacale una foto y ponela de fondo de pantalla, o pegala en la heladera. La vas a necesitar en la semana 6, cuando el envión inicial se apague.
+  </div>
+
+  <h3>Objetivos que sirven</h3>
+  <p>Un buen objetivo es <strong>específico, medible y con fecha</strong>, pero sobre todo se enfoca en lo que vos controlás. No controlás cuánto marca la balanza cada día; sí controlás si cumpliste tus hábitos.</p>
+  <table>
+    <thead><tr><th>Objetivo flojo</th><th>Objetivo que funciona</th></tr></thead>
+    <tbody>
+      <tr><td>"Quiero adelgazar"</td><td>"Voy a caminar 30 min, 5 días por semana, durante 12 semanas"</td></tr>
+      <tr><td>"Voy a comer sano"</td><td>"Voy a comer verduras en almuerzo y cena todos los días"</td></tr>
+      <tr><td>"Bajar 10 kg ya"</td><td>"Bajar a un ritmo sano de ~0,5 kg/semana y sostenerlo"</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CAP 3 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 3</div>
+  <h2 class="chap">De la culpa a la acción</h2>
+  <hr class="rule">
+  <p class="lead">Hablemos de algo que casi nadie dice en voz alta: la inseguridad. Esa sensación de no querer sacarte la remera en la playa, de evitar las fotos, de que la ropa no te cae como antes. Si te pasa, no estás solo, y no tiene nada de malo sentirlo.</p>
+
+  <div class="box quote">
+    Sentir incomodidad con tu cuerpo no te hace vanidoso ni superficial. Te hace humano. Lo que importa no es castigarte por cómo estás hoy, sino usar esa incomodidad como punto de partida para cuidarte mejor.
+  </div>
+
+  <h3>La diferencia entre castigo y cuidado</h3>
+  <p>Hay dos formas de encarar un cambio físico, y llevan a lugares muy distintos:</p>
+  <div class="grid2">
+    <div class="col card">
+      <h4>Desde el castigo ✗</h4>
+      <ul>
+        <li>"Me odio así, tengo que sufrir para cambiar."</li>
+        <li>Entrenás para castigarte, comés poco para expiar culpa.</li>
+        <li>Cada desliz es un fracaso moral.</li>
+        <li>Resultado: abandono y frustración.</li>
+      </ul>
+    </div>
+    <div class="col card">
+      <h4>Desde el cuidado ✓</h4>
+      <ul>
+        <li>"Me quiero lo suficiente como para cuidarme."</li>
+        <li>Entrenás para sentirte fuerte, comés para nutrirte.</li>
+        <li>Cada desliz es información, no condena.</li>
+        <li>Resultado: constancia y cambio real.</li>
+      </ul>
+    </div>
+  </div>
+  <p>Vas a llegar mucho más lejos tratándote como tratarías a un amigo querido que quiere mejorar: con firmeza, pero con cariño. El objetivo de esta guía no es solo que te saques la remera en la playa; es que <strong>dejes de necesitar la aprobación de nadie —ni la tuya en modo crítico— para estar en paz con tu cuerpo.</strong></p>
+
+  <div class="box key">
+    <span class="bt">Tu meta real</span>
+    Que este verano te metas al agua sin pensar en quién mira. No por el six-pack, sino por la confianza que da saber que te estás cuidando de verdad.
+  </div>
+</div>
+
+<!-- ===================== PARTE 2 DIVIDER ===================== -->
+<div class="divider">
+  <div class="num">Parte 2</div>
+  <h2>Los 5 pilares del cambio real</h2>
+  <p>Bajar de peso y sentirte bien no depende de un solo truco. Se apoya en cinco pilares. Cuidá los cinco y el cuerpo se acomoda solo.</p>
+</div>
+
+<!-- CAP 4 -->
+<div class="section">
+  <div class="chap-kicker">Pilar 1</div>
+  <h2 class="chap">Alimentación sin locuras</h2>
+  <hr class="rule">
+  <p class="lead">El 70% del resultado se juega en la cocina. Pero tranquilo: no vas a contar cada caloría ni a comer pechuga con arroz hervido para siempre. Vas a aprender a comer rico, uruguayo y equilibrado.</p>
+
+  <h3>El único secreto que importa: el déficit</h3>
+  <p>Para bajar de peso tenés que gastar un poco más de energía de la que comés. Eso es el <strong>déficit calórico</strong>, y es la base de todo, sin importar la dieta que sigas. No hace falta que lo midas con precisión de laboratorio: alcanza con comer un poco menos de lo que comés hoy y moverte un poco más.</p>
+  <div class="box tip">
+    <span class="bt">Sin contar calorías</span>
+    En vez de contar, ordená el plato. Si armás bien el plato en cada comida, el déficit se da casi solo, sin pasar hambre.
+  </div>
+
+  <h3>El plato uruguayo equilibrado</h3>
+  <p>Imaginá tu plato dividido en tres partes:</p>
+  <table>
+    <thead><tr><th>Porción</th><th>Qué va</th><th>Ejemplos de acá</th></tr></thead>
+    <tbody>
+      <tr><td><strong>½ plato</strong><br>Verduras</td><td>Verduras y ensaladas. Llenan, tienen fibra y pocas calorías.</td><td>Lechuga, tomate, zapallito, morrón, zanahoria, brócoli, calabaza</td></tr>
+      <tr><td><strong>¼ plato</strong><br>Proteína</td><td>Lo que más sacia y cuida el músculo.</td><td>Carne magra, pollo, pescado, huevo, lentejas, garbanzos</td></tr>
+      <tr><td><strong>¼ plato</strong><br>Carbohidrato</td><td>La energía. No es el enemigo: es la porción lo que importa.</td><td>Arroz, fideos, papa, boniato, pan, polenta</td></tr>
+    </tbody>
+  </table>
+  <p>Sumá una cucharada de grasa buena (aceite de oliva, palta, un puñadito de nueces o maní) y listo. Ese plato, repetido, es el 80% del trabajo.</p>
+
+  <h3>El asado, el mate y el dulce (sin culpa)</h3>
+  <p>Nadie sostiene un plan que le prohíbe la vida. Así los incluís:</p>
+  <div class="grid2">
+    <div class="col card">
+      <h4>🔥 El asado</h4>
+      <ul>
+        <li>Elegí cortes más magros (colita de cuadril, lomo, pollo, pulpa) y sumá achuras con moderación.</li>
+        <li>Arrancá con una buena ensalada: llegás menos ansioso a la carne.</li>
+        <li>Serví una porción y sentate lejos de la parrilla. Comé despacio.</li>
+        <li>Modéra el pan y el postre, no los dos juntos.</li>
+      </ul>
+    </div>
+    <div class="col card">
+      <h4>🧉 El mate</h4>
+      <ul>
+        <li>El mate solo suma cero calorías y ayuda a la saciedad. Es tu aliado.</li>
+        <li>El problema es el acompañamiento: bizcochos, galletitas, tortas fritas.</li>
+        <li>Cambiá los bizcochos por fruta, un yogur o frutos secos.</li>
+        <li>A veces "tenés hambre" y en realidad es sed o ganas de mate. Cebate uno antes de picar.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="box key">
+    <span class="bt">La regla 80/20</span>
+    Comé bien el 80% del tiempo y date el gusto el 20% restante, a conciencia y sin culpa. Esa comida rica del finde no arruina nada; lo que arruina es sentirte tan culpable que mandás todo al descarte y comés de más tres días.
+  </div>
+
+  <h3>Ordená tu entorno</h3>
+  <ul>
+    <li><strong>Si no está en casa, no lo comés.</strong> No compres lo que sabés que vas a picar de más. La fuerza de voluntad se gana en el súper, no en el sillón.</li>
+    <li><strong>Comé sin pantallas.</strong> Frente a la tele comés más y registrás menos. Sentate a la mesa.</li>
+    <li><strong>Plato más chico.</strong> Truco viejo y efectivo: la misma comida en un plato más chico parece más y te sacia igual.</li>
+    <li><strong>Cociná de más a propósito.</strong> Dejá porciones listas en la heladera para no caer en el delivery cuando llegás muerto.</li>
+  </ul>
+</div>
+
+<!-- CAP 5 -->
+<div class="section">
+  <div class="chap-kicker">Pilar 2</div>
+  <h2 class="chap">Movimiento</h2>
+  <hr class="rule">
+  <p class="lead">No necesitás matarte en el gimnasio tres horas por día. Necesitás moverte más que ayer, de forma constante. El mejor ejercicio es el que podés sostener 12 semanas y más.</p>
+
+  <h3>Las dos patas del movimiento</h3>
+  <table>
+    <thead><tr><th>Tipo</th><th>Para qué sirve</th><th>Cuánto</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Actividad diaria (NEAT)</strong></td><td>Caminar, escaleras, tareas. Es donde más energía gastás sin darte cuenta.</td><td>Todos los días. Meta: sumar pasos.</td></tr>
+      <tr><td><strong>Entrenamiento de fuerza</strong></td><td>Cuida y construye músculo. Más músculo = más gasto en reposo y mejor forma.</td><td>2 a 3 veces por semana.</td></tr>
+    </tbody>
+  </table>
+  <div class="box tip">
+    <span class="bt">Empezá por caminar</span>
+    Si hoy no hacés nada, no arranques con 5 días de gimnasio. Empezá caminando 20–30 minutos por día. Es gratis, no lastima y es sostenible. Bajate una parada antes, estacioná lejos, caminá después de comer.
+  </div>
+
+  <h3>Rutina en casa — sin equipamiento (Nivel 1)</h3>
+  <p>Hacela 3 veces por semana. 3 vueltas del circuito, descansando 60&nbsp;segundos entre vueltas. Si algún ejercicio te cuesta, hacé la versión fácil.</p>
+  <table>
+    <thead><tr><th>Ejercicio</th><th>Repeticiones</th><th>Versión fácil</th></tr></thead>
+    <tbody>
+      <tr><td>Sentadillas</td><td>10–15</td><td>Sentarse y pararse de una silla</td></tr>
+      <tr><td>Flexiones</td><td>8–12</td><td>Contra la pared o de rodillas</td></tr>
+      <tr><td>Zancadas (cada pierna)</td><td>8</td><td>Media zancada, con apoyo</td></tr>
+      <tr><td>Plancha</td><td>20–30 seg</td><td>Plancha con rodillas apoyadas</td></tr>
+      <tr><td>Puente de glúteos</td><td>15</td><td>Igual, más lento</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Rutina en gimnasio (Nivel 2)</h3>
+  <p>Si vas al gimnasio, priorizá ejercicios que trabajan varios músculos a la vez. 2–3 series de 10–12 repeticiones:</p>
+  <ul>
+    <li>Piernas: prensa o sentadilla</li>
+    <li>Empuje: press de pecho o de hombros</li>
+    <li>Tirón: remo o dorsalera</li>
+    <li>Core: plancha y abdominales</li>
+    <li>Cardio suave 15–20 min al final</li>
+  </ul>
+  <div class="box warn">
+    <span class="bt">La forma antes que el peso</span>
+    Más vale hacer bien un ejercicio con poco peso que mal con mucho. Si sos principiante, pedí ayuda a un profesor del gimnasio para aprender la técnica. Progresá de a poco: subí repeticiones o peso solo cuando el actual te queda fácil.
+  </div>
+</div>
+
+<!-- CAP 6 -->
+<div class="section">
+  <div class="chap-kicker">Pilar 3</div>
+  <h2 class="chap">Descanso y sueño</h2>
+  <hr class="rule">
+  <p class="lead">Este es el pilar que casi todos ignoran, y es el que hace la diferencia. Podés comer perfecto y entrenar duro: si dormís mal, tu cuerpo se resiste a soltar grasa.</p>
+
+  <h3>Por qué dormir adelgaza</h3>
+  <p>Cuando dormís poco pasan tres cosas que juegan en contra:</p>
+  <ul>
+    <li>Se disparan las hormonas del hambre y baja la de la saciedad. Al otro día tenés más apetito, sobre todo de dulce y harinas.</li>
+    <li>Baja tu energía, te movés menos y rendís peor en el entrenamiento.</li>
+    <li>Sube el cortisol (hormona del estrés), que favorece que acumules grasa en el abdomen.</li>
+  </ul>
+  <div class="box key">
+    <span class="bt">Apuntá a 7–8 horas</span>
+    Dormir bien no es un lujo ni pereza: es parte del entrenamiento. Un buen sueño es tan importante como la comida y el ejercicio.
+  </div>
+
+  <h3>Higiene del sueño: 7 reglas</h3>
+  <ol>
+    <li><strong>Horario parejo:</strong> acostate y levantate a la misma hora, incluso el finde.</li>
+    <li><strong>Pantallas fuera:</strong> nada de celular 30–60 min antes de dormir. La luz azul te despierta.</li>
+    <li><strong>Cuarto oscuro y fresco:</strong> lo más oscuro y ventilado posible.</li>
+    <li><strong>Cortá la cafeína</strong> después de las 16–17&nbsp;h (ojo con el mate de la tarde-noche).</li>
+    <li><strong>Cena liviana</strong> y no muy tarde. Irte a dormir muy lleno arruina el descanso.</li>
+    <li><strong>Rutina de cierre:</strong> una ducha, leer, respirar. Avisale al cuerpo que es hora de bajar.</li>
+    <li><strong>Alcohol con moderación:</strong> te duerme rápido pero fragmenta el sueño profundo.</li>
+  </ol>
+</div>
+
+<!-- CAP 7 -->
+<div class="section">
+  <div class="chap-kicker">Pilar 4</div>
+  <h2 class="chap">Agua e hidratación</h2>
+  <hr class="rule">
+  <p class="lead">El pilar más simple y el más subestimado. Muchas veces el cuerpo confunde sed con hambre, y terminás comiendo cuando en realidad necesitabas tomar agua.</p>
+  <h3>Cuánto y cómo</h3>
+  <ul>
+    <li>Apuntá a <strong>unos 2 litros por día</strong> (más si entrenás o hace calor). En Uruguay en verano, bastante más.</li>
+    <li>Arrancá el día con un vaso de agua apenas te levantás.</li>
+    <li>Tomá un vaso <strong>antes de cada comida</strong>: ayuda a la saciedad y a comer la porción justa.</li>
+    <li>El mate y las infusiones cuentan para la hidratación. El agua saborizada casera (con limón, menta, pepino) también.</li>
+  </ul>
+  <div class="box warn">
+    <span class="bt">Cuidado con las calorías líquidas</span>
+    Los refrescos, jugos y cervezas suman muchísimas calorías sin llenarte nada. Una de las cosas más efectivas que podés hacer es cambiar los refrescos por agua o refresco cero. Solo con eso, muchos ya notan la diferencia.
+  </div>
+</div>
+
+<!-- CAP 8 -->
+<div class="section">
+  <div class="chap-kicker">Pilar 5</div>
+  <h2 class="chap">Estrés y emociones</h2>
+  <hr class="rule">
+  <p class="lead">El hambre emocional es real y es uno de los grandes saboteadores. Comer por ansiedad, aburrimiento, tristeza o estrés no tiene que ver con el estómago, y por eso ninguna dieta lo arregla sola.</p>
+
+  <h3>Hambre física vs. hambre emocional</h3>
+  <table>
+    <thead><tr><th>Hambre física</th><th>Hambre emocional</th></tr></thead>
+    <tbody>
+      <tr><td>Aparece de a poco</td><td>Aparece de golpe, urgente</td></tr>
+      <tr><td>Cualquier comida sirve</td><td>Antojo específico (dulce, salado, chatarra)</td></tr>
+      <tr><td>Parás cuando estás lleno</td><td>Seguís aunque estés lleno</td></tr>
+      <tr><td>No deja culpa</td><td>Suele dejar culpa después</td></tr>
+    </tbody>
+  </table>
+
+  <h3>La pausa de los 5 minutos</h3>
+  <p>Cuando te agarren ganas de picar sin hambre real, frená y esperá 5 minutos. Preguntate: <em>¿tengo hambre de verdad o estoy sintiendo otra cosa?</em> Si es emocional, probá otra salida:</p>
+  <ul>
+    <li>Salí a caminar o tomá aire 5 minutos.</li>
+    <li>Tomá un vaso de agua o cebate un mate.</li>
+    <li>Llamá o escribile a alguien.</li>
+    <li>Respirá hondo 10 veces, lento.</li>
+  </ul>
+  <div class="box tip">
+    <span class="bt">No te castigues por recaer</span>
+    Todos comemos de más alguna vez. Un desliz no borra tu progreso; abandonar por culpa, sí. Registralo, entendé qué lo disparó, y seguí en la próxima comida. La perfección no existe; la constancia sí.
+  </div>
+  <div class="box warn">
+    <span class="bt">Cuándo pedir ayuda</span>
+    Si sentís que la comida te controla, que comés a escondidas, que hay atracones seguidos de culpa intensa, o si tu relación con el cuerpo te genera mucho sufrimiento, buscá apoyo de un psicólogo o nutricionista. Pedir ayuda es de valientes, no de débiles.
+  </div>
+</div>
+
+<!-- ===================== PARTE 3 DIVIDER ===================== -->
+<div class="divider">
+  <div class="num">Parte 3</div>
+  <h2>Hábitos que cambian tu vida</h2>
+  <p>La motivación te hace arrancar. El hábito te hace llegar. Acá aprendés a que lo bueno se vuelva automático, para que no dependas de tener ganas.</p>
+</div>
+
+<!-- CAP 9 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 9</div>
+  <h2 class="chap">La ciencia del hábito</h2>
+  <hr class="rule">
+  <p class="lead">Un hábito es una acción que hacés en automático, sin gastar fuerza de voluntad. Lavarte los dientes no te cuesta decisión: lo hacés y ya. La meta es que cuidarte se vuelva igual de automático.</p>
+
+  <h3>Cómo se forma un hábito</h3>
+  <p>Todo hábito tiene tres partes: una <strong>señal</strong> (algo que lo dispara), una <strong>acción</strong> (lo que hacés) y una <strong>recompensa</strong> (lo que ganás). Para instalar uno nuevo, aprovechá estas cuatro reglas:</p>
+  <div class="grid2">
+    <div class="col card">
+      <h4>1. Hacelo obvio</h4>
+      <p>Dejá la señal a la vista. ¿Querés tomar más agua? Dejá la botella en el escritorio. ¿Caminar a la mañana? Dejá las zapatillas al lado de la cama.</p>
+    </div>
+    <div class="col card">
+      <h4>2. Hacelo fácil</h4>
+      <p>Reducí la fricción. Preparate la ropa de gimnasio la noche anterior. Dejá la fruta lavada y a mano. Cuanto menos esfuerzo para empezar, mejor.</p>
+    </div>
+    <div class="col card">
+      <h4>3. Hacelo atractivo</h4>
+      <p>Combiná lo que "tenés que" hacer con algo que te gusta: escuchá tu música o pódcast favorito solo cuando caminás.</p>
+    </div>
+    <div class="col card">
+      <h4>4. Hacelo satisfactorio</h4>
+      <p>Marcá cada día cumplido en un calendario o app. Ver la cadena crecer engancha, y no vas a querer cortarla.</p>
+    </div>
+  </div>
+
+  <h3>Encadenar hábitos</h3>
+  <p>El truco más poderoso: pegá un hábito nuevo a uno que ya tenés. La fórmula es <em>"después de [algo que ya hago], voy a [hábito nuevo]"</em>.</p>
+  <ul>
+    <li>Después de cebar el primer mate, tomo un vaso de agua.</li>
+    <li>Después de lavarme los dientes a la noche, dejo lista la ropa para caminar.</li>
+    <li>Después de almorzar, camino 10 minutos.</li>
+  </ul>
+</div>
+
+<!-- CAP 10 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 10</div>
+  <h2 class="chap">Tus micro-hábitos diarios</h2>
+  <hr class="rule">
+  <p class="lead">No intentes cambiar todo de golpe. Estos son los hábitos base que vas a ir sumando de a poco durante las 12 semanas. Son chicos a propósito: chico y constante le gana a grande y abandonado.</p>
+
+  <h3>Los 10 micro-hábitos del cambio</h3>
+  <ul class="check">
+    <li>Tomar un vaso de agua al despertar</li>
+    <li>Verduras en el almuerzo y en la cena</li>
+    <li>Un vaso de agua antes de cada comida</li>
+    <li>Caminar al menos 20–30 minutos</li>
+    <li>Proteína en cada comida principal</li>
+    <li>Cambiar refrescos por agua o cero</li>
+    <li>Comer sentado, sin pantallas, despacio</li>
+    <li>Cortar cafeína después de las 17&nbsp;h</li>
+    <li>Nada de pantallas 30 min antes de dormir</li>
+    <li>Dormir 7–8 horas</li>
+  </ul>
+
+  <div class="box key">
+    <span class="bt">La regla del 1%</span>
+    No busques mejorar un 100% un día. Buscá mejorar un 1% cada día. Parece poco, pero sumado durante 12 semanas es una transformación completa. El progreso invisible de hoy es el resultado visible de diciembre.
+  </div>
+
+  <h3>Tu tablero de hábitos</h3>
+  <p>Usá esta grilla (o la planilla del bonus) para marcar cada día que cumplís tus hábitos clave. Marcá con una X. La meta no es la perfección: es no cortar la cadena.</p>
+  <table>
+    <thead><tr><th>Hábito</th><th>L</th><th>M</th><th>M</th><th>J</th><th>V</th><th>S</th><th>D</th></tr></thead>
+    <tbody>
+      <tr><td>Agua (2 L)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Verduras 2x</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Movimiento</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Dormir 7–8 h</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Sin picar de más</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===================== PARTE 4 DIVIDER ===================== -->
+<div class="divider">
+  <div class="num">Parte 4</div>
+  <h2>El plan semana a semana</h2>
+  <p>Acá se junta todo. Cada semana sumás un foco nuevo sin soltar los anteriores. Para diciembre, todo esto va a ser parte de vos.</p>
+</div>
+
+<!-- CAP 11 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 11</div>
+  <h2 class="chap">Semana 0 — Punto de partida</h2>
+  <hr class="rule">
+  <p class="lead">Antes de arrancar, tomá tu foto del "antes". No para castigarte: para poder festejar cuánto avanzaste. Lo que no se mide, no se puede mejorar.</p>
+
+  <h3>Tu registro inicial (hacelo hoy)</h3>
+  <ul class="check">
+    <li><strong>Chequeo médico</strong> agendado o hecho</li>
+    <li><strong>Peso</strong> de la mañana, en ayunas, mismo día cada semana</li>
+    <li><strong>Medidas</strong> con cinta: cintura, cadera, pecho, brazo, muslo</li>
+    <li><strong>Foto</strong> de frente, perfil y espalda (guardala, es privada y tuya)</li>
+    <li><strong>Cómo te queda</strong> una prenda de referencia (un jean, una remera)</li>
+    <li><strong>Tu porqué</strong> escrito y a la vista</li>
+    <li><strong>Nivel de energía</strong> y ánimo del 1 al 10</li>
+  </ul>
+  <div class="box tip">
+    <span class="bt">La balanza no es toda la verdad</span>
+    El peso sube y baja por agua, sal, hormonas o lo que cenaste. Fijate en la tendencia del mes, no en el número de un día. Las medidas, las fotos y cómo te queda la ropa muchas veces cuentan mejor la historia que la balanza.
+  </div>
+</div>
+
+<!-- CAP 12 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 12</div>
+  <h2 class="chap">Semanas 1 a 12</h2>
+  <hr class="rule">
+  <p class="lead">Cada semana tenés un <strong>foco</strong> nuevo, una <strong>acción</strong> concreta y un <strong>hábito</strong> que se suma para siempre. No sueltes los anteriores: se acumulan.</p>
+
+  <div class="week">
+    <div class="wh"><b>Semana 1</b><span class="foco">Foco: Hidratación y orden</span></div>
+    <ul>
+      <li>Instalá el vaso de agua al despertar y antes de cada comida.</li>
+      <li>Cambiá todos los refrescos por agua o cero.</li>
+      <li>Empezá a caminar 20 minutos por día.</li>
+    </ul>
+    <div class="mini">Hábito nuevo: tomar 2 L de agua por día</div>
+  </div>
+
+  <div class="week">
+    <div class="wh"><b>Semana 2</b><span class="foco">Foco: El plato equilibrado</span></div>
+    <ul>
+      <li>Armá medio plato de verduras en almuerzo y cena.</li>
+      <li>Sumá una proteína en cada comida principal.</li>
+      <li>Seguí caminando; subí a 25–30 minutos.</li>
+    </ul>
+    <div class="mini">Hábito nuevo: verduras y proteína en cada comida</div>
+  </div>
+
+  <div class="week">
+    <div class="wh"><b>Semana 3</b><span class="foco">Foco: Movimiento con fuerza</span></div>
+    <ul>
+      <li>Empezá la rutina de casa (Nivel 1), 3 veces por semana.</li>
+      <li>Mantené las caminatas los otros días.</li>
+      <li>Preparate la ropa la noche anterior para no fallar.</li>
+    </ul>
+    <div class="mini">Hábito nuevo: entrenar fuerza 3x por semana</div>
+  </div>
+
+  <div class="week">
+    <div class="wh"><b>Semana 4</b><span class="foco">Foco: Sueño</span></div>
+    <ul>
+      <li>Fijá un horario de dormir y despertar parejo.</li>
+      <li>Cortá pantallas 30 min antes de acostarte.</li>
+      <li>Primera medición de control: peso, medidas y foto. ¡Comparación con semana 0!</li>
+    </ul>
+    <div class="mini">Hábito nuevo: dormir 7–8 h con rutina de cierre</div>
+  </div>
+
+  <div class="week">
+    <div class="wh"><b>Semana 5</b><span class="foco">Foco: Comer consciente</span></div>
+    <ul>
+      <li>Comé sentado, sin pantallas, masticando despacio.</li>
+      <li>Aplicá la pausa de 5 minutos ante el picoteo emocional.</li>
+      <li>Usá el bonus de licuados para desayunos y meriendas.</li>
+    </ul>
+    <div class="mini">Hábito nuevo: comer despacio y sin distracción</div>
+  </div>
+
+  <div class="week">
+    <div class="wh"><b>Semana 6</b><span class="foco">Foco: El bache de la mitad</span></div>
+    <ul>
+      <li>Acá suele bajar la motivación: releé tu porqué.</li>
+      <li>Si aparece una meseta en la balanza, no te frustres: es normal, seguí.</li>
+      <li>Sumá 5 minutos a tus caminatas o una vuelta más a la rutina.</li>
+    </ul>
+    <div class="mini">Hábito nuevo: sostener aunque no haya ganas</div>
+  </div>
+
+  <div class="week">
+    <div class="wh"><b>Semana 7</b><span class="foco">Foco: Recetas y variedad</span></div>
+    <ul>
+      <li>Probá 3 recetas nuevas del recetario para no aburrirte.</li>
+      <li>Cociná de más y dejá porciones listas (batch cooking).</li>
+      <li>Planificá tus comidas de la semana el domingo.</li>
+    </ul>
+    <div class="mini">Hábito nuevo: planificar y cocinar por adelantado</div>
+  </div>
+
+  <div class="week">
+    <div class="wh"><b>Semana 8</b><span class="foco">Foco: Vida social sin descarrilar</span></div>
+    <ul>
+      <li>Aplicá la estrategia del asado y las salidas.</li>
+      <li>Usá la regla 80/20: disfrutá el gusto sin culpa.</li>
+      <li>Segunda medición de control. Compará con la semana 4.</li>
+    </ul>
+    <div class="mini">Hábito nuevo: disfrutar eventos sin abandonar el plan</div>
+  </div>
+
+  <div class="week">
+    <div class="wh"><b>Semana 9</b><span class="foco">Foco: Subir la intensidad</span></div>
+    <ul>
+      <li>Progresá el entrenamiento: más repeticiones, más peso o menos descanso.</li>
+      <li>Si venías caminando, probá intercalar tramos más rápidos.</li>
+      <li>Revisá que sigas comiendo suficiente proteína.</li>
+    </ul>
+    <div class="mini">Hábito nuevo: progresar, no estancarse</div>
+  </div>
+
+  <div class="week">
+    <div class="wh"><b>Semana 10</b><span class="foco">Foco: Mente y confianza</span></div>
+    <ul>
+      <li>Frená la autocrítica: hablate como a un amigo.</li>
+      <li>Anotá 3 cosas que ya cambiaron (energía, ropa, ánimo, fuerza).</li>
+      <li>Reconocé el trabajo hecho: llevás 10 semanas.</li>
+    </ul>
+    <div class="mini">Hábito nuevo: reconocer y celebrar el progreso</div>
+  </div>
+
+  <div class="week">
+    <div class="wh"><b>Semana 11</b><span class="foco">Foco: Afinar detalles</span></div>
+    <ul>
+      <li>Repasá los 5 pilares: ¿cuál está más flojo? Reforzalo.</li>
+      <li>Cuidá el sueño y la hidratación, que suelen ser los primeros en aflojar.</li>
+      <li>Mantené la constancia; falta poquito.</li>
+    </ul>
+    <div class="mini">Hábito nuevo: auto-evaluarte y ajustar</div>
+  </div>
+
+  <div class="week">
+    <div class="wh"><b>Semana 12</b><span class="foco">Foco: Llegada y nuevo comienzo</span></div>
+    <ul>
+      <li>Medición final: peso, medidas y fotos. Compará con la semana 0. Mirá todo lo que lograste.</li>
+      <li>Escribí qué hábitos vas a mantener de por vida.</li>
+      <li>Definí tu próximo objetivo: esto no termina, es tu nueva forma de vivir.</li>
+    </ul>
+    <div class="mini">Hábito nuevo: esto es un estilo de vida, no una meta con fin</div>
+  </div>
+</div>
+
+<!-- ===================== PARTE 5 DIVIDER ===================== -->
+<div class="divider">
+  <div class="num">Parte 5</div>
+  <h2>Para toda la vida</h2>
+  <p>El verano es la meta visible. El premio real es la persona en la que te convertís en el camino.</p>
+</div>
+
+<!-- CAP 13 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 13</div>
+  <h2 class="chap">Cómo no aflojar</h2>
+  <hr class="rule">
+  <p class="lead">El desafío no es bajar de peso: es no recuperarlo. Estos son los que hacen la diferencia entre un cambio pasajero y uno para siempre.</p>
+
+  <h3>Las mesetas son normales</h3>
+  <p>En algún momento la balanza se va a frenar aunque hagas todo bien. Es esperable: tu cuerpo se adapta. No es fracaso. Qué hacer:</p>
+  <ul>
+    <li>No recortes más la comida de golpe: eso rebota. Sostené.</li>
+    <li>Sumá un poco de movimiento diario (más pasos).</li>
+    <li>Revisá sueño y estrés, que suelen ser la causa oculta.</li>
+    <li>Mirá las medidas: a veces bajás grasa y ganás músculo, y la balanza no lo muestra.</li>
+  </ul>
+
+  <h3>El plan para las recaídas</h3>
+  <div class="box tip">
+    <span class="bt">La regla de nunca dos seguidas</span>
+    ¿Te pasaste un día? Pasa. La regla de oro: nunca fallar dos veces seguidas. Un día flojo es un desliz; dos se vuelve tendencia. Volvé al plan en la próxima comida, no "el lunes que viene".
+  </div>
+
+  <h3>Mantenimiento después del verano</h3>
+  <ul>
+    <li>Quedate con los hábitos, aunque relajes el objetivo de bajar.</li>
+    <li>Seguí pesándote de vez en cuando: si subís 2–3 kg, corregí temprano.</li>
+    <li>Mantené el movimiento como parte de tu semana, no como castigo.</li>
+    <li>Recordá cómo te sentías antes. No querés volver ahí.</li>
+  </ul>
+
+  <div class="box key">
+    <span class="bt">Lo que de verdad te llevás</span>
+    En 12 semanas no solo vas a cambiar tu cuerpo. Vas a demostrarte que sos capaz de proponerte algo y cumplirlo. Esa confianza se derrama a todo: el trabajo, los vínculos, cómo te parás en la vida. Ese es el verdadero premio, y no se lo lleva ningún invierno.
+  </div>
+</div>
+
+<!-- CAP 14 -->
+<div class="section">
+  <div class="chap-kicker">Capítulo 14</div>
+  <h2 class="chap">Tus dos bonus</h2>
+  <hr class="rule">
+  <p class="lead">Junto a esta guía tenés dos recursos para que comer rico y sano sea fácil todos los días.</p>
+  <div class="grid2">
+    <div class="col card">
+      <h4>🥤 Bonus 1 — Licuados que queman</h4>
+      <p>30 licuados y batidos con ingredientes de acá: para desayunar, para después de entrenar, para cortar el antojo dulce y para cuando no tenés tiempo. Rápidos, ricos y saciantes.</p>
+    </div>
+    <div class="col card">
+      <h4>🍽️ Bonus 2 — Recetario Uruguayo Fit</h4>
+      <p>40 recetas saludables y sabrosas con productos nuestros: desayunos, almuerzos, cenas y snacks. Versiones livianas de tus clásicos favoritos, para no aburrirte nunca.</p>
+    </div>
+  </div>
+  <div class="box quote">
+    Gracias por confiar en este método. No busques ser perfecto: buscá ser constante. Nos vemos en la playa, con la remera donde vos quieras. Tu mejor verano empieza hoy.
+  </div>
+  <p class="center small" style="margin-top:10mm">12 Semanas al Verano — Guía real para transformar tu cuerpo y tu vida.</p>
+</div>
+
+</body>
+</html>
