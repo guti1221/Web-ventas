@@ -1,21 +1,17 @@
-# Estudio Web
+# Diseño Web
 
-Landing profesional de **Estudio Web** — diseño de páginas web para negocios locales (Maldonado y Punta del Este).
+Landing de **Diseño Web** — sitios web y tiendas online a medida para negocios de Uruguay.
 
 ## Contenido
 
-- `index.html` — sitio completo, autocontenido (fuente Montserrat + todas las imágenes embebidas en base64). No necesita ningún otro archivo.
-- `netlify.toml` — configuración de publicación para Netlify (`publish = "."`).
+- `index.html` — estructura del sitio.
+- `styles.css` — estilos.
+- `main.js` — lógica (planes, mantenimiento, pago Mercado Pago, chatbot, carrusel de ejemplos, mockup de Instagram).
+- `lib/manifest.js` — **datos editables**: contacto/WhatsApp, links de pago, planes, perfil de Instagram, ejemplos.
+- `lib/` — GSAP (animaciones).
+- `assets/img/` — imágenes (ejemplos, posts de Instagram, hero).
+- `netlify.toml` — publicación en Netlify (`publish = "."`).
 
-## Publicar en Netlify desde GitHub
+## Publicar
 
-1. Subir estos archivos a un repositorio de GitHub.
-2. En Netlify: **Add new site → Import an existing project → GitHub** y elegir el repo.
-3. Dejar la configuración por defecto (Netlify usa `netlify.toml`). Deploy.
-
-Cada vez que se actualiza `index.html` en GitHub, Netlify vuelve a publicar solo.
-
-## Contacto
-
-- WhatsApp: 099 221 866 — https://wa.me/59899221866
-- Instagram: [@diseñoweb.uy](https://instagram.com/disenoweb.uy)
+Conectado a Netlify: cada `git push` a `main` vuelve a publicar el sitio automáticamente.
