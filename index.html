@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
 
-  <link rel="stylesheet" href="styles.css?v=20260921n" />
+  <link rel="stylesheet" href="styles.css?v=20260927k" />
 </head>
 <body>
   <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -47,8 +47,7 @@
     <a href="#ejemplos">Ejemplos <small>04</small></a>
     <a href="#planes">Planes <small>05</small></a>
     <a href="#mantenimiento">Mantenimiento <small>06</small></a>
-    <a href="#instagram">Instagram <small>07</small></a>
-    <a href="#contacto">Contacto <small>08</small></a>
+    <a href="#contacto">Contacto <small>07</small></a>
   </div>
 
   <main id="main">
@@ -80,22 +79,60 @@
       </div>
     </section>
 
-    <!-- ============ MANIFESTO ============ -->
-    <section class="section manifesto reveal">
-      <div class="wrap">
-        <p>Tu próximo cliente te está buscando en Google ahora mismo. Cuando te encuentre, va a decidir en segundos: <span class="hl">un negocio serio o uno más</span>. Tu web es esa primera impresión — y es la única que podés controlar.</p>
+    <!-- ============ TIENDAS (cinta que se mueve de costado; las de ejemplo no tienen link) ============ -->
+    <section class="stores" id="tiendas" aria-label="Tiendas y webs">
+      <div class="stores-head">
+        <p class="kicker">Mirá cómo quedan</p>
+        <h2 class="section-title">Tiendas y webs <em>que armamos</em>.</h2>
+      </div>
+      <div class="stores-rail" data-stores>
+        <div class="stores-track" data-stores-track>
+          <a class="st-card is-link" href="https://www.buscatuestilo.cl" target="_blank" rel="noopener" aria-label="Abrir Busca tu Estilo (se abre en una pestaña nueva)"><div class="st-bar"><span class="work-dots"><i></i><i></i><i></i></span><span class="work-url">buscatuestilo.cl</span></div><div class="st-shot" style="background-image:url('assets/img/busca-tu-estilo-home.jpg')"></div><div class="st-info"><strong>Busca tu Estilo</strong><span>Tienda de ropa · Chile</span><em>Ver tienda ↗</em></div></a>
+          <div class="st-card"><div class="st-bar"><span class="work-dots"><i></i><i></i><i></i></span><span class="work-url">terra.com.uy</span></div><div class="st-shot" style="background-image:url('assets/img/casa.jpg')"></div><div class="st-info"><strong>Terra</strong><span>Inmobiliaria</span><em>Ejemplo</em></div></div>
+          <a class="st-card is-link" href="https://kioscolumar.com" target="_blank" rel="noopener" aria-label="Abrir Kiosco Lumar (se abre en una pestaña nueva)"><div class="st-bar"><span class="work-dots"><i></i><i></i><i></i></span><span class="work-url">kioscolumar.com</span></div><div class="st-shot" style="background-image:url('assets/img/kiosco-lumar.jpg')"></div><div class="st-info"><strong>Kiosco Lumar</strong><span>Perfumes, bebidas y vapes · Maldonado</span><em>Ver tienda ↗</em></div></a>
+          <div class="st-card"><div class="st-bar"><span class="work-dots"><i></i><i></i><i></i></span><span class="work-url">pulse.fit</span></div><div class="st-shot" style="background-image:url('assets/img/gym.jpg')"></div><div class="st-info"><strong>Pulse</strong><span>Gimnasio</span><em>Ejemplo</em></div></div>
+          <div class="st-card"><div class="st-bar"><span class="work-dots"><i></i><i></i><i></i></span><span class="work-url">sabores.uy</span></div><div class="st-shot" style="background-image:url('assets/img/resto.jpg')"></div><div class="st-info"><strong>Sabores</strong><span>Restaurante</span><em>Ejemplo</em></div></div>
+        </div>
       </div>
     </section>
 
-    <!-- ============ SERVICIOS ============ -->
+    <!-- ============ GLYPH PORTAL (efecto scroll "entrás por una letra", adaptado de Glyph Portal) ============ -->
+    <section class="gp" data-gp data-word="NEGOCIO" data-focus="O" data-length="2.4" aria-label="Tu negocio, online">
+      <div class="gp-pin" data-gp-pin>
+        <div class="gp-field" data-gp-field aria-hidden="true"></div>
+        <svg class="gp-art" data-gp-art aria-hidden="true" focusable="false">
+          <defs><clipPath id="gp-clip" clipPathUnits="userSpaceOnUse"><text data-gp-glyph x="0" y="0">NEGOCIO</text></clipPath></defs>
+        </svg>
+        <div class="gp-front" data-gp-front>
+          <span class="gp-logo">Diseño Web</span>
+          <p class="gp-eyebrow">Tu</p>
+          <p class="gp-support">Tu negocio merece verse tan bien online como en la calle.</p>
+          <span class="gp-scroll">Scrolleá para entrar ↓</span>
+        </div>
+      </div>
+      <div class="gp-content" data-gp-content>
+        <div class="gp-copy">
+          <h2>Entrá al mundo online con una web hecha a tu medida.</h2>
+          <a href="#contacto" class="btn btn-primary">Quiero mi web</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ QUÉ HACEMOS (servicios / proceso / ideas en pestañas) ============ -->
     <section class="section" id="servicios">
       <div class="wrap">
-        <div class="section-head reveal">
+        <div class="section-head">
           <p class="kicker">Qué hacemos</p>
-          <h2 class="section-title">Todo lo que tu negocio necesita para <em>estar online</em>.</h2>
-          <p class="lead">Tocá cada servicio para ver el detalle. Trabajamos con negocios de todos los rubros: comercios, profesionales, gastronomía y más.</p>
+          <h2 class="section-title">Todo para que tu negocio esté <em>online</em>.</h2>
         </div>
-        <div class="services" data-services>
+        <div class="tabs" data-tabs>
+          <div class="tab-list" role="tablist">
+            <button type="button" class="tab is-active" role="tab" data-tab="t-servicios">Servicios</button>
+            <button type="button" class="tab" role="tab" data-tab="t-ideas">Ideas</button>
+            <button type="button" class="tab" role="tab" data-tab="t-proceso">Cómo trabajamos</button>
+          </div>
+          <div class="tab-panel is-active" id="t-servicios" data-tab-panel>
+<div class="services" data-services>
           <!-- Filled/enriched by JS; hardcoded fallback below -->
           <article class="service-row">
             <span class="service-num">01</span>
@@ -122,46 +159,11 @@
             <div class="service-detail"><p>Escribimos el contenido que convierte y nos ocupamos de los cambios. Vos seguís con lo tuyo.</p></div>
           </article>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ PROCESO ============ -->
-    <section class="section" id="proceso">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="kicker">Cómo trabajamos</p>
-          <h2 class="section-title">Tres pasos simples. Cero palabras <em>técnicas</em>.</h2>
-        </div>
-        <div class="process-grid">
-          <article class="process-card reveal">
-            <span class="process-step">01 — Charlamos</span>
-            <h3>Entendemos tu negocio</h3>
-            <p>Nos contás qué hacés y a quién le vendés. Te devolvemos una propuesta concreta y un precio cerrado, sin letra chica ni sorpresas.</p>
-          </article>
-          <article class="process-card reveal">
-            <span class="process-step">02 — Diseñamos</span>
-            <h3>Lo hacemos realidad</h3>
-            <p>Creamos tu web completa y te la mostramos funcionando. Ajustamos textos, fotos y colores las veces que haga falta hasta que digas «es esta».</p>
-          </article>
-          <article class="process-card reveal">
-            <span class="process-step">03 — Publicamos</span>
-            <h3>Online y vendiendo</h3>
-            <p>La subimos con tu dominio, la dejamos rápida en Google y te mostramos cómo pedir cambios cuando los necesites. Simple.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ IDEAS ============ -->
-    <section class="section" id="ideas">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="kicker">Ideas para tu negocio</p>
-          <h2 class="section-title">10 cosas que tu web <em>puede hacer por vos</em>.</h2>
-          <p class="lead">No todas hacen falta desde el día uno. Elegimos juntos las que tienen sentido para tu negocio y las sumamos cuando quieras.</p>
-        </div>
-        <div class="ideas-grid">
-          <article class="idea-card reveal">
+          </div>
+          <div class="tab-panel" id="ideas" data-tab-panel data-tab-id="t-ideas">
+            <p class="lead tab-lead">10 cosas que tu web puede hacer por vos. Elegimos juntos las que tienen sentido para tu negocio.</p>
+<div class="ideas-grid">
+          <article class="idea-card">
             <div class="idea-top">
               <span class="idea-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
               <span class="idea-num">01</span>
@@ -170,7 +172,7 @@
             <p>Tus clientes reservan hora solos, desde el celular, sin llamarte. Vos ves la agenda ordenada.</p>
           </article>
 
-          <article class="idea-card reveal">
+          <article class="idea-card">
             <div class="idea-top">
               <span class="idea-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.5 3h2l2.6 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></span>
               <span class="idea-num">02</span>
@@ -179,7 +181,7 @@
             <p>Vendé online con carrito y cobrás como quieras. Los pedidos te llegan directo, sin comisiones.</p>
           </article>
 
-          <article class="idea-card reveal">
+          <article class="idea-card">
             <div class="idea-top">
               <span class="idea-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
               <span class="idea-num">03</span>
@@ -188,7 +190,7 @@
             <p>Mostrá todos tus productos o servicios con foto, precio y descripción, siempre actualizado.</p>
           </article>
 
-          <article class="idea-card reveal">
+          <article class="idea-card">
             <div class="idea-top">
               <span class="idea-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
               <span class="idea-num">04</span>
@@ -197,7 +199,7 @@
             <p>Ideal para gastronomía: la carta digital que se abre escaneando un código en la mesa.</p>
           </article>
 
-          <article class="idea-card reveal">
+          <article class="idea-card">
             <div class="idea-top">
               <span class="idea-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-11.9 7.6L3 21l1.9-6A8.4 8.4 0 1 1 21 11.5z"/></svg></span>
               <span class="idea-num">05</span>
@@ -206,7 +208,7 @@
             <p>Un botón flotante para que te escriban en un toque. La forma más rápida de captar clientes.</p>
           </article>
 
-          <article class="idea-card reveal">
+          <article class="idea-card">
             <div class="idea-top">
               <span class="idea-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v3h6V3M9 12h6M9 16h4"/></svg></span>
               <span class="idea-num">06</span>
@@ -215,7 +217,7 @@
             <p>Presupuestos, consultas o reservas que te llegan ordenados a tu correo o WhatsApp.</p>
           </article>
 
-          <article class="idea-card reveal">
+          <article class="idea-card">
             <div class="idea-top">
               <span class="idea-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
               <span class="idea-num">07</span>
@@ -224,7 +226,7 @@
             <p>Mostrá tus mejores fotos, antes y después o proyectos terminados. La prueba de que sabés.</p>
           </article>
 
-          <article class="idea-card reveal">
+          <article class="idea-card">
             <div class="idea-top">
               <span class="idea-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
               <span class="idea-num">08</span>
@@ -233,7 +235,7 @@
             <p>Ubicación en Google Maps y tus horarios de atención, para que nadie llegue con el local cerrado.</p>
           </article>
 
-          <article class="idea-card reveal">
+          <article class="idea-card">
             <div class="idea-top">
               <span class="idea-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 15-6v14L3 13z"/><path d="M11.5 8.5v9"/><path d="M18 8a3 3 0 0 1 0 6"/></svg></span>
               <span class="idea-num">09</span>
@@ -242,7 +244,7 @@
             <p>Una sección que actualizás para anunciar ofertas, lanzamientos o eventos cuando los tengas.</p>
           </article>
 
-          <article class="idea-card reveal">
+          <article class="idea-card">
             <div class="idea-top">
               <span class="idea-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9z"/></svg></span>
               <span class="idea-num">10</span>
@@ -251,84 +253,39 @@
             <p>Mostrá tus valoraciones de Google o comentarios reales. La mejor forma de generar confianza.</p>
           </article>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ CHECKLIST ============ -->
-    <section class="section" id="lista">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="kicker">Menú completo</p>
-          <h2 class="section-title">Todo lo que le podemos <em>poner a tu web</em>.</h2>
-          <p class="lead">Una web se arma como un rompecabezas: elegís las piezas que necesitás. Esta es la lista completa de lo que podemos incluir.</p>
+          </div>
+          <div class="tab-panel" id="proceso" data-tab-panel data-tab-id="t-proceso">
+<div class="process-grid">
+          <article class="process-card">
+            <span class="process-step">01 — Charlamos</span>
+            <h3>Entendemos tu negocio</h3>
+            <p>Nos contás qué hacés y a quién le vendés. Te devolvemos una propuesta concreta y un precio cerrado, sin letra chica ni sorpresas.</p>
+          </article>
+          <article class="process-card">
+            <span class="process-step">02 — Diseñamos</span>
+            <h3>Lo hacemos realidad</h3>
+            <p>Creamos tu web completa y te la mostramos funcionando. Ajustamos textos, fotos y colores las veces que haga falta hasta que digas «es esta».</p>
+          </article>
+          <article class="process-card">
+            <span class="process-step">03 — Publicamos</span>
+            <h3>Online y vendiendo</h3>
+            <p>La subimos con tu dominio, la dejamos rápida en Google y te mostramos cómo pedir cambios cuando los necesites. Simple.</p>
+          </article>
         </div>
-        <div class="checklist-grid">
-          <div class="checklist-group reveal">
-            <h3><span class="n">A</span> Contenido y secciones</h3>
-            <ul class="checklist">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Portada con foto o video</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Sobre vos / tu historia</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Servicios o productos</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Galería de trabajos</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Testimonios y reseñas</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Preguntas frecuentes</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Equipo / quiénes somos</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Novedades o blog</span></li>
-            </ul>
-          </div>
-
-          <div class="checklist-group reveal">
-            <h3><span class="n">B</span> Funciones</h3>
-            <ul class="checklist">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Botón de WhatsApp</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Formulario de contacto</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Agenda de turnos</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Carrito de compras</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Catálogo con buscador</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mapa de ubicación</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Suscripción / newsletter</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Redes sociales integradas</span></li>
-            </ul>
-          </div>
-
-          <div class="checklist-group reveal">
-            <h3><span class="n">C</span> Extras técnicos</h3>
-            <ul class="checklist">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Optimizada para el celular</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Rápida en Google (SEO)</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Certificado de seguridad (HTTPS)</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Dominio propio (tunegocio.com)</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Estadísticas de visitas</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Varios idiomas</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Aviso de cookies / legal</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Animaciones al hacer scroll</span></li>
-            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ EJEMPLOS (carrusel deslizable) ============ -->
-    <section class="section works-section" id="ejemplos">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="kicker">Ejemplos</p>
-          <h2 class="section-title">Páginas que <em>podemos crear</em> para vos.</h2>
-          <p class="lead">Diseños ilustrativos de distintos rubros. Deslizá para el costado 👉 para verlos. Así de bien se ve una web nuestra en el navegador.</p>
-        </div>
+    <!-- ============ ZOOM PARALLAX (adaptado de 21st.dev "Zoom Parallax"): páginas que hicimos ============ -->
+    <section class="zp" id="ejemplos" data-zp aria-label="Páginas que hicimos">
+      <div class="zp-head">
+        <p class="kicker">Nuestro trabajo</p>
+        <h2 class="section-title">Las páginas que <em>ya hicimos</em>.</h2>
+        <p class="zp-hint">Scrolleá y entrá en cada una ↓</p>
       </div>
-      <div class="works-slider" data-works>
-        <!-- Rellenado por JS (mountWorks) -->
-      </div>
-      <div class="wrap">
-        <div class="work-nav reveal">
-          <button type="button" class="work-arrow" data-work-prev aria-label="Anterior">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <button type="button" class="work-arrow" data-work-next aria-label="Siguiente">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-          </button>
-        </div>
+      <div class="zp-track" data-zp-track>
+        <div class="zp-stage" data-zp-stage></div>
       </div>
     </section>
 
@@ -338,146 +295,71 @@
         <div class="section-head reveal">
           <p class="kicker">Planes</p>
           <h2 class="section-title">Precios claros, <em>sin sorpresas</em>.</h2>
-          <p class="lead">Presupuestos cerrados: lo que ves es lo que pagás. El precio final depende de tu proyecto, pero estos son los puntos de partida.</p>
         </div>
-        <div class="plans-grid" data-plans>
+        <div class="tabs" data-tabs>
+          <div class="tab-list" role="tablist">
+            <button type="button" class="tab is-active" role="tab" data-tab="t-unico">Pago único</button>
+            <button type="button" class="tab" role="tab" data-tab="t-mensual">Mantenimiento mensual</button>
+          </div>
+          <div class="tab-panel is-active" id="t-unico" data-tab-panel>
+<div class="plans-grid" data-plans>
           <!-- Enriched by JS; hardcoded fallback below -->
-          <article class="plan reveal">
+          <article class="plan">
             <h3 class="plan-name">Esencial</h3>
             <p class="plan-desc">Una página que presenta tu negocio y capta contactos.</p>
             <div class="plan-price"><span class="from">desde</span><span class="cur">USD</span><span class="amount">150</span></div>
             <a href="#contacto" class="btn btn-ghost">Lo quiero</a>
           </article>
-          <article class="plan is-featured reveal">
+          <article class="plan is-featured">
             <span class="plan-badge">Más elegido</span>
             <h3 class="plan-name">Profesional</h3>
             <p class="plan-desc">Varias secciones para negocios que quieren mostrar todo.</p>
             <div class="plan-price"><span class="from">desde</span><span class="cur">USD</span><span class="amount">300</span></div>
             <a href="#contacto" class="btn btn-primary">Lo quiero</a>
           </article>
-          <article class="plan reveal">
+          <article class="plan">
             <h3 class="plan-name">Tienda</h3>
             <p class="plan-desc">Catálogo online con pedidos directos, sin intermediarios.</p>
-            <div class="plan-price"><span class="from">desde</span><span class="cur">USD</span><span class="amount">600</span></div>
+            <div class="plan-price"><span class="cur">USD</span><span class="amount">600 – 999</span></div>
             <a href="#contacto" class="btn btn-ghost">Lo quiero</a>
           </article>
         </div>
-        <div class="pay-box reveal">
-          <p class="pay-txt"><strong>¿Ya lo arreglamos?</strong> Podés abonar o dejar la seña de forma segura con Mercado Pago — tarjeta, débito o dinero en cuenta.</p>
-          <a href="#" class="btn btn-mp" data-mp-link target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
-            Pagar con Mercado Pago
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ MANTENIMIENTO ============ -->
-    <section class="section" id="mantenimiento">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="kicker">Después de publicar</p>
-          <h2 class="section-title">Planes de <em>mantenimiento</em> mensual.</h2>
-          <p class="lead">Tu web viva y segura todo el año: respaldos, seguridad y cambios cuando los necesites. Pagás online en un toque, sin ataduras: cancelás cuando quieras.</p>
-        </div>
-        <div class="plans-grid" data-maintenance>
+          </div>
+          <div class="tab-panel" id="mantenimiento" data-tab-panel data-tab-id="t-mensual">
+            <p class="lead tab-lead">Tu web viva y segura todo el año: respaldos, seguridad y cambios cuando los necesites. Cancelás cuando quieras.</p>
+<div class="plans-grid" data-maintenance>
           <!-- Enriched by JS; hardcoded fallback below -->
-          <article class="plan reveal">
+          <article class="plan">
             <h3 class="plan-name">Al día</h3>
             <p class="plan-desc">Lo básico para que tu web nunca se caiga ni quede vieja.</p>
             <div class="plan-price"><span class="cur">USD</span><span class="amount">15</span><span class="per">/mes</span></div>
             <div class="plan-actions">
-              <button type="button" class="btn btn-mp" data-plan-buy="Mantenimiento Al día" data-plan-price="15" data-plan-cur="USD">Pagar</button>
-              <button type="button" class="btn btn-ghost" data-plan-buy="Mantenimiento Al día" data-plan-price="15" data-plan-cur="USD">Consultar</button>
+              <button type="button" class="btn btn-primary" data-plan-buy="Mantenimiento Al día" data-plan-price="15" data-plan-cur="USD">Lo quiero</button>
             </div>
           </article>
-          <article class="plan is-featured reveal">
+          <article class="plan is-featured">
             <span class="plan-badge">Recomendado</span>
             <h3 class="plan-name">Activo</h3>
             <p class="plan-desc">Para negocios que cambian seguido y quieren estar arriba.</p>
             <div class="plan-price"><span class="cur">USD</span><span class="amount">35</span><span class="per">/mes</span></div>
             <div class="plan-actions">
-              <button type="button" class="btn btn-mp" data-plan-buy="Mantenimiento Activo" data-plan-price="35" data-plan-cur="USD">Pagar</button>
-              <button type="button" class="btn btn-ghost" data-plan-buy="Mantenimiento Activo" data-plan-price="35" data-plan-cur="USD">Consultar</button>
+              <button type="button" class="btn btn-primary" data-plan-buy="Mantenimiento Activo" data-plan-price="35" data-plan-cur="USD">Lo quiero</button>
             </div>
           </article>
-          <article class="plan reveal">
+          <article class="plan">
             <h3 class="plan-name">Full</h3>
             <p class="plan-desc">Nos ocupamos de todo. Vos solo atendés tu negocio.</p>
             <div class="plan-price"><span class="cur">USD</span><span class="amount">70</span><span class="per">/mes</span></div>
             <div class="plan-actions">
-              <button type="button" class="btn btn-mp" data-plan-buy="Mantenimiento Full" data-plan-price="70" data-plan-cur="USD">Pagar</button>
-              <button type="button" class="btn btn-ghost" data-plan-buy="Mantenimiento Full" data-plan-price="70" data-plan-cur="USD">Consultar</button>
+              <button type="button" class="btn btn-primary" data-plan-buy="Mantenimiento Full" data-plan-price="70" data-plan-cur="USD">Lo quiero</button>
             </div>
           </article>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ STATS ============ -->
-    <section class="section stats">
-      <div class="wrap">
-        <div class="stats-grid" data-stats>
-          <div class="stat reveal"><div class="stat-num" data-count-to="100" data-suffix="%">100%</div><p class="stat-label">A medida, sin plantillas</p></div>
-          <div class="stat reveal"><div class="stat-num" data-count-to="5" data-suffix=" días">5 días</div><p class="stat-label">Para verla online</p></div>
-          <div class="stat reveal"><div class="stat-num" data-count-to="24" data-suffix="h">24h</div><p class="stat-label">Respondemos tu mensaje</p></div>
-          <div class="stat reveal"><div class="stat-num" data-count-to="0" data-prefix="$">$0</div><p class="stat-label">Comisiones por venta</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ MENSAJES (marquee) ============ -->
-    <section class="section marquee-section" id="mensajes">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="kicker">Lo que nos escriben</p>
-          <h2 class="section-title">Mensajes de quienes ya <em>dieron el paso</em>.</h2>
-        </div>
-      </div>
-      <div class="marquee marquee-1"><div class="marquee-track" data-marquee="0"></div></div>
-      <div class="marquee marquee-2"><div class="marquee-track" data-marquee="1"></div></div>
-    </section>
-
-    <!-- ============ INSTAGRAM (mockup de dispositivo) ============ -->
-    <section class="section ig-section" id="instagram">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="kicker">En redes</p>
-          <h2 class="section-title">Seguinos en <em>Instagram</em>.</h2>
-          <p class="lead">Así se ve nuestro perfil en cualquier pantalla. Elegí el dispositivo:</p>
-        </div>
-
-        <div class="ig-switch reveal" data-ig-switch role="tablist" aria-label="Elegir dispositivo">
-          <button type="button" class="ig-switch-btn is-active" data-device="phone" aria-selected="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
-            Celular
-          </button>
-          <button type="button" class="ig-switch-btn" data-device="tablet" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
-            Tablet
-          </button>
-          <button type="button" class="ig-switch-btn" data-device="laptop" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20l-2-4H4z"/></svg>
-            Laptop
-          </button>
-        </div>
-
-        <div class="ig-stage reveal">
-          <div class="ig-frame" data-ig-frame data-device="phone">
-            <div class="ig-screen" data-ig-screen>
-              <!-- Rellenado por JS (mountInstagram) -->
-            </div>
           </div>
         </div>
-
-        <div class="ig-cta reveal">
-          <a class="btn btn-primary" data-ig-open href="#" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-            Ver perfil en Instagram
-          </a>
-        </div>
       </div>
     </section>
+
 
     <!-- ============ CONTACTO ============ -->
     <section class="section contact" id="contacto">
@@ -543,7 +425,7 @@
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="pm-title">
       <div class="modal-head">
         <div>
-          <p class="modal-eyebrow">Contratar plan</p>
+          <p class="modal-eyebrow">Pedir este plan</p>
           <h3 class="modal-title" id="pm-title" data-pm-name>Plan</h3>
           <p class="modal-price" data-pm-price></p>
         </div>
@@ -571,12 +453,8 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.6.2-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4 0 1.5 1 2.8 1.2 3 .2.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.3.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-2.9.9.9-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
             Enviar pedido por WhatsApp
           </button>
-          <a class="btn btn-mp" data-pm-mp target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
-            Pagar con Mercado Pago
-          </a>
         </div>
-        <p class="modal-note">El pedido te llega directo a nuestro WhatsApp. Coordinamos y listo.</p>
+        <p class="modal-note">Completá tus datos y se abre WhatsApp con el mensaje listo para enviarnos. El pago lo coordinamos por ahí.</p>
       </form>
     </div>
   </div>
@@ -584,7 +462,7 @@
   <!-- ============ CHAT BOT + BOTONES FLOTANTES ============ -->
   <div class="chat-panel" data-chat-panel aria-live="polite">
     <div class="chat-head">
-      <span class="chat-ava" aria-hidden="true">D</span>
+      <span class="chat-ava" aria-hidden="true"><svg class="bot" viewBox="0 0 64 64" aria-hidden="true"><line x1="32" y1="3" x2="32" y2="12" stroke="#4a5568" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="4" r="3.2" fill="#f5576c"/><rect x="12" y="13" width="40" height="36" rx="12" fill="#6c8cff"/><rect x="17" y="22" width="30" height="17" rx="8.5" fill="#12172a"/><circle cx="25.5" cy="30.5" r="3.4" fill="#5ef2c4"/><circle cx="38.5" cy="30.5" r="3.4" fill="#5ef2c4"/><circle cx="26.6" cy="29.3" r="1" fill="#fff"/><circle cx="39.6" cy="29.3" r="1" fill="#fff"/><path d="M27 44c3 2 7 2 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M10 30C10 14 19 8 32 8s22 6 22 22" fill="none" stroke="#1f2937" stroke-width="3.4" stroke-linecap="round"/><rect x="5" y="27" width="9" height="15" rx="4" fill="#1f2937"/><rect x="50" y="27" width="9" height="15" rx="4" fill="#1f2937"/><path d="M56 40c0 9-7 13-16 13" stroke="#1f2937" stroke-width="2.6" fill="none" stroke-linecap="round"/><circle cx="38.5" cy="53" r="3.3" fill="#1f2937"/><circle cx="9.5" cy="34.5" r="1.6" fill="#5ef2c4"/><circle cx="54.5" cy="34.5" r="1.6" fill="#5ef2c4"/></svg></span>
       <div>
         <div class="chat-title">Diseño Web</div>
         <div class="chat-status">En línea</div>
@@ -600,7 +478,7 @@
 
   <div class="fab-stack">
     <button class="fab fab-chat" data-chat-toggle data-label="Chatear con nosotros" aria-label="Abrir chat">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.6-.8L3 21l1.9-5.4a8.38 8.38 0 0 1-.9-3.6A8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg>
+      <svg class="bot" viewBox="0 0 64 64" aria-hidden="true"><line x1="32" y1="3" x2="32" y2="12" stroke="#4a5568" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="4" r="3.2" fill="#f5576c"/><rect x="12" y="13" width="40" height="36" rx="12" fill="#6c8cff"/><rect x="17" y="22" width="30" height="17" rx="8.5" fill="#12172a"/><circle cx="25.5" cy="30.5" r="3.4" fill="#5ef2c4"/><circle cx="38.5" cy="30.5" r="3.4" fill="#5ef2c4"/><circle cx="26.6" cy="29.3" r="1" fill="#fff"/><circle cx="39.6" cy="29.3" r="1" fill="#fff"/><path d="M27 44c3 2 7 2 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M10 30C10 14 19 8 32 8s22 6 22 22" fill="none" stroke="#1f2937" stroke-width="3.4" stroke-linecap="round"/><rect x="5" y="27" width="9" height="15" rx="4" fill="#1f2937"/><rect x="50" y="27" width="9" height="15" rx="4" fill="#1f2937"/><path d="M56 40c0 9-7 13-16 13" stroke="#1f2937" stroke-width="2.6" fill="none" stroke-linecap="round"/><circle cx="38.5" cy="53" r="3.3" fill="#1f2937"/><circle cx="9.5" cy="34.5" r="1.6" fill="#5ef2c4"/><circle cx="54.5" cy="34.5" r="1.6" fill="#5ef2c4"/></svg>
     </button>
     <a class="fab fab-ig" data-ig-fab href="#" target="_blank" rel="noopener" data-label="Seguinos en Instagram" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
@@ -613,7 +491,7 @@
   <!-- Scripts: IIFE pattern, defer, in order -->
   <script defer src="lib/gsap.min.js"></script>
   <script defer src="lib/ScrollTrigger.min.js"></script>
-  <script defer src="lib/manifest.js?v=20260921n"></script>
-  <script defer src="main.js?v=20260921n"></script>
+  <script defer src="lib/manifest.js?v=20260927k"></script>
+  <script defer src="main.js?v=20260927k"></script>
 </body>
 </html>

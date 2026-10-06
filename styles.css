@@ -980,3 +980,198 @@ ul { list-style: none; padding: 0; }
   .hero-gradient { animation: none; }
   .hero-note .live { animation: none; }
 }
+
+/* =============================================================
+   17. Extras inspirados en 21st.dev
+   - Container Scroll (tarjeta 3D que se endereza al scrollear)
+   - Spotlight en tarjetas (luz que sigue al mouse)
+   - Brillo en botón primario
+   ============================================================= */
+.cs { padding-inline: var(--gutter); }
+.cs-stage {
+  max-width: var(--maxw); margin-inline: auto;
+  padding-block: clamp(3rem, 8vw, 6rem);
+  perspective: 1000px;
+}
+.cs-head { text-align: center; max-width: 22ch; margin: 0 auto clamp(1.5rem, 4vw, 3rem); will-change: transform; }
+.cs-head .kicker { margin-bottom: 1.1rem; }
+.cs-card {
+  max-width: 1000px; margin-inline: auto;
+  height: clamp(300px, 52vw, 560px);
+  padding: clamp(6px, 1.4vw, 22px);
+  background: #1b1c20;
+  border: 4px solid #4a4d55;
+  border-radius: 30px;
+  box-shadow: 0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a;
+  transform: rotateX(20deg) scale(1.05);
+  transform-origin: center top;
+  will-change: transform;
+}
+.cs-screen {
+  height: 100%; border-radius: 16px; overflow: hidden;
+  background: #f3f4f6; display: flex; flex-direction: column;
+}
+.cs-bar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 0.6rem 0.9rem; background: #e6e8ec; border-bottom: 1px solid #d6d9de;
+}
+.cs-bar .work-url { color: #6b7078; background: #fff; }
+.cs-site { flex: 1; min-height: 0; display: flex; flex-direction: column; color: #16181c; }
+.cs-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.7rem clamp(0.8rem, 3vw, 2rem); background: #fff;
+}
+.cs-nav b { font-family: var(--display); letter-spacing: -0.01em; }
+.cs-nav span { display: inline-flex; flex-direction: column; gap: 3px; }
+.cs-nav span i { width: 18px; height: 2px; background: #16181c; }
+.cs-hero {
+  flex: 1; min-height: 0; background-size: cover; background-position: center;
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
+  gap: 0.6rem; padding: clamp(1rem, 4vw, 3rem); color: #fff;
+}
+.cs-hero small { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em; opacity: .85; }
+.cs-hero h3 { font-family: var(--display); font-weight: 600; font-size: clamp(1.3rem, 4.2vw, 3.2rem); max-width: 14ch; line-height: 1.02; }
+.cs-btn { background: #fff; color: #16181c; font-weight: 600; font-size: 0.85rem; padding: 0.6rem 1.2rem; border-radius: 100px; }
+.cs-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; padding: 0.7rem clamp(0.8rem, 3vw, 2rem); background: #fff; }
+.cs-cards span { height: clamp(26px, 5vw, 54px); border-radius: 8px; background: #e9ebef; }
+
+/* Spotlight: luz que sigue al mouse dentro de la tarjeta */
+.idea-card, .plan { position: relative; }
+.idea-card::after, .plan::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(360px circle at var(--sx, 50%) var(--sy, 50%), rgba(156,178,212,0.14), transparent 60%);
+  opacity: 0; transition: opacity .35s var(--ease-out);
+}
+.idea-card:hover::after, .plan:hover::after { opacity: 1; }
+
+/* Brillo que cruza el botón primario */
+.btn-primary { position: relative; overflow: hidden; isolation: isolate; }
+.btn-primary::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgba(156,178,212,.55) 50%, transparent 70%);
+  transform: translateX(-120%);
+}
+.btn-primary:hover::after { transform: translateX(120%); transition: transform .8s var(--ease-out); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-card { transform: none !important; }
+  .cs-head { transform: none !important; }
+  .btn-primary:hover::after { transition: none; }
+}
+
+/* =============================================================
+   Glyph Portal — la cámara entra por una letra de "NEGOCIO"
+   ============================================================= */
+.gp { position: relative; background: var(--btn); color: var(--btn-ink); isolation: isolate; }
+.gp-pin { position: relative; height: 100svh; overflow: clip; }
+.gp-field { position: absolute; inset: 0; opacity: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(11,12,14,.45), rgba(11,12,14,.75)), url('assets/img/hero-code.jpg') center/cover, #1b2433;
+  transform: scale(var(--gp-field-scale, 1)); }
+.gp.is-ready .gp-field { opacity: 1; }
+.gp-art { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.gp-art text { font-family: var(--display); font-weight: 700; font-size: 100px; font-kerning: none; font-variant-ligatures: none; }
+.gp-front { position: absolute; inset: 0; opacity: var(--gp-caption, 1); pointer-events: none; font-family: var(--display); }
+.gp-logo { position: absolute; top: clamp(20px, 4vw, 44px); left: var(--gutter); font-weight: 600; font-size: 19px; letter-spacing: -.04em; }
+.gp-eyebrow { position: absolute; left: 0; right: 0; bottom: calc(100% - var(--gp-word-top, 35%) + 24px); margin: 0; text-align: center; font-size: 14px; color: #5b616b; }
+.gp-support { position: absolute; left: 24px; right: 24px; top: calc(var(--gp-word-bottom, 55%) + 28px); margin: 0 auto; max-width: 34ch; text-align: center; font-size: clamp(14px, 1.6vw, 17px); line-height: 1.5; color: #4a505a; font-family: var(--sans); }
+.gp-scroll { position: absolute; left: 0; right: 0; bottom: 7%; text-align: center; font: 11px var(--mono); color: #777d87; letter-spacing: .02em; }
+.gp-content { position: relative; display: grid; align-content: center; min-height: 100svh; padding: clamp(3rem, 8vw, 6rem) var(--gutter); background: var(--bg); color: var(--ink); }
+.gp-copy { width: min(100%, 72rem); margin: auto; display: flex; flex-direction: column; align-items: flex-start; gap: clamp(1.75rem, 5vh, 3rem); }
+.gp-copy h2 { margin: 0; max-width: 26ch; font: 500 clamp(1.8rem, 1rem + 3vw, 3rem)/1.15 var(--display); letter-spacing: -.02em; text-wrap: balance; }
+.gp-features { display: grid; grid-template-columns: 1fr; gap: 1.75rem; width: 100%; }
+.gp-feature { border-top: 1px solid var(--line-2); padding-top: 1.1rem; }
+.gp-feature h3 { margin: 0; font: 500 1.125rem var(--display); }
+.gp-feature h3 span { margin-right: .7rem; font: 500 .75rem var(--mono); color: var(--accent); letter-spacing: .08em; }
+.gp-feature p { margin: .55rem 0 0; color: var(--ink-soft); font-size: .95rem; line-height: 1.55; }
+@media (min-width: 768px) { .gp-features { grid-template-columns: repeat(3, 1fr); gap: 3rem; } }
+/* Sin JS o con reduced-motion: sólo se ve el contenido, como sección normal */
+.gp:not(.is-motion) .gp-pin { display: none; }
+.gp:not(.is-motion) { background: var(--bg); }
+.gp:not(.is-motion) .gp-content { min-height: 0; }
+.gp.is-motion .gp-pin { position: sticky; top: 0; }
+.gp.is-motion .gp-content { margin-top: calc((var(--gp-length) - 1) * var(--gp-height)); background: transparent; opacity: var(--gp-reveal, 0); pointer-events: none; }
+.gp.is-motion.is-entered .gp-content { pointer-events: auto; }
+
+/* =============================================================
+   Zoom Parallax — las páginas hechas, entrando una por una
+   ============================================================= */
+.zp-head { text-align: center; padding: clamp(3rem, 8vw, 6rem) var(--gutter) clamp(1rem, 3vw, 2rem); }
+.zp-head .kicker { margin-bottom: 1rem; }
+.zp-head .section-title { max-width: 18ch; margin-inline: auto; }
+.zp-hint { margin: 1.2rem 0 0; font: 12px var(--mono); color: var(--mute); }
+.zp-stage { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; padding: 0 var(--gutter) 3rem; max-width: var(--maxw); margin-inline: auto; }
+.zp-tile { position: relative; margin: 0; aspect-ratio: 16/10; border-radius: 12px; overflow: hidden; border: 1px solid var(--line-2); }
+.zp-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.zp-tile figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 1.2rem .8rem .6rem; background: linear-gradient(transparent, rgba(0,0,0,.78)); font: 600 .78em var(--display); color: #fff; display: flex; justify-content: space-between; gap: .5rem; }
+.zp-tile figcaption span { font: 400 .85em var(--mono); opacity: .8; }
+/* modo animado (lo activa el JS) */
+.zp.is-on .zp-track { position: relative; height: 300vh; }
+.zp.is-on .zp-stage { position: sticky; top: 0; display: block; height: 100vh; height: 100svh; overflow: hidden; padding: 0; max-width: none; }
+.zp.is-on .zp-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transform: scale(var(--zs, 1)); }
+.zp.is-on .zp-tile { position: relative; width: 25vw; height: 25vh; aspect-ratio: auto; border-radius: 0; border: 0; flex: none; }
+.zp.is-on .zp-tile figcaption { font-size: clamp(5px, .9vw, 11px); padding: .8em .6em .4em; }
+.zp.is-on .zp-layer:nth-child(2) .zp-tile { top: -30vh; left: 5vw; height: 30vh; width: 35vw; }
+.zp.is-on .zp-layer:nth-child(3) .zp-tile { top: -10vh; left: -25vw; height: 45vh; width: 20vw; }
+.zp.is-on .zp-layer:nth-child(4) .zp-tile { left: 27.5vw; height: 25vh; width: 25vw; }
+.zp.is-on .zp-layer:nth-child(5) .zp-tile { top: 27.5vh; left: 5vw; height: 25vh; width: 20vw; }
+.zp.is-on .zp-layer:nth-child(6) .zp-tile { top: 27.5vh; left: -22.5vw; height: 25vh; width: 30vw; }
+.zp.is-on .zp-layer:nth-child(7) .zp-tile { top: 22.5vh; left: 25vw; height: 15vh; width: 15vw; }
+
+/* ---- Pestañas (servicios / planes) ---- */
+.tab-list { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1.6rem; padding: .3rem; border: 1px solid var(--line-2); border-radius: 999px; width: fit-content; max-width: 100%; }
+.tab { font: 500 .9rem var(--sans); color: var(--ink-soft); background: transparent; border: 0; padding: .6rem 1.1rem; border-radius: 999px; cursor: pointer; min-height: 44px; }
+.tab.is-active { background: var(--btn); color: var(--btn-ink); }
+.tab-panel { display: none; }
+.tab-panel.is-active { display: block; animation: tabIn .35s ease both; }
+.tab-lead { margin: 0 0 1.5rem; max-width: 60ch; }
+@keyframes tabIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.tab-panel .pay-box { margin-top: 1.5rem; }
+
+/* ---- Celular: menos scroll ---- */
+@media (max-width: 720px) {
+  .section { padding-block: 3rem; }
+  .hero { min-height: 0; align-items: flex-start; padding-top: 5.5rem; padding-bottom: 2.5rem; }
+  .section-head { margin-bottom: 1.4rem; }
+  .section-head .lead, .hero-trust, .hero-note { display: none; }
+  .zp.is-on .zp-track { height: 200vh; }
+  .zp-head { padding-block: 2.5rem 1rem; }
+  .tab-list { width: 100%; justify-content: space-between; border-radius: 16px; }
+  .tab { flex: 1 1 auto; padding: .6rem .5rem; font-size: .82rem; }
+  .ideas-grid { grid-template-columns: 1fr 1fr; gap: .7rem; }
+  .idea-card { padding: .9rem; }
+  .idea-card p { display: none; }
+  .idea-top { margin-bottom: .5rem; }
+}
+
+/* Chat bot: ícono de robot con auriculares */
+.fab-chat { background: #e8f0ff; }
+.fab .bot { width: 38px; height: 38px; }
+.chat-head .chat-ava { background: #e8f0ff; }
+.chat-head .chat-ava .bot { width: 30px; height: 30px; }
+
+/* =============================================================
+   Cinta de tiendas (se mueve de costado)
+   ============================================================= */
+.stores { padding-block: clamp(3rem, 8vw, 6rem) clamp(2rem, 5vw, 4rem); overflow: hidden; }
+.stores-head { text-align: center; padding-inline: var(--gutter); margin-bottom: clamp(1.4rem, 4vw, 2.6rem); }
+.stores-head .kicker { margin-bottom: 1rem; }
+.stores-head .section-title { max-width: 20ch; margin-inline: auto; }
+.stores-rail { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.stores-track { display: flex; gap: 1.1rem; width: max-content; animation: storesMove var(--st-dur, 40s) linear infinite; }
+.stores-rail:hover .stores-track, .stores-rail:focus-within .stores-track, .stores-rail.is-paused .stores-track { animation-play-state: paused; }
+@keyframes storesMove { to { transform: translateX(calc(-1 * var(--st-shift, 50%))); } }
+.st-card { flex: none; width: clamp(260px, 30vw, 360px); display: block; color: inherit; text-decoration: none; background: var(--bg-3); border: 1px solid var(--line-2); border-radius: 14px; overflow: hidden; cursor: default; }
+.st-card.is-link { cursor: pointer; transition: transform .25s ease, border-color .25s ease; }
+.st-card.is-link:hover, .st-card.is-link:focus-visible { transform: translateY(-4px); border-color: var(--accent); }
+.st-bar { display: flex; align-items: center; gap: .6rem; padding: .55rem .8rem; border-bottom: 1px solid var(--line); background: #121317; }
+.st-shot { aspect-ratio: 16 / 10; background-size: cover; background-position: top center; }
+.st-info { display: grid; gap: .15rem; padding: .8rem .95rem 1rem; }
+.st-info strong { font: 600 1rem var(--display); }
+.st-info span { font-size: .8rem; color: var(--mute); }
+.st-info em { font: normal 500 .72rem var(--mono); color: var(--accent); margin-top: .35rem; }
+.st-card:not(.is-link) .st-info em { color: var(--mute); }
+@media (prefers-reduced-motion: reduce) {
+  .stores-rail { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .stores-track { animation: none; }
+}
+@media (max-width: 720px) { .st-card { width: 72vw; } }

@@ -67,7 +67,7 @@
           (p.featured ? '<span class="plan-badge">Más elegido</span>' : '') +
           '<h3 class="plan-name">' + escHTML(p.name) + '</h3>' +
           '<p class="plan-desc">' + escHTML(p.desc) + '</p>' +
-          '<div class="plan-price"><span class="from">desde</span><span class="cur">' + escHTML(p.cur || "USD") + '</span><span class="amount">' + escHTML(p.amount) + '</span></div>' +
+          '<div class="plan-price">' + (/[–-]/.test(String(p.amount)) ? '' : '<span class="from">desde</span>') + '<span class="cur">' + escHTML(p.cur || "USD") + '</span><span class="amount">' + escHTML(p.amount) + '</span></div>' +
           '<ul>' + feats + '</ul>' +
           '<button type="button" class="' + btnClass + '" data-plan-buy="' + escHTML(p.name) + '" data-plan-price="' + escHTML(p.amount) + '" data-plan-cur="' + escHTML(p.cur || "USD") + '" data-plan-pay="' + escHTML(p.payUrl || "") + '">Lo quiero</button>' +
         '</article>';
@@ -78,16 +78,11 @@
     var root = $("[data-maintenance]");
     if (!root || !data.maintenance || root.dataset.mounted) return;
     root.dataset.mounted = "1";
-    var payFallback = (data.payment || {}).mercadoPago || "";
     var check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     var card = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>';
     root.innerHTML = data.maintenance.map(function (p) {
       var feats = (p.features || []).map(function (f) { return "<li>" + check + "<span>" + escHTML(f) + "</span></li>"; }).join("");
       var per = p.period ? ('<span class="per">/' + escHTML(p.period) + '</span>') : "";
-      var payUrl = p.payUrl || payFallback;
-      var payBtn = payUrl
-        ? ('<a class="btn btn-mp" href="' + escHTML(payUrl) + '" target="_blank" rel="noopener">' + card + 'Pagar</a>')
-        : ('<button type="button" class="btn btn-mp" data-plan-buy="Mantenimiento ' + escHTML(p.name) + '" data-plan-price="' + escHTML(p.amount) + '" data-plan-cur="' + escHTML(p.cur || "USD") + '">' + card + 'Pagar</button>');
       return '' +
         '<article class="plan reveal' + (p.featured ? ' is-featured' : '') + '">' +
           (p.featured ? '<span class="plan-badge">Recomendado</span>' : '') +
@@ -96,8 +91,7 @@
           '<div class="plan-price"><span class="cur">' + escHTML(p.cur || "USD") + '</span><span class="amount">' + escHTML(p.amount) + '</span>' + per + '</div>' +
           '<ul>' + feats + '</ul>' +
           '<div class="plan-actions">' +
-            payBtn +
-            '<button type="button" class="btn btn-ghost" data-plan-buy="Mantenimiento ' + escHTML(p.name) + '" data-plan-price="' + escHTML(p.amount) + '" data-plan-cur="' + escHTML(p.cur || "USD") + '">Consultar</button>' +
+            '<button type="button" class="btn btn-primary" data-plan-buy="Mantenimiento ' + escHTML(p.name) + '" data-plan-price="' + escHTML(p.amount) + '" data-plan-cur="' + escHTML(p.cur || "USD") + '">Lo quiero</button>' +
           '</div>' +
         '</article>';
     }).join("");
@@ -518,7 +512,7 @@
     function open(name, price, payUrl) {
       current.name = name; current.price = price;
       if (nameEl) nameEl.textContent = "Plan " + name;
-      if (priceEl) priceEl.textContent = price ? ("desde " + price) : "";
+      if (priceEl) priceEl.textContent = price ? ((/[–-]/.test(price) ? "" : "desde ") + price) : "";
       if (mpBtn) {
         var link = payUrl || mpUrl || "";
         if (link) { mpBtn.setAttribute("href", link); mpBtn.style.display = ""; }
@@ -585,6 +579,226 @@
     });
   }
 
+  // Container Scroll (21st.dev): la tarjeta arranca inclinada y se endereza al scrollear
+  function initContainerScroll() {
+    var root = $("[data-cs]");
+    var card = $("[data-cs-card]");
+    var head = $("[data-cs-head]");
+    if (!root || !card || reduced) return;
+    function update() {
+      var r = root.getBoundingClientRect();
+      var vh = window.innerHeight;
+      // 0 cuando la sección entra por abajo, 1 cuando su centro llega al centro de la pantalla
+      var p = (vh - r.top) / (vh + r.height * 0.35);
+      p = Math.max(0, Math.min(1, p * 1.5));
+      var mobile = window.innerWidth <= 768;
+      var s0 = mobile ? 0.7 : 1.05, s1 = mobile ? 0.9 : 1;
+      card.style.transform = "rotateX(" + (20 * (1 - p)).toFixed(2) + "deg) scale(" + (s0 + (s1 - s0) * p).toFixed(3) + ")";
+      if (head) head.style.transform = "translateY(" + (-100 * p).toFixed(1) + "px)";
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    update();
+  }
+
+  // Glyph Portal: la cámara atraviesa una letra de la palabra y revela la sección siguiente
+  function initGlyphPortal() {
+    var sec = $("[data-gp]");
+    if (!sec || reduced) return;
+    var pin = sec.querySelector("[data-gp-pin]"), field = sec.querySelector("[data-gp-field]"), art = sec.querySelector("[data-gp-art]");
+    var clip = art.querySelector("clipPath"), glyph = sec.querySelector("[data-gp-glyph]");
+    var text = (sec.getAttribute("data-word") || "NEGOCIO").trim();
+    var focusChar = sec.getAttribute("data-focus") || "";
+    var length = Math.min(8, Math.max(1, parseFloat(sec.getAttribute("data-length")) || 2.4));
+    if (window.innerWidth < 720) length = Math.min(length, 1.6);   // celular: menos scroll
+    var family = '"Space Grotesk", "Arial Black", Arial, sans-serif';
+    var cv = document.createElement("canvas"), ctx = cv.getContext("2d", { willReadFrequently: true });
+    if (!ctx) return;
+    var W = 1, H = 1, bounds, center, target, startScale = 1, endScale = 1, ready = false;
+    function clamp(n, a, b) { return Math.min(b, Math.max(a, n)); }
+    function smooth(a, b, n) { var t = clamp((n - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); }
+
+    // Mayor cuadrado opaco dentro de una letra (funciona en O, S, Ø…)
+    function interior(ch, font) {
+      ctx.font = font;
+      var m = ctx.measureText(ch), pad = 8;
+      var left = Math.ceil(m.actualBoundingBoxLeft), ascent = Math.ceil(m.actualBoundingBoxAscent);
+      cv.width = Math.max(1, Math.ceil(m.actualBoundingBoxLeft + m.actualBoundingBoxRight) + pad * 2);
+      cv.height = Math.max(1, Math.ceil(m.actualBoundingBoxAscent + m.actualBoundingBoxDescent) + pad * 2);
+      ctx.font = font; ctx.fillText(ch, pad + left, pad + ascent);
+      var w = cv.width, h = cv.height, px = ctx.getImageData(0, 0, w, h).data;
+      var rows = new Uint16Array(w + 1), size = 0, bx = 0, by = 0;
+      for (var y = 0; y < h; y++) {
+        var diag = 0;
+        for (var x = 0; x < w; x++) {
+          var above = rows[x + 1];
+          rows[x + 1] = px[(y * w + x) * 4 + 3] > 245 ? Math.min(above, rows[x], diag) + 1 : 0;
+          diag = above;
+          if (rows[x + 1] > size) { size = rows[x + 1]; bx = x; by = y; }
+        }
+      }
+      if (size < 3) return null;
+      return { x: (bx + 1 - size / 2 - pad - left) / 3, y: (by + 1 - size / 2 - pad - ascent) / 3, radius: (size / 2 - 1) / 3 };
+    }
+
+    function readInk() {
+      var fam = getComputedStyle(glyph).fontFamily;
+      ctx.font = "700 100px " + fam;
+      var m = ctx.measureText(text);
+      bounds = { x: -m.actualBoundingBoxLeft, y: -m.actualBoundingBoxAscent,
+        width: m.actualBoundingBoxLeft + m.actualBoundingBoxRight, height: m.actualBoundingBoxAscent + m.actualBoundingBoxDescent };
+      if (!bounds.width || !bounds.height) return false;
+      center = { x: bounds.x + bounds.width / 2, y: bounds.y + bounds.height / 2 };
+      var req = focusChar ? text.indexOf(focusChar) : -1, cands = [];
+      for (var i = 0; i < text.length; i++) {
+        ctx.font = "700 100px " + fam;
+        var adv = ctx.measureText(text.slice(0, i)).width;
+        var f = interior(text[i], "700 300px " + fam);
+        if (f) cands.push({ x: f.x + adv, y: f.y, radius: f.radius, index: i });
+      }
+      target = cands.filter(function (c) { return c.index === req; })[0] ||
+        cands.sort(function (a, b) { return b.radius - a.radius; })[0] || null;
+      return !!target;
+    }
+
+    function layout() {
+      W = pin.clientWidth || window.innerWidth; H = window.innerHeight;
+      sec.style.setProperty("--gp-height", H + "px");
+      sec.style.setProperty("--gp-length", length);
+      art.setAttribute("viewBox", "0 0 " + W + " " + H);
+      startScale = Math.min(W * 0.84 / bounds.width, H * 0.38 / bounds.height);
+      endScale = Math.max(startScale, Math.hypot(W, H) / (target.radius * 1.35));
+      sec.style.setProperty("--gp-word-top", (H * .46 - bounds.height * startScale / 2) + "px");
+      sec.style.setProperty("--gp-word-bottom", (H * .46 + bounds.height * startScale / 2) + "px");
+    }
+
+    function paint() {
+      var p = clamp(-sec.getBoundingClientRect().top / (H * length), 0, 1), t = clamp(p / 0.78, 0, 1);
+      var eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      var scale = Math.exp(Math.log(startScale) + Math.log(endScale / startScale) * eased);
+      var blend = endScale === startScale ? 0 : (1 / scale - 1 / startScale) / (1 / endScale - 1 / startScale);
+      var cx = center.x + (target.x - center.x) * blend, cy = center.y + (target.y - center.y) * blend;
+      var roll = -4 * smooth(0.06, 0.5, t) * (1 - smooth(0.62, 0.92, t));
+      var rad = roll * Math.PI / 180;
+      var dx = W / 2 / scale, dy = (H * .46 + H * .04 * eased) / scale;
+      clip.setAttribute("transform", "scale(" + scale + ") rotate(" + roll + ")");
+      glyph.setAttribute("transform", "translate(" + (Math.cos(rad) * dx + Math.sin(rad) * dy - cx) + " " + (-Math.sin(rad) * dx + Math.cos(rad) * dy - cy) + ")");
+      field.style.clipPath = t >= 1 ? "none" : "url(#gp-clip)";
+      sec.style.setProperty("--gp-caption", 1 - smooth(0.01, 0.16, p));
+      sec.style.setProperty("--gp-reveal", smooth(0.78, 0.9, p));
+      sec.style.setProperty("--gp-field-scale", 1 + .16 * smooth(0, .82, p));
+      sec.classList.toggle("is-entered", p >= 0.9);
+    }
+
+    function schedule() { paint(); }   // barato (sólo atributos SVG + variables CSS), sin depender de rAF
+    function relayout() { layout(); paint(); }
+
+    function start() {
+      if (ready) return;
+      if (!window.innerWidth || !window.innerHeight) { setTimeout(start, 400); return; }   // pestaña oculta/sin tamaño: reintenta
+      glyph.style.fontFamily = family;
+      if (!readInk()) return;       // si algo falla, la sección queda estática y legible
+      ready = true;
+      sec.classList.add("is-ready", "is-motion");   // antes de medir: el pin está oculto sin esta clase
+      layout();
+      paint();
+      window.addEventListener("scroll", schedule, { passive: true });
+      window.addEventListener("resize", relayout, { passive: true });
+    }
+    if (document.fonts && document.fonts.load) {
+      document.fonts.load("700 100px 'Space Grotesk'", text).then(start, start);
+      setTimeout(start, 1500);
+    } else start();
+  }
+
+  // Zoom Parallax: las capas crecen a distinta velocidad con el scroll (tarjetas = webs de works[])
+  function initZoomParallax() {
+    var sec = $("[data-zp]"), track = $("[data-zp-track]"), stage = $("[data-zp-stage]");
+    if (!sec || !track || !stage) return;
+    var items = (data.works || []).map(function (w) { return { src: w.img, name: w.brand, tag: w.tag }; });
+    items.push({ src: "assets/img/hero-code.jpg", name: "Diseño Web", tag: "Tu negocio, acá" });
+    items = items.slice(0, 7);
+    if (!items.length) return;
+    stage.innerHTML = items.map(function (it) {
+      return '<div class="zp-layer"><figure class="zp-tile"><img src="' + escHTML(it.src) + '" alt="Web de ' + escHTML(it.name) + '" loading="lazy" />' +
+        '<figcaption>' + escHTML(it.name) + '<span>' + escHTML(it.tag) + '</span></figcaption></figure></div>';
+    }).join("");
+    if (reduced) return;     // sin movimiento: queda como grilla
+    var ks = [4, 5, 6, 5, 6, 8, 9];
+    var layers = $$(".zp-layer", stage);
+    sec.classList.add("is-on");
+    function update() {
+      var r = track.getBoundingClientRect();
+      var span = track.offsetHeight - window.innerHeight;
+      var p = span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 0;
+      for (var i = 0; i < layers.length; i++) layers[i].style.setProperty("--zs", (1 + (ks[i % ks.length] - 1) * p).toFixed(3));
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    update();
+  }
+
+  // Pestañas (servicios / planes). Los links a #ideas, #proceso, #mantenimiento abren su pestaña.
+  function initTabs() {
+    function activate(box, id) {
+      $$("[data-tab]", box).forEach(function (b) { b.classList.toggle("is-active", b.getAttribute("data-tab") === id); });
+      $$("[data-tab-panel]", box).forEach(function (p) {
+        p.classList.toggle("is-active", (p.getAttribute("data-tab-id") || p.id) === id);
+      });
+    }
+    $$("[data-tabs]").forEach(function (box) {
+      box.addEventListener("click", function (e) {
+        var b = e.target.closest("[data-tab]");
+        if (b && box.contains(b)) activate(box, b.getAttribute("data-tab"));
+      });
+    });
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      var panel = document.getElementById(a.getAttribute("href").slice(1));
+      if (!panel || !panel.hasAttribute("data-tab-panel")) return;
+      var box = panel.closest("[data-tabs]");
+      activate(box, panel.getAttribute("data-tab-id") || panel.id);
+      e.preventDefault();
+      box.scrollIntoView({ behavior: "smooth", block: "start" });
+      var m = $("[data-mobile-menu]"), t = $("[data-nav-toggle]"); if (m && t && m.classList.contains("is-open")) t.click();
+    }, true);
+  }
+
+  // Cinta de tiendas: se duplica el contenido para que el loop sea continuo
+  function initStores() {
+    var track = $("[data-stores-track]"), rail = $("[data-stores]");
+    if (!track || !rail || reduced) return;
+    var kids = Array.prototype.slice.call(track.children);
+    kids.forEach(function (k) {
+      var c = k.cloneNode(true);
+      c.setAttribute("aria-hidden", "true"); c.setAttribute("tabindex", "-1");   // la copia no se anuncia ni se enfoca
+      track.appendChild(c);
+    });
+    function size() {
+      var half = track.scrollWidth / 2;
+      track.style.setProperty("--st-shift", half + "px");
+      track.style.setProperty("--st-dur", Math.max(20, half / 45) + "s");   // ~45 px/s
+    }
+    size();
+    window.addEventListener("resize", size, { passive: true });
+    window.addEventListener("load", size);
+    rail.addEventListener("touchstart", function () { rail.classList.add("is-paused"); }, { passive: true });
+    rail.addEventListener("touchend", function () { setTimeout(function () { rail.classList.remove("is-paused"); }, 1500); }, { passive: true });
+  }
+
+  // Spotlight: guarda la posición del mouse dentro de cada tarjeta
+  function initSpotlight() {
+    if (!fineHover) return;
+    document.addEventListener("mousemove", function (e) {
+      var card = e.target.closest && e.target.closest(".idea-card, .plan");
+      if (!card) return;
+      var r = card.getBoundingClientRect();
+      card.style.setProperty("--sx", (e.clientX - r.left) + "px");
+      card.style.setProperty("--sy", (e.clientY - r.top) + "px");
+    }, { passive: true });
+  }
+
   function boot() {
     safe(mountContact, "mountContact");
     safe(mountServices, "mountServices");
@@ -608,6 +822,12 @@
     safe(initIgDevice, "initIgDevice");
     safe(initChatbot, "initChatbot");
     safe(initPlanModal, "initPlanModal");
+    safe(initContainerScroll, "initContainerScroll");
+    safe(initTabs, "initTabs");
+    safe(initStores, "initStores");
+    safe(initGlyphPortal, "initGlyphPortal");
+    safe(initZoomParallax, "initZoomParallax");
+    safe(initSpotlight, "initSpotlight");
 
     if (window.gsap && window.ScrollTrigger) {
       try { gsap.registerPlugin(ScrollTrigger); } catch (_) {}
